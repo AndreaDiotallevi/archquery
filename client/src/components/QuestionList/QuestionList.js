@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchPosts } from "../../actions";
 
@@ -9,13 +10,11 @@ class PostList extends React.Component {
 
   render() {
     return (
-      <ul>
+      <div>
         {this.props.posts.map((post) => (
-          <li key={post._id}>
-            <p>{post.title}</p>
-          </li>
+          <Link to="/questions/:id">{post.title}</Link>
         ))}
-      </ul>
+      </div>
     );
   }
 }
