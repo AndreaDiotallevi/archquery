@@ -1,0 +1,37 @@
+{
+  "name": "archquery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "test": "jest --detectOpenHandles --watch",
+    "client-test": "npm test --prefix client -- --coverage",
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Andrea Diotallevi",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^5.1.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.6"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/client/"
+    ]
+  },
+  "engines": {
+    "node": "12.16.1"
+  }
+}
