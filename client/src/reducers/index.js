@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import posts from "./postsReducers";
+import questions from "./questionsReducers";
 
 export default combineReducers({
-  posts,
+  questions,
 });

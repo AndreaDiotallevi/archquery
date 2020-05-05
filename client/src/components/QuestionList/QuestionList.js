@@ -1,18 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchPosts } from "../../actions";
+import { fetchQuestions } from "../../actions";
 
-class PostList extends React.Component {
+class QuestionList extends React.Component {
   componentDidMount() {
-    this.props.fetchPosts();
+    this.props.fetchQuestions();
   }
 
   render() {
     return (
       <div>
-        {this.props.posts.map((post) => (
-          <Link to="/questions/:id">{post.title}</Link>
+        {this.props.questions.map((post) => (
+          <Link to={`/questions/${post._id}`} key={post._id}>
+            {post.title}
+          </Link>
         ))}
       </div>
     );
@@ -21,8 +23,8 @@ class PostList extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    posts: Object.values(state.posts),
+    questions: Object.values(state.questions),
   };
 };
 
-export default connect(mapStateToProps, { fetchPosts })(PostList);
+export default connect(mapStateToProps, { fetchQuestions })(QuestionList);
