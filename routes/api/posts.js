@@ -18,6 +18,20 @@ router.get("/", async (req, res) => {
   }
 });
 
+// @route   Get api/posts/:id
+// @desc    Get A Post
+// @access  Public
+router.get("/:id", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    if (!post) throw Error("No post found");
+
+    res.status(200).json(post);
+  } catch (err) {
+    res.status(400).json({ msg: err.message });
+  }
+});
+
 // @route   POST api/posts
 // @desc    Create A Post
 // @access  Public
