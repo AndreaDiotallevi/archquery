@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 
-// const albums = require('./routes/api/albums')
+const posts = require("./routes/api/posts");
 
 const app = express();
 app.use(express.json());
@@ -17,7 +17,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // Use Routes
-// app.use('/api/albums', albums);
+app.use("/api/posts", posts);
 
 // Setup for Production
 if (process.env.NODE_ENV === "production") {
