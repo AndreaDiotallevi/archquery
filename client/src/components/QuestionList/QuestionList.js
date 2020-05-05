@@ -8,7 +8,6 @@ class PostList extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <ul>
         {this.props.posts.map((post) => (
