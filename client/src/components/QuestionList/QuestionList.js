@@ -5,6 +5,7 @@ import { fetchQuestions } from "../../actions";
 
 class QuestionList extends React.Component {
   componentDidMount() {
+    console.log(this.props);
     this.props.fetchQuestions();
   }
 
@@ -12,7 +13,7 @@ class QuestionList extends React.Component {
     return (
       <div>
         {this.props.questions.map((post) => (
-          <Link to={`/questions/${post._id}`} key={post._id}>
+          <Link to={`/questions/${post.id}`} key={post.id}>
             {post.title}
           </Link>
         ))}
