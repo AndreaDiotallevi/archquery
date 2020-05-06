@@ -1,7 +1,7 @@
-CREATE DATABASE archquery;
+-- CREATE DATABASE archquery;
 
 CREATE TABLE posts(
   id SERIAL PRIMARY KEY,
   title VARCHAR(30),
   body VARCHAR(200)
-)
+);
