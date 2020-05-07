@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
     const {
       rows,
     } = await db.query(
-      "INSERT INTO posts (title, body) VALUES ($1, $2) RETURNING *",
+      "INSERT INTO posts (title, body, creation_date) VALUES ($1, $2, current_timestamp) RETURNING *",
       [title, body]
     );
     res.status(200).json(rows[0]);
