@@ -8,11 +8,23 @@ class QuestionList extends React.Component {
     this.props.fetchQuestions();
   }
 
+  sanitizeUrl(title) {
+    return title
+      .split(/[^0-9a-z]/gi)
+      .filter((item) => item !== "")
+      .join("-")
+      .toLowerCase()
+      .substring(0, 80);
+  }
+
   render() {
     return (
       <div>
         {this.props.questions.map((post) => (
-          <Link to={`/questions/${post.id}`} key={post.id}>
+          <Link
+            to={`/questions/${post.id}/${this.sanitizeUrl(post.title)}`}
+            key={post.id}
+          >
             {post.title}
           </Link>
         ))}
