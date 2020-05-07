@@ -5,7 +5,6 @@ import { fetchQuestions } from "../../actions";
 
 class QuestionList extends React.Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.fetchQuestions();
   }
 

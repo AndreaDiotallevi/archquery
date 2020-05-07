@@ -34,7 +34,6 @@ router.get("/:id", async (req, res) => {
 // // @desc    Create A Post
 // // @access  Public
 router.post("/", async (req, res) => {
-  console.log(req.body);
   try {
     const { title, body } = req.body;
     const {
