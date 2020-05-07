@@ -19,7 +19,7 @@ class QuestionList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="component-question-list">
         {this.props.questions.map((post) => (
           <Link
             to={`/questions/${post.id}/${this.sanitizeUrl(post.title)}`}

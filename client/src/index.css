@@ -1,7 +1,12 @@
-/* * {
+* {
   font-weight: 300;
   font-size: 15px;
   margin: 0;
   padding: 0;
   border: 0;
-} */
+}
+
+.component-question-list {
+  display: flex;
+  flex-direction: column;
+}
