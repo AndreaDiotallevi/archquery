@@ -8,9 +8,15 @@ class QuestionShow extends React.Component {
   }
 
   render() {
+    const { question } = this.props;
+
+    if (!question) {
+      return null;
+    }
+
     return (
       <div>
-        <h1>{this.props.question.title}</h1>
+        <h1>{question.title}</h1>
       </div>
     );
   }
