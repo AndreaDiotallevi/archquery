@@ -9,8 +9,8 @@ const QuestionOwnerName = (props) => {
   }
 
   return (
-    <div>
-      <div>{user.display_name}</div>
+    <div className="component-question-owner-name">
+      <p>{user.display_name}</p>
     </div>
   );
 };
