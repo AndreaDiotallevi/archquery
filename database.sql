@@ -8,8 +8,10 @@ CREATE TABLE posts(
   owner_user_id INTEGER REFERENCES users(id) 
 );
 
-CREATE TABLE users(
+CREATE TABLE users2(
   id SERIAL PRIMARY KEY,
   display_name VARCHAR(50) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  password VARCHAR(50) NOT NULL,
   creation_date TIMESTAMP NOT NULL DEFAULT NOW()
 );
