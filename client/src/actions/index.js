@@ -1,4 +1,10 @@
-import { QUESTIONS_FETCHED, QUESTION_FETCHED, QUESTION_CREATED } from "./types";
+import _ from "lodash";
+import {
+  QUESTIONS_FETCHED,
+  QUESTION_FETCHED,
+  QUESTION_CREATED,
+  USER_FETCHED,
+} from "./types";
 import axios from "axios";
 import history from "../history";
 
@@ -19,4 +25,19 @@ export const createQuestion = (formValues) => async (dispatch) => {
 
   dispatch({ type: QUESTION_CREATED, payload: response.data });
   history.push("/");
+};
+
+export const fetchUser = (id) => async (dispatch) => {
+  const response = await axios.get(`/api/users/${id}`);
+
+  dispatch({ type: USER_FETCHED, payload: response.data });
+};
+
+export const fetchQuestionsAndUsers = () => async (dispatch, getState) => {
+  await dispatch(fetchQuestions());
+  _.chain(getState().questions)
+    .map("owner_user_id")
+    .uniq()
+    .forEach((id) => dispatch(fetchUser(id)))
+    .value();
 };
