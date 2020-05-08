@@ -18,15 +18,23 @@ a {
   padding-left: 30px;
 }
 
-.component-question-list a {
-  color: rgb(0, 119, 204);
-  padding: 12px 0;
+.component-question-summary {
   border-bottom: 1px solid rgb(239, 240, 241);
 }
 
-.component-question-list div {
+.component-question-summary a {
+  color: rgb(0, 119, 204);
+  padding: 12px 0;
+}
+
+.component-relative-time p {
   font-size: 12px;
   color: rgb(145, 153, 161);
+}
+
+.component-question-excerpt p {
+  font-size: 12px;
+  color: rgb(36, 39, 41);
 }
 
 .component-question-owner-name p {

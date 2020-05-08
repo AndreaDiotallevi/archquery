@@ -24,7 +24,11 @@ const RelativeTime = (props) => {
     }
   };
 
-  return <div>{`asked ${calculateRelativeTime()}`}</div>;
+  return (
+    <div className="component-relative-time">
+      <p>{`asked ${calculateRelativeTime()}`}</p>
+    </div>
+  );
 };
 
 export default RelativeTime;
