@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchQuestions } from "../../actions";
+import { fetchQuestionsAndUsers } from "../../actions";
 import RelativeTime from "../RelativeTime/RelativeTime";
+import QuestionOwnerName from "../QuestionOwnerName/QuestionOwnerName";
 
 class QuestionList extends React.Component {
   componentDidMount() {
-    this.props.fetchQuestions();
+    this.props.fetchQuestionsAndUsers();
   }
 
   sanitizeUrl(title) {
@@ -30,6 +31,7 @@ class QuestionList extends React.Component {
               {post.title}
             </Link>
             <RelativeTime timestamp={post.creation_date} />
+            <QuestionOwnerName ownerUserId={post.owner_user_id} />
           </React.Fragment>
         ))}
       </div>
@@ -43,4 +45,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchQuestions })(QuestionList);
+export default connect(mapStateToProps, { fetchQuestionsAndUsers })(
+  QuestionList
+);

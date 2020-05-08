@@ -36,11 +36,12 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const { title, body } = req.body;
+    const ownerUserId = 1;
     const {
       rows,
     } = await db.query(
-      "INSERT INTO posts (title, body, creation_date) VALUES ($1, $2, current_timestamp) RETURNING *",
-      [title, body]
+      "INSERT INTO posts (title, body, owner_user_id) VALUES ($1, $2, $3) RETURNING *",
+      [title, body, ownerUserId]
     );
     res.status(200).json(rows[0]);
   } catch (err) {
