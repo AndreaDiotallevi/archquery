@@ -16,3 +16,21 @@ router.get("/:id", async (req, res) => {
     res.status(400).json({ msg: err.message });
   }
 });
+
+// // @route   POST api/users
+// // @desc    Create A User
+// // @access  Public
+router.post("/", async (req, res) => {
+  try {
+    const { displayName, email, password } = req.body;
+    const {
+      rows,
+    } = await db.query(
+      "INSERT INTO users (display_name, email, password) VALUES ($1, $2, $3) RETURNING *",
+      [displayName, email, password]
+    );
+    res.status(200).json(rows[0]);
+  } catch (err) {
+    res.status(400).json({ msg: err.message });
+  }
+});
