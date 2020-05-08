@@ -1,8 +1,8 @@
 import React from "react";
 import { Router, Route, Link, Switch } from "react-router-dom";
-import QuestionList from "../QuestionList/QuestionList";
-import QuestionShow from "../QuestionShow/QuestionShow";
-import QuestionCreate from "../QuestionCreate/QuestionCreate";
+import QuestionList from "../Questions/QuestionList/QuestionList";
+import QuestionShow from "../Questions/QuestionShow/QuestionShow";
+import QuestionCreate from "../Questions/QuestionCreate/QuestionCreate";
 import history from "../../history";
 
 const App = () => {

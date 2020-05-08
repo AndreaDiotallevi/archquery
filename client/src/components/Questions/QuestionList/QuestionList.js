@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchQuestionsAndUsers } from "../../actions";
+import { fetchQuestionsAndUsers } from "../../../actions";
 import QuestionSummary from "../QuestionSummary/QuestionSummary";
 
 class QuestionList extends React.Component {

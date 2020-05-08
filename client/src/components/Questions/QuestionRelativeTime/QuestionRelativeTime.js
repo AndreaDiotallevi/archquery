@@ -1,5 +1,5 @@
 import React from "react";
-import months from "../../utils/months";
+import months from "../../../utils/months";
 
 const QuestionRelativeTime = (props) => {
   const calculateRelativeTime = () => {

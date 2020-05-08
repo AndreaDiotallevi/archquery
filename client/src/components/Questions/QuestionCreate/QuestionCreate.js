@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createQuestion } from "../../actions";
+import { createQuestion } from "../../../actions";
 import QuestionForm from "../QuestionForm/QuestionForm";
 
 class QuestionCreate extends React.Component {
