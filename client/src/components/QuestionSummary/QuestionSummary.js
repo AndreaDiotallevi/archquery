@@ -24,8 +24,8 @@ const QuestionSummary = (props) => {
       >
         {post.title}
       </Link>
-      <QuestionExcerpt />
-      <RelativeTime timestamp={post.creation_date} />
+      <QuestionExcerpt body={post.body} />
+      <RelativeTime creationDate={post.creation_date} />
       <QuestionOwnerName ownerUserId={post.owner_user_id} />
     </div>
   );

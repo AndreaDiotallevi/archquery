@@ -3,7 +3,7 @@ import months from "../../utils/months";
 
 const RelativeTime = (props) => {
   const calculateRelativeTime = () => {
-    const date = new Date(Date.parse(props.timestamp));
+    const date = new Date(Date.parse(props.creationDate));
     const seconds = Math.round((new Date().getTime() - date.getTime()) / 1000);
 
     if (seconds < 60) {

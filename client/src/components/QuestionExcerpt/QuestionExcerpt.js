@@ -1,9 +1,9 @@
 import React from "react";
 
-const QuestionExcerpt = () => {
+const QuestionExcerpt = ({ body }) => {
   return (
     <div className="component-question-excerpt">
-      <p>QuestionExcerpt</p>
+      <p>{body.substring(0, 200)} ...</p>
     </div>
   );
 };
