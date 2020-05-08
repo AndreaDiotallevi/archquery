@@ -4,6 +4,7 @@ import {
   QUESTION_FETCHED,
   QUESTION_CREATED,
   USER_FETCHED,
+  USER_CREATED,
 } from "./types";
 import axios from "axios";
 import history from "../history";
@@ -40,4 +41,11 @@ export const fetchQuestionsAndUsers = () => async (dispatch, getState) => {
     .uniq()
     .forEach((id) => dispatch(fetchUser(id)))
     .value();
+};
+
+export const signUp = (formValues) => async (dispatch, getState) => {
+  const response = await axios.post("/api/users", formValues);
+
+  dispatch({ type: USER_CREATED, payload: response.data });
+  history.push("/");
 };
