@@ -4,7 +4,8 @@ import {
   QUESTION_FETCHED,
   QUESTION_CREATED,
   USER_FETCHED,
-  USER_CREATED,
+  SIGN_UP,
+  SIGN_IN,
 } from "./types";
 import axios from "axios";
 import history from "../history";
@@ -43,9 +44,16 @@ export const fetchQuestionsAndUsers = () => async (dispatch, getState) => {
     .value();
 };
 
-export const signUp = (formValues) => async (dispatch, getState) => {
-  const response = await axios.post("/api/users", formValues);
+export const signUp = (formValues) => async (dispatch) => {
+  console.log("inside actions");
+  const response = await axios.post("/api/auth/signup", formValues);
 
-  dispatch({ type: USER_CREATED, payload: response.data });
+  dispatch({ type: SIGN_UP, payload: response.data });
   history.push("/");
+};
+
+export const logIn = (formValues) => async (dispatch) => {
+  const response = await axios.post("/api/auth/login", formValues);
+
+  dispatch({ type: SIGN_IN, payload: response.data });
 };

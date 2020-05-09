@@ -2,4 +2,5 @@ export const QUESTIONS_FETCHED = "QUESTIONS_FETCHED";
 export const QUESTION_FETCHED = "QUESTION_FETCHED";
 export const QUESTION_CREATED = "QUESTION_CREATED";
 export const USER_FETCHED = "USER_FETCHED";
-export const USER_CREATED = "USER_CREATED";
+export const SIGN_UP = "SIGN_UP";
+export const SIGN_IN = "SIGN_IN";

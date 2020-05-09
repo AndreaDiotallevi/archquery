@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { signUp } from "../../actions";
-import SignUpForm from "../SignUpForm/SignUpForm";
+import { logIn } from "../../actions";
+import LogInForm from "../LogInForm/LogInForm";
 
-class SignUp extends React.Component {
+class LogIn extends React.Component {
   renderInput = ({ input, label, meta }) => {
     return (
       <div>
@@ -14,16 +14,16 @@ class SignUp extends React.Component {
   };
 
   onSubmit = (formValues) => {
-    this.props.signUp(formValues);
+    this.props.logIn(formValues);
   };
 
   render() {
     return (
       <div>
-        <SignUpForm onSubmit={this.onSubmit} />
+        <LogInForm onSubmit={this.onSubmit} />
       </div>
     );
   }
 }
 
-export default connect(null, { signUp })(SignUp);
+export default connect(null, { logIn })(LogIn);
