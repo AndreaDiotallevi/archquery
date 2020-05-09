@@ -25,11 +25,12 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const { displayName, email, password } = req.body;
+    const passwordHash = await bcrypt.hash(password, saltRounds);
     const {
       rows,
     } = await db.query(
       "INSERT INTO users (display_name, email, password) VALUES ($1, $2, $3) RETURNING *",
-      [displayName, email, password]
+      [displayName, email, passwordHash]
     );
     res.status(200).json(rows[0]);
   } catch (err) {
