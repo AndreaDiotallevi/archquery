@@ -49,11 +49,12 @@ export const signUp = (formValues) => async (dispatch) => {
   const response = await axios.post("/api/auth/signup", formValues);
 
   dispatch({ type: SIGN_UP, payload: response.data });
-  history.push("/");
+  history.push("/users/login");
 };
 
 export const logIn = (formValues) => async (dispatch) => {
   const response = await axios.post("/api/auth/login", formValues);
 
   dispatch({ type: SIGN_IN, payload: response.data });
+  history.push("/");
 };
