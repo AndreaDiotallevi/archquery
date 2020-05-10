@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../../db");
+const { findUserById } = require("../../models/user");
 
 module.exports = router;
 
@@ -10,8 +10,8 @@ module.exports = router;
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { rows } = await db.query("SELECT * FROM users WHERE id = $1", [id]);
-    res.status(200).json(rows[0]);
+    const user = await findUserById(id);
+    res.status(200).json(user);
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }

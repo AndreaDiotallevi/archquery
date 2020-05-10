@@ -1,4 +1,8 @@
-const db = require("../db");
+const {
+  isValidPassword,
+  findUserById,
+  findUserByUsername,
+} = require("../models/user");
 
 const passport = require("passport"),
   LocalStrategy = require("passport-local").Strategy;
@@ -9,8 +13,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const { rows } = await db.query("SELECT * FROM users WHERE id = $1", [id]);
-    const user = rows[0];
+    const user = await findUserById(id);
     done(null, user);
   } catch (err) {
     done(err, null);
@@ -20,17 +23,13 @@ passport.deserializeUser(async (id, done) => {
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
-      const { rows } = await db.query(
-        "SELECT * FROM users WHERE username = $1",
-        [username]
-      );
-      const user = rows[0];
+      const user = await findUserByUsername(username);
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
-      // if (!user.validPassword(password)) {
-      //   return done(null, false, { message: "Incorrect password" });
-      // }
+      if (!isValidPassword(password, user.password)) {
+        return done(null, false, { message: "Incorrect password" });
+      }
       return done(null, user);
     } catch (err) {
       return done(err);
