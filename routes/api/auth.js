@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("../../auth");
+const passport = require("../../services/passport");
 const db = require("../../db");
 
 module.exports = router;
