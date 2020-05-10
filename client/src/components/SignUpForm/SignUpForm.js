@@ -18,11 +18,7 @@ class SignUpForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field
-          name="displayName"
-          component={this.renderInput}
-          label="Display Name"
-        />
+        <Field name="username" component={this.renderInput} label="Username" />
         <Field name="email" component={this.renderInput} label="Email" />
         <Field name="password" component={this.renderInput} label="Password" />
         <button>Sign Up</button>
@@ -34,8 +30,8 @@ class SignUpForm extends React.Component {
 // const validate = (formValues) => {
 //   const errors = {};
 
-//   if (!formValues.displayName) {
-//     errors.title = "Display name cannot be empty.";
+//   if (!formValues.username) {
+//     errors.title = "Username cannot be empty.";
 //   }
 
 //   if (!formValues.email) {

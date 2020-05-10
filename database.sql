@@ -12,8 +12,8 @@ CREATE TABLE posts(
 
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
-  display_name VARCHAR(50) NOT NULL,
+  username VARCHAR(50) NOT NULL,
   email TEXT UNIQUE NOT NULL,
-  password_hash TEXT NOT NULL,
+  password TEXT NOT NULL,
   creation_date TIMESTAMP NOT NULL DEFAULT NOW()
 );

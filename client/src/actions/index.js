@@ -45,15 +45,17 @@ export const fetchQuestionsAndUsers = () => async (dispatch, getState) => {
 };
 
 export const signUp = (formValues) => async (dispatch) => {
-  console.log("inside actions");
+  console.log("Inside signUp action creator", formValues);
   const response = await axios.post("/api/auth/signup", formValues);
 
   dispatch({ type: SIGN_UP, payload: response.data });
-  history.push("/");
+  history.push("/users/login");
 };
 
 export const logIn = (formValues) => async (dispatch) => {
+  console.log("Inside logIn action creator", formValues);
   const response = await axios.post("/api/auth/login", formValues);
 
   dispatch({ type: SIGN_IN, payload: response.data });
+  history.push("/");
 };

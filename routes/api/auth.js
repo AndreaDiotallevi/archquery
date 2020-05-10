@@ -1,36 +1,39 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../../db");
+const passport = require("../../services/passport");
+const { createUser } = require("../../models/user");
 
 module.exports = router;
 
+// @route   Post api/auth/signup
+// @desc    Create A User
+// @access  Public
 router.post("/signup", async (req, res) => {
   try {
-    console.log(req.body);
-    const { displayName, email, password } = req.body;
-    const {
-      rows,
-    } = await db.query(
-      "INSERT INTO users (display_name, email, password_hash) VALUES ($1, $2, crypt($3, gen_salt('bf', 10))) RETURNING *",
-      [displayName, email, password]
-    );
-    res.status(200).json(rows[0]);
+    const user = await createUser(req.body);
+    res.status(200).json(user);
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }
 });
 
-router.post("/login", async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    const {
-      rows,
-    } = await db.query(
-      "SELECT * FROM users WHERE email = $1 AND password_hash = crypt($2, password_hash)",
-      [email, password]
-    );
-    res.status(200).json(rows[0]);
-  } catch (err) {
-    res.status(400).json({ msg: err.message });
-  }
+// @route   Post api/auth/login
+// @desc    Authenticate A User
+// @access  Public
+router.post("/login", function (req, res, next) {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res.status(400).json({ msg: "User not found" });
+    }
+    req.logIn(user, function (err) {
+      if (err) {
+        return next(err);
+      }
+      // console.log("Here", req.session.passport.user);
+      return res.status(200).json(user.id);
+    });
+  })(req, res, next);
 });

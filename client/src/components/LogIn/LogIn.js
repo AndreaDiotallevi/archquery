@@ -14,6 +14,7 @@ class LogIn extends React.Component {
   };
 
   onSubmit = (formValues) => {
+    console.log("Inside onSubmit of LogIn React Component", formValues);
     this.props.logIn(formValues);
   };
 
