@@ -32,7 +32,8 @@ router.post("/login", function (req, res, next) {
       if (err) {
         return next(err);
       }
-      return res.status(200).json(user);
+      // console.log("Here", req.session.passport.user);
+      return res.status(200).json(user.id);
     });
   })(req, res, next);
 });
