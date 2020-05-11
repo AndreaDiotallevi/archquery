@@ -1,14 +1,23 @@
 const express = require("express");
 const passport = require("passport");
 const { v4: uuidv4 } = require("uuid");
-const redis = require("redis");
 const session = require("express-session");
 const app = express();
 const path = require("path");
 const mountRoutes = require("./routes");
 
 const RedisStore = require("connect-redis")(session);
-const redisClient = redis.createClient();
+
+let redisClient;
+
+if (process.env.REDISTOGO_URL) {
+  const rtg = require("url").parse(process.env.REDISTOGO_URL);
+  redisClient = require("redis").createClient(rtg.port, rtg.hostname);
+
+  redis.auth(rtg.auth.split(":")[1]);
+} else {
+  redisClient = require("redis").createClient();
+}
 
 redisClient.on("error", (err) => {
   console.log("Redis error: ", err);
