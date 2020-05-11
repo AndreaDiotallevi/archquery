@@ -40,3 +40,8 @@ router.post("/login", function (req, res, next) {
     });
   })(req, res, next);
 });
+
+router.post("/logout", function (req, res) {
+  req.logOut();
+  res.status(200).json({ mgs: "Successfully logged out" });
+});
