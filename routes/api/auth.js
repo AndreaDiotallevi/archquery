@@ -20,7 +20,7 @@ router.post("/signup", async (req, res) => {
 // @route   Post api/auth/login
 // @desc    Authenticate A User
 // @access  Public
-router.post("/login", function (req, res, next) {
+router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) {
       return next(err);
@@ -28,12 +28,22 @@ router.post("/login", function (req, res, next) {
     if (!user) {
       return res.status(400).json({ msg: "User not found" });
     }
-    req.logIn(user, function (err) {
+    req.logIn(user, (err) => {
       if (err) {
         return next(err);
       }
+      // console.log("/////////////////////////////////////");
+      // console.log("Inside login - req.session: ", req.session);
+      // console.log("Inside login - req.sessionID: ", req.sessionID);
       // console.log("Here", req.session.passport.user);
       return res.status(200).json(user.id);
     });
   })(req, res, next);
+});
+
+router.post("/logout", (req, res) => {
+  req.logOut();
+  req.session.destroy(() => {
+    res.status(200).json({ mgs: "Successfully logged out" });
+  });
 });

@@ -1,18 +1,35 @@
 const express = require("express");
 const passport = require("passport");
-const cookieParser = require("cookie-parser");
+const { v4: uuidv4 } = require("uuid");
+const redis = require("redis");
 const session = require("express-session");
 const app = express();
 const path = require("path");
 const mountRoutes = require("./routes");
 
+const RedisStore = require("connect-redis")(session);
+const redisClient = redis.createClient();
+
+redisClient.on("error", (err) => {
+  console.log("Redis error: ", err);
+});
+
 // Middleware
 app.use(express.json());
-app.use(cookieParser());
 app.use(
   session({
+    genid: (req) => {
+      return uuidv4();
+    },
+    store: new RedisStore({
+      host: "localhost",
+      post: 6379,
+      client: redisClient,
+    }),
+    name: "_redisDemo",
     secret: process.env.SECRET_KEY,
     resave: false,
+    cookie: { secure: false, maxAge: 60000 },
     saveUninitialized: true,
   })
 );
