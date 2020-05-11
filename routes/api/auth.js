@@ -43,5 +43,7 @@ router.post("/login", function (req, res, next) {
 
 router.post("/logout", function (req, res) {
   req.logOut();
-  res.status(200).json({ mgs: "Successfully logged out" });
+  req.session.destroy(function () {
+    res.status(200).json({ mgs: "Successfully logged out" });
+  });
 });
