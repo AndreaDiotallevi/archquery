@@ -32,7 +32,10 @@ router.post("/login", function (req, res, next) {
       if (err) {
         return next(err);
       }
-      // console.log("Here", req.session.passport.user);
+      console.log("/////////////////////////////////////");
+      console.log("Inside login - req.session: ", req.session);
+      console.log("Inside login - req.sessionID: ", req.sessionID);
+      console.log("Here", req.session.passport.user);
       return res.status(200).json(user.id);
     });
   })(req, res, next);
