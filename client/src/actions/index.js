@@ -5,7 +5,8 @@ import {
   QUESTION_CREATED,
   USER_FETCHED,
   SIGN_UP,
-  SIGN_IN,
+  LOG_IN,
+  LOG_OUT,
 } from "./types";
 import axios from "axios";
 import history from "../history";
@@ -56,6 +57,14 @@ export const logIn = (formValues) => async (dispatch) => {
   console.log("Inside logIn action creator", formValues);
   const response = await axios.post("/api/auth/login", formValues);
 
-  dispatch({ type: SIGN_IN, payload: response.data });
+  dispatch({ type: LOG_IN, payload: response.data });
+  history.push("/");
+};
+
+export const logOut = (formValues) => async (dispatch) => {
+  console.log("Inside logOut action creator", formValues);
+  await axios.post("/api/auth/logout", formValues);
+
+  dispatch({ type: LOG_OUT });
   history.push("/");
 };
