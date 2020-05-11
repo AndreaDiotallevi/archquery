@@ -47,9 +47,9 @@ export const fetchQuestionsAndUsers = () => async (dispatch, getState) => {
 
 export const signUp = (formValues) => async (dispatch) => {
   console.log("Inside signUp action creator", formValues);
-  const response = await axios.post("/api/auth/signup", formValues);
+  await axios.post("/api/auth/signup", formValues);
 
-  dispatch({ type: SIGN_UP, payload: response.data });
+  dispatch({ type: SIGN_UP });
   history.push("/users/login");
 };
 
@@ -67,4 +67,12 @@ export const logOut = (formValues) => async (dispatch) => {
 
   dispatch({ type: LOG_OUT });
   history.push("/");
+};
+
+export const isAlreadyLoggedIn = () => async (dispatch) => {
+  const response = await axios.get("/api/auth/isAlreadyLoggedIn");
+
+  if (response.data) {
+    dispatch({ type: LOG_IN, payload: response.data });
+  }
 };

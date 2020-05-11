@@ -11,7 +11,7 @@ module.exports = router;
 router.post("/signup", async (req, res) => {
   try {
     const user = await createUser(req.body);
-    res.status(200).json(user);
+    res.status(200).json(user.id);
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }
@@ -46,4 +46,12 @@ router.post("/logout", (req, res) => {
   req.session.destroy(() => {
     res.status(200).json({ mgs: "Successfully logged out" });
   });
+});
+
+router.get("/isAlreadyLoggedIn", (req, res) => {
+  try {
+    res.status(200).json(req.user.id);
+  } catch (err) {
+    res.status(200).json(false);
+  }
 });
