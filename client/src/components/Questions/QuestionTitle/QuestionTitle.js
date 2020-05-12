@@ -12,9 +12,11 @@ const QuestionTitle = ({ title, id }) => {
   };
 
   return (
-    <Link to={`/questions/${id}/${sanitizeUrl()}`} key={id}>
-      {title}
-    </Link>
+    <div className="component-question-title">
+      <Link to={`/questions/${id}/${sanitizeUrl()}`} key={id}>
+        {title}
+      </Link>
+    </div>
   );
 };
 

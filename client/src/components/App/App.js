@@ -17,9 +17,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="app">
         <Router history={history}>
-          <Link to="/questions/ask">Ask Question</Link>
           <Navbar />
           <Switch>
             <Route path="/" exact component={QuestionList} />

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchQuestionsAndUsers } from "../../../actions";
 import QuestionSummary from "../QuestionSummary/QuestionSummary";
+import QuestionListHeader from "../QuestionListHeader/QuestionListHeader";
 
 class QuestionList extends React.Component {
   componentDidMount() {
@@ -11,6 +12,7 @@ class QuestionList extends React.Component {
   render() {
     return (
       <div className="component-question-list">
+        <QuestionListHeader />
         {this.props.questions.map((post) => (
           <QuestionSummary post={post} key={post.id} />
         ))}

@@ -7,35 +7,87 @@
   border: 0;
 }
 
-a {
+a,
+p,
+h1 {
   text-decoration: none;
-  color: black;
+  color: rgb(36, 39, 41);
 }
+
+/* App */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px;
+}
+
+/* QuestionList */
 
 .component-question-list {
   display: flex;
   flex-direction: column;
-  padding-left: 30px;
 }
+
+/* QuestionListHeader */
+
+.component-question-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.component-question-list-header h1 {
+  font-size: 27px;
+}
+
+/* QuestionAskButton */
+
+.component-question-ask-button a {
+  background-color: rgb(0, 149, 255);
+  color: white;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 13px;
+}
+
+/* QuestionSummary */
 
 .component-question-summary {
   border-bottom: 1px solid rgb(239, 240, 241);
+  margin-bottom: 12px;
 }
 
-.component-question-summary a {
-  color: rgb(0, 119, 204);
-  padding: 12px 0;
+.component-question-summary div {
+  display: flex;
 }
+
+/* QuestionTitle */
+
+.component-question-title a {
+  color: rgb(0, 119, 204);
+  margin-bottom: 12px;
+}
+
+/* QuestionRelativeTime */
 
 .component-relative-time p {
   font-size: 12px;
   color: rgb(145, 153, 161);
+  margin-right: 6px;
+  margin-bottom: 7.5px;
 }
+
+/* QuestionExcerpt */
 
 .component-question-excerpt p {
   font-size: 12px;
   color: rgb(36, 39, 41);
+  margin-bottom: 7.5px;
 }
+
+/* QuestionOwnerName */
 
 .component-question-owner-name p {
   font-size: 12px;
