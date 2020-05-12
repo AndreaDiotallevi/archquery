@@ -46,7 +46,6 @@ export const fetchQuestionsAndUsers = () => async (dispatch, getState) => {
 };
 
 export const signUp = (formValues) => async (dispatch) => {
-  console.log("Inside signUp action creator", formValues);
   await axios.post("/api/auth/signup", formValues);
 
   dispatch({ type: SIGN_UP });
@@ -54,7 +53,6 @@ export const signUp = (formValues) => async (dispatch) => {
 };
 
 export const logIn = (formValues) => async (dispatch) => {
-  console.log("Inside logIn action creator", formValues);
   const response = await axios.post("/api/auth/login", formValues);
 
   dispatch({ type: LOG_IN, payload: response.data });
@@ -62,7 +60,6 @@ export const logIn = (formValues) => async (dispatch) => {
 };
 
 export const logOut = (formValues) => async (dispatch) => {
-  console.log("Inside logOut action creator", formValues);
   await axios.post("/api/auth/logout", formValues);
 
   dispatch({ type: LOG_OUT });

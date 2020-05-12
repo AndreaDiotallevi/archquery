@@ -39,6 +39,7 @@ app.use(
     name: "_redisDemo",
     secret: process.env.SECRET_KEY,
     resave: false,
+    rolling: true,
     cookie: { secure: false, maxAge: 60000 },
     saveUninitialized: true,
   })

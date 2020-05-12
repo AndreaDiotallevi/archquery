@@ -20,7 +20,7 @@ class LogInForm extends React.Component {
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <Field name="username" component={this.renderInput} label="Username" />
         <Field name="password" component={this.renderInput} label="Password" />
-        <button>Sign Up</button>
+        <button>Log In</button>
       </form>
     );
   }
