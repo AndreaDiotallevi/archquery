@@ -12,10 +12,12 @@ class QuestionList extends React.Component {
   render() {
     return (
       <div className="component-question-list">
-        <QuestionListHeader />
-        {this.props.questions.map((post) => (
-          <QuestionSummary post={post} key={post.id} />
-        ))}
+        <div className="container-question-list">
+          <QuestionListHeader />
+          {this.props.questions.map((post) => (
+            <QuestionSummary post={post} key={post.id} />
+          ))}
+        </div>
       </div>
     );
   }

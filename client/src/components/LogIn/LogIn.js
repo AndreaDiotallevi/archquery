@@ -27,7 +27,7 @@ class LogIn extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="component-login">
         <LogInForm onSubmit={this.onSubmit} />
         {this.renderErrors()}
       </div>

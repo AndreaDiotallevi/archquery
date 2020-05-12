@@ -1,7 +1,7 @@
 import React from "react";
 import { Router, Route, Link, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import Navbar from "../Navbar/Navbar";
+import Header from "../Header/Header";
 import SignUp from "../SignUp/SignUp";
 import LogIn from "../LogIn/LogIn";
 import QuestionList from "../Questions/QuestionList/QuestionList";
@@ -19,7 +19,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <Router history={history}>
-          <Navbar />
+          <Header />
           <Switch>
             <Route path="/" exact component={QuestionList} />
             <Route path="/users/signup" exact component={SignUp} />

@@ -27,7 +27,7 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="component-signup">
         <SignUpForm onSubmit={this.onSubmit} />
         {this.renderErrors()}
       </div>

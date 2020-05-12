@@ -22,20 +22,20 @@ class NavBar extends React.Component {
       return null;
     } else {
       return (
-        <div>
+        <React.Fragment>
           <p>Logged in as {this.props.user.username}</p>
           <LogOutButton />
-        </div>
+        </React.Fragment>
       );
     }
   }
 
   renderLoggedOutStatus() {
     return (
-      <div>
+      <React.Fragment>
         <Link to="/users/signup">Sign Up</Link>
         <Link to="/users/login">Log In</Link>
-      </div>
+      </React.Fragment>
     );
   }
 
