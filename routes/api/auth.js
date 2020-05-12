@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("../../services/passport");
-const { findUserByUsername, createUser } = require("../../models/user");
+const {
+  findUserByUsername,
+  findUserByEmail,
+  createUser,
+} = require("../../models/user");
 
 module.exports = router;
 
@@ -11,11 +15,15 @@ module.exports = router;
 router.post("/signup", async (req, res) => {
   try {
     const { username, email, password } = req.body;
-    if (!(await findUserByUsername(username))) {
+    if (await findUserByUsername(username)) {
+      res.status(400).json({ message: "Username already taken." });
+    } else if (await findUserByEmail(email)) {
+      res
+        .status(400)
+        .json({ message: "There is already an account with this email." });
+    } else {
       const user = await createUser(username, email, password);
       res.status(200).json(user.id);
-    } else {
-      res.status(400).json({ message: "Username not available" });
     }
   } catch (err) {
     res.status(400).json({ message: err.message });
