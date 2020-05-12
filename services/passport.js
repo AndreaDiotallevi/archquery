@@ -1,11 +1,10 @@
-const {
-  isValidPassword,
-  findUserById,
-  findUserByUsername,
-} = require("../models/user");
+const bcrypt = require("bcrypt");
+const { findUserById, findUserByUsername } = require("../models/user");
 
 const passport = require("passport"),
   LocalStrategy = require("passport-local").Strategy;
+
+module.exports = passport;
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -25,9 +24,9 @@ passport.use(
     try {
       const user = await findUserByUsername(username);
       if (!user) {
-        return done(null, false, { message: "Incorrect username" });
+        return done(null, false, { message: "Username not found" });
       }
-      if (!isValidPassword(password, user.password)) {
+      if (!(await isValidPassword(password, user.password))) {
         return done(null, false, { message: "Incorrect password" });
       }
       return done(null, user);
@@ -37,4 +36,8 @@ passport.use(
   })
 );
 
-module.exports = passport;
+// Helpers
+
+const isValidPassword = async (userPassword, databasePassword) => {
+  return await bcrypt.compare(userPassword, databasePassword);
+};

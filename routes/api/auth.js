@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("../../services/passport");
-const { createUser } = require("../../models/user");
+const { findUserByUsername, createUser } = require("../../models/user");
 
 module.exports = router;
 
@@ -10,10 +10,15 @@ module.exports = router;
 // @access  Public
 router.post("/signup", async (req, res) => {
   try {
-    const user = await createUser(req.body);
-    res.status(200).json(user.id);
+    const { username, email, password } = req.body;
+    if (!(await findUserByUsername(username))) {
+      const user = await createUser(username, email, password);
+      res.status(200).json(user.id);
+    } else {
+      res.status(400).json({ message: "Username not available" });
+    }
   } catch (err) {
-    res.status(400).json({ msg: err.message });
+    res.status(400).json({ message: err.message });
   }
 });
 
@@ -26,26 +31,26 @@ router.post("/login", (req, res, next) => {
       return next(err);
     }
     if (!user) {
-      return res.status(400).json({ msg: "User not found" });
+      return res.status(400).json({ message: info.message });
     }
     req.logIn(user, (err) => {
       if (err) {
         return next(err);
       }
-      // console.log("/////////////////////////////////////");
-      // console.log("Inside login - req.session: ", req.session);
-      // console.log("Inside login - req.sessionID: ", req.sessionID);
-      // console.log("Here", req.session.passport.user);
       return res.status(200).json(user.id);
     });
   })(req, res, next);
 });
 
 router.post("/logout", (req, res) => {
-  req.logOut();
-  req.session.destroy(() => {
-    res.status(200).json({ mgs: "Successfully logged out" });
-  });
+  try {
+    req.logOut();
+    req.session.destroy(() => {
+      res.status(200).json({ mgs: "Successfully logged out" });
+    });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 });
 
 router.get("/isAlreadyLoggedIn", (req, res) => {
@@ -55,3 +60,16 @@ router.get("/isAlreadyLoggedIn", (req, res) => {
     res.status(200).json(false);
   }
 });
+
+// router.post("/isUsernameAvailable", async (req, res) => {
+//   try {
+//     const user = await findUserByUsername(req.body.username);
+//     if (!user) {
+//       res.status(200).json(true);
+//     } else {
+//       res.status(200).json(false);
+//     }
+//   } catch (err) {
+//     res.status(400).json({ message: err.message });
+//   }
+// });

@@ -2,11 +2,7 @@ const db = require("../db");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-const isValidPassword = (userPassword, databasePassword) => {
-  return bcrypt.compare(userPassword, databasePassword);
-};
-
-const createUser = async ({ username, email, password }) => {
+const createUser = async (username, email, password) => {
   const hash = await bcrypt.hash(password, saltRounds);
   const {
     rows,
@@ -30,7 +26,6 @@ const findUserByUsername = async (username) => {
 };
 
 module.exports = {
-  isValidPassword,
   createUser,
   findUserById,
   findUserByUsername,
