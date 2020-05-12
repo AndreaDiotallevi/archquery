@@ -51,7 +51,7 @@ const validate = (formValues) => {
 
   if (!formValues.password) {
     errors.password = "Password cannot be empty.";
-  } else if (formValues.password.length <= 8) {
+  } else if (formValues.password.length < 8) {
     errors.password = "Password must contain at least 8 characters.";
   }
 

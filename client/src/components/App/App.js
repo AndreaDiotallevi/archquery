@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Route, Link, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import Header from "../Header/Header";
 import SignUp from "../SignUp/SignUp";
