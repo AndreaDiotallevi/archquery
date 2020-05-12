@@ -21,7 +21,7 @@ class LogIn extends React.Component {
     if (this.props.error === {}) {
       return null;
     } else {
-      return <p>{this.props.error.message}</p>;
+      return this.props.error.message;
     }
   };
 
@@ -29,7 +29,7 @@ class LogIn extends React.Component {
     return (
       <div className="component-login">
         <LogInForm onSubmit={this.onSubmit} />
-        {this.renderErrors()}
+        <p className="error-message">{this.renderErrors()}</p>
       </div>
     );
   }

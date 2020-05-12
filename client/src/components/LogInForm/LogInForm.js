@@ -4,7 +4,7 @@ import { Field, reduxForm } from "redux-form";
 class LogInForm extends React.Component {
   renderError({ error, touched }) {
     if (touched && error) {
-      return <p className="error-message">{error}</p>;
+      return error;
     }
   }
 
@@ -15,7 +15,7 @@ class LogInForm extends React.Component {
       <div className={className}>
         <label>{label}</label>
         <input {...input} autoComplete="off" />
-        {this.renderError(meta)}
+        <p className="error-message">{this.renderError(meta)}</p>
       </div>
     );
   };
