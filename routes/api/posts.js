@@ -35,8 +35,7 @@ router.get("/:id", async (req, res) => {
 // // @access  Public
 router.post("/", async (req, res) => {
   try {
-    const { title, body } = req.body;
-    const ownerUserId = 1;
+    const { title, body, ownerUserId } = req.body;
     const {
       rows,
     } = await db.query(

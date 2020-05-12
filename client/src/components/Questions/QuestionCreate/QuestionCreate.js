@@ -5,7 +5,11 @@ import QuestionForm from "../QuestionForm/QuestionForm";
 
 class QuestionCreate extends React.Component {
   onSubmit = (formValues) => {
-    this.props.createQuestion(formValues);
+    console.log(formValues);
+    this.props.createQuestion({
+      ...formValues,
+      ownerUserId: this.props.userId,
+    });
   };
 
   render() {
@@ -18,4 +22,8 @@ class QuestionCreate extends React.Component {
   }
 }
 
-export default connect(null, { createQuestion })(QuestionCreate);
+const mapStateToProps = (state) => {
+  return { userId: state.auth.userId };
+};
+
+export default connect(mapStateToProps, { createQuestion })(QuestionCreate);
