@@ -39,7 +39,7 @@ const validate = (formValues) => {
   const errors = {};
 
   if (!formValues.username) {
-    errors.username = "Email cannot be empty.";
+    errors.username = "Username cannot be empty.";
   }
 
   if (!formValues.password) {

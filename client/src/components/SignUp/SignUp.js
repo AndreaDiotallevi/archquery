@@ -17,13 +17,26 @@ class SignUp extends React.Component {
     this.props.signUp(formValues);
   };
 
+  renderErrors = () => {
+    if (this.props.error === {}) {
+      return null;
+    } else {
+      return <p>{this.props.error.message}</p>;
+    }
+  };
+
   render() {
     return (
       <div>
         <SignUpForm onSubmit={this.onSubmit} />
+        {this.renderErrors()}
       </div>
     );
   }
 }
 
-export default connect(null, { signUp })(SignUp);
+const mapStateToProps = (state) => {
+  return { error: state.error };
+};
+
+export default connect(mapStateToProps, { signUp })(SignUp);
