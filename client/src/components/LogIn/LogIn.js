@@ -14,17 +14,29 @@ class LogIn extends React.Component {
   };
 
   onSubmit = (formValues) => {
-    console.log("Inside onSubmit of LogIn React Component", formValues);
     this.props.logIn(formValues);
+  };
+
+  renderErrors = () => {
+    if (this.props.error === {}) {
+      return null;
+    } else {
+      return <p>{this.props.error.message}</p>;
+    }
   };
 
   render() {
     return (
       <div>
         <LogInForm onSubmit={this.onSubmit} />
+        {this.renderErrors()}
       </div>
     );
   }
 }
 
-export default connect(null, { logIn })(LogIn);
+const mapStateToProps = (state) => {
+  return { error: state.error };
+};
+
+export default connect(mapStateToProps, { logIn })(LogIn);

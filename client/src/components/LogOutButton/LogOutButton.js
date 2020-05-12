@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { logOut } from "../../actions";
 
 class LogOutButton extends React.Component {
-  handleClick = () => {
+  handleClick = (e) => {
+    e.preventDefault();
     this.props.logOut();
   };
 

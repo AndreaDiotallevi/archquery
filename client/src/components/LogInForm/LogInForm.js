@@ -2,11 +2,20 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 
 class LogInForm extends React.Component {
+  renderError({ error, touched }) {
+    if (touched && error) {
+      return <p className="error-message">{error}</p>;
+    }
+  }
+
   renderInput = ({ input, label, meta }) => {
+    const className = `${meta.error && meta.touched ? "error" : ""}`;
+
     return (
-      <div>
+      <div className={className}>
         <label>{label}</label>
         <input {...input} autoComplete="off" />
+        {this.renderError(meta)}
       </div>
     );
   };
@@ -26,6 +35,21 @@ class LogInForm extends React.Component {
   }
 }
 
+const validate = (formValues) => {
+  const errors = {};
+
+  if (!formValues.username) {
+    errors.username = "Email cannot be empty.";
+  }
+
+  if (!formValues.password) {
+    errors.password = "Password cannot be empty.";
+  }
+
+  return errors;
+};
+
 export default reduxForm({
   form: "logInForm",
+  validate,
 })(LogInForm);
