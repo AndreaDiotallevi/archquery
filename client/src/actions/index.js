@@ -7,6 +7,8 @@ import {
   SIGN_UP,
   LOG_IN,
   LOG_OUT,
+  GET_ERRORS,
+  CLEAR_ERRORS,
 } from "./types";
 import axios from "axios";
 import history from "../history";
@@ -53,10 +55,15 @@ export const signUp = (formValues) => async (dispatch) => {
 };
 
 export const logIn = (formValues) => async (dispatch) => {
-  const response = await axios.post("/api/auth/login", formValues);
+  try {
+    const response = await axios.post("/api/auth/login", formValues);
 
-  dispatch({ type: LOG_IN, payload: response.data });
-  history.push("/");
+    dispatch({ type: CLEAR_ERRORS });
+    dispatch({ type: LOG_IN, payload: response.data });
+    history.push("/");
+  } catch (err) {
+    dispatch({ type: GET_ERRORS, payload: err.response.data });
+  }
 };
 
 export const logOut = (formValues) => async (dispatch) => {
