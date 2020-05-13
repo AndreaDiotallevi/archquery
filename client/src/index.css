@@ -250,3 +250,29 @@ textarea {
 .container-question-show div {
   display: flex;
 }
+
+/* AnswerList */
+
+.component-answer-list {
+  display: flex;
+  width: 100%;
+}
+
+.container-answer-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+/* AnswerShow */
+
+.component-answer-show {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.component-answer-show div {
+  display: flex;
+}
