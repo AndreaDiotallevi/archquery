@@ -14,8 +14,8 @@ class QuestionCreate extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Ask A Public Question</h2>
+      <div className="component-question-create">
+        <h1>Ask A Public Question</h1>
         <QuestionForm onSubmit={this.onSubmit} />
       </div>
     );
