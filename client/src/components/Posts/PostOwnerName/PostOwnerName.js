@@ -1,7 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 class PostOwnerName extends React.Component {
+  sanitizeUrl = () => {
+    return this.props.user.username
+      .split(/[^0-9a-z]/gi)
+      .filter((item) => item !== "")
+      .join("-")
+      .toLowerCase()
+      .substring(0, 80);
+  };
+
   render() {
     const { user } = this.props;
 
@@ -11,7 +21,9 @@ class PostOwnerName extends React.Component {
 
     return (
       <div className="component-question-owner-name">
-        <p>{user.username}</p>
+        <Link to={`/users/${user.id}/${this.sanitizeUrl()}`}>
+          {user.username}
+        </Link>
       </div>
     );
   }

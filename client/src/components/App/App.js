@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Header from "../Header/Header";
 import SignUp from "../SignUp/SignUp";
 import LogIn from "../LogIn/LogIn";
+import Profile from "../Profile/Profile";
 import QuestionList from "../Questions/QuestionList/QuestionList";
 import QuestionShow from "../Questions/QuestionShow/QuestionShow";
 import QuestionCreate from "../Questions/QuestionCreate/QuestionCreate";
@@ -23,6 +24,7 @@ class App extends React.Component {
           <Route path="/" exact component={QuestionList} />
           <Route path="/users/signup" exact component={SignUp} />
           <Route path="/users/login" exact component={LogIn} />
+          <Route path="/users/:id/:username" exact component={Profile} />
           <Route path="/questions/ask" exact component={QuestionCreate} />
           <Route path="/questions/:id/:title" component={QuestionShow} />
         </Router>

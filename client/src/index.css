@@ -216,7 +216,7 @@ textarea {
 
 /* QuestionOwnerName */
 
-.component-question-owner-name p {
+.component-question-owner-name a {
   font-size: 13px;
   color: rgb(0, 119, 204);
 }
