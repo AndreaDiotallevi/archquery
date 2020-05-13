@@ -1,14 +1,14 @@
 import React from "react";
-import QuestionRelativeTime from "../../Questions/QuestionRelativeTime/QuestionRelativeTime";
-import QuestionOwnerName from "../../Questions/QuestionOwnerName/QuestionOwnerName";
+import PostRelativeTime from "../../Posts/PostRelativeTime/PostRelativeTime";
+import PostOwnerName from "../../Posts/PostOwnerName/PostOwnerName";
 
 const AnswerShow = ({ post }) => {
   return (
     <div className="component-answer-show">
       <div>{post.body}</div>
       <div>
-        <QuestionRelativeTime creationDate={post.creation_date} />
-        <QuestionOwnerName ownerUserId={post.owner_user_id} />
+        <PostRelativeTime creationDate={post.creation_date} />
+        <PostOwnerName ownerUserId={post.owner_user_id} />
       </div>
     </div>
   );

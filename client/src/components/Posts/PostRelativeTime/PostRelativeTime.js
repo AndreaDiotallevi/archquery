@@ -1,9 +1,9 @@
 import React from "react";
 import months from "../../../utils/months";
 
-const QuestionRelativeTime = (props) => {
+const PostRelativeTime = ({ creationDate }) => {
   const calculateRelativeTime = () => {
-    const date = new Date(Date.parse(props.creationDate));
+    const date = new Date(Date.parse(creationDate));
     const seconds = Math.round((new Date().getTime() - date.getTime()) / 1000);
 
     if (seconds < 60) {
@@ -31,4 +31,4 @@ const QuestionRelativeTime = (props) => {
   );
 };
 
-export default QuestionRelativeTime;
+export default PostRelativeTime;

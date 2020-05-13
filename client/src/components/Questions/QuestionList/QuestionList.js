@@ -25,7 +25,9 @@ class QuestionList extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    questions: Object.values(state.questions),
+    questions: Object.values(state.posts).filter(
+      (post) => post.post_type_id === 1
+    ),
   };
 };
 

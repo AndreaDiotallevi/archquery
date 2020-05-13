@@ -23,7 +23,7 @@ class AnswerList extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    answers: Object.values(state.answers).filter(
+    answers: Object.values(state.posts).filter(
       (answer) => answer.parent_id === ownProps.questionId
     ),
   };

@@ -1,8 +1,8 @@
 import React from "react";
 import QuestionTitle from "../QuestionTitle/QuestionTitle";
-import QuestionRelativeTime from "../QuestionRelativeTime/QuestionRelativeTime";
+import PostRelativeTime from "../../Posts/PostRelativeTime/PostRelativeTime";
 import QuestionExcerpt from "../QuestionExcerpt/QuestionExcerpt";
-import QuestionOwnerName from "../QuestionOwnerName/QuestionOwnerName";
+import PostOwnerName from "../../Posts/PostOwnerName/PostOwnerName";
 
 const QuestionSummary = (props) => {
   const { post } = props;
@@ -12,8 +12,8 @@ const QuestionSummary = (props) => {
       <QuestionTitle title={post.title} id={post.id} />
       <QuestionExcerpt body={post.body} />
       <div>
-        <QuestionRelativeTime creationDate={post.creation_date} />
-        <QuestionOwnerName ownerUserId={post.owner_user_id} />
+        <PostRelativeTime creationDate={post.creation_date} />
+        <PostOwnerName ownerUserId={post.owner_user_id} />
       </div>
     </div>
   );

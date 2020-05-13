@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import QuestionRelativeTime from "../QuestionRelativeTime/QuestionRelativeTime";
-import QuestionOwnerName from "../QuestionOwnerName/QuestionOwnerName";
+import PostRelativeTime from "../../Posts/PostRelativeTime/PostRelativeTime";
+import PostOwnerName from "../../Posts/PostOwnerName/PostOwnerName";
 import AnswerList from "../../Answers/AnswerList/AnswerList";
 import AnswerCreate from "../../Answers/AnswerCreate/AnswerCreate";
 import { fetchQuestion } from "../../../actions";
@@ -24,8 +24,8 @@ class QuestionShow extends React.Component {
           <h1>{question.title}</h1>
           <p>{question.body}</p>
           <div>
-            <QuestionRelativeTime creationDate={question.creation_date} />
-            <QuestionOwnerName ownerUserId={question.owner_user_id} />
+            <PostRelativeTime creationDate={question.creation_date} />
+            <PostOwnerName ownerUserId={question.owner_user_id} />
           </div>
           <AnswerList questionId={question.id} />
           <AnswerCreate questionId={question.id} />
@@ -37,7 +37,7 @@ class QuestionShow extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    question: state.questions[ownProps.match.params.id],
+    question: state.posts[ownProps.match.params.id],
   };
 };
 

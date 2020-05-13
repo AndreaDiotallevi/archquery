@@ -42,7 +42,7 @@ export const fetchUser = (id) => async (dispatch) => {
 
 export const fetchQuestionsAndUsers = () => async (dispatch, getState) => {
   await dispatch(fetchQuestions());
-  _.chain(getState().questions)
+  _.chain(getState().posts)
     .map("owner_user_id")
     .uniq()
     .forEach((id) => dispatch(fetchUser(id)))
@@ -106,7 +106,7 @@ export const fetchAnswersAndUsers = (parentId) => async (
   getState
 ) => {
   await dispatch(fetchAnswers(parentId));
-  _.chain(getState().questions)
+  _.chain(getState().posts)
     .map("owner_user_id")
     .uniq()
     .forEach((id) => dispatch(fetchUser(id)))
