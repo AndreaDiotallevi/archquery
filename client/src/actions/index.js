@@ -4,6 +4,8 @@ import {
   QUESTION_FETCHED,
   QUESTION_CREATED,
   USER_FETCHED,
+  ANSWERS_FETCHED,
+  ANSWER_CREATED,
   SIGN_UP,
   LOG_IN,
   LOG_OUT,
@@ -14,7 +16,7 @@ import axios from "axios";
 import history from "../history";
 
 export const fetchQuestions = () => async (dispatch) => {
-  const response = await axios.get("/api/posts");
+  const response = await axios.get("/api/posts/?postTypeId=1");
 
   dispatch({ type: QUESTIONS_FETCHED, payload: response.data });
 };
@@ -83,4 +85,30 @@ export const isAlreadyLoggedIn = () => async (dispatch) => {
   if (response.data) {
     dispatch({ type: LOG_IN, payload: response.data });
   }
+};
+
+export const createAnswer = (formValues) => async (dispatch) => {
+  const response = await axios.post("/api/posts", formValues);
+
+  dispatch({ type: ANSWER_CREATED, payload: response.data });
+};
+
+export const fetchAnswers = (parentId) => async (dispatch) => {
+  const response = await axios.get(
+    `/api/posts/?postTypeId=2&parentId=${parentId}`
+  );
+
+  dispatch({ type: ANSWERS_FETCHED, payload: response.data });
+};
+
+export const fetchAnswersAndUsers = (parentId) => async (
+  dispatch,
+  getState
+) => {
+  await dispatch(fetchAnswers(parentId));
+  _.chain(getState().questions)
+    .map("owner_user_id")
+    .uniq()
+    .forEach((id) => dispatch(fetchUser(id)))
+    .value();
 };
