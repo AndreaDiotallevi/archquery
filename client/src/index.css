@@ -1,5 +1,11 @@
+@font-face {
+  font-family: "rz-regular";
+  src: url("./fonts/480e3d39ed40d6543721946a2d36ccff.woff") format("woff"),
+    url("./fonts/480e3d39ed40d6543721946a2d36ccff.ttf") format("truetype");
+}
+
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: rz-regular, Arial, sans-serif;
   font-weight: 300;
   font-size: 16px;
   margin: 0;
@@ -39,7 +45,7 @@ h1 {
   padding: 0 20px;
 }
 
-.container-header h1 {
+.container-header a {
   font-size: 20px;
   color: rgb(145, 153, 161);
 }
@@ -112,7 +118,7 @@ h1 {
 }
 
 .error-message {
-  font-size: 12px;
+  font-size: 13px;
   color: rgb(209, 56, 61);
   margin-top: 5px;
   margin-bottom: 20px;
@@ -122,12 +128,14 @@ h1 {
 
 .component-question-list {
   display: flex;
+  width: 100%;
 }
 
 .container-question-list {
   display: flex;
   flex-direction: column;
   padding: 0 20px;
+  width: 100%;
 }
 
 /* QuestionListHeader */
@@ -174,7 +182,7 @@ h1 {
 /* QuestionRelativeTime */
 
 .component-relative-time p {
-  font-size: 12px;
+  font-size: 13px;
   color: rgb(145, 153, 161);
   margin-right: 6px;
   margin-bottom: 7.5px;
@@ -183,7 +191,7 @@ h1 {
 /* QuestionExcerpt */
 
 .component-question-excerpt p {
-  font-size: 12px;
+  font-size: 13px;
   color: rgb(36, 39, 41);
   margin-bottom: 7.5px;
 }
@@ -191,7 +199,7 @@ h1 {
 /* QuestionOwnerName */
 
 .component-question-owner-name p {
-  font-size: 12px;
+  font-size: 13px;
   color: rgb(0, 119, 204);
 }
 
@@ -202,4 +210,30 @@ input {
 
 .error input {
   border-color: rgb(222, 83, 94);
+}
+
+/* QuestionShow */
+
+.component-question-show {
+  display: flex;
+}
+
+.container-question-show {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.container-question-show h1 {
+  font-size: 27px;
+  margin: 25px 0;
+}
+
+.container-question-show p {
+  font-size: 15px;
+  margin-bottom: 7.5px;
+}
+
+.container-question-show div {
+  display: flex;
 }

@@ -1,19 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
+import { fetchUser } from "../../../actions";
 
-const QuestionOwnerName = (props) => {
-  const { user } = props;
-
-  if (!user) {
-    return null;
+class QuestionOwnerName extends React.Component {
+  componentDidMount() {
+    this.props.fetchUser(this.props.ownerUserId);
   }
 
-  return (
-    <div className="component-question-owner-name">
-      <p>{user.username}</p>
-    </div>
-  );
-};
+  render() {
+    const { user } = this.props;
+
+    if (!user) {
+      return null;
+    }
+
+    return (
+      <div className="component-question-owner-name">
+        <p>{user.username}</p>
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -21,4 +28,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(QuestionOwnerName);
+export default connect(mapStateToProps, { fetchUser })(QuestionOwnerName);

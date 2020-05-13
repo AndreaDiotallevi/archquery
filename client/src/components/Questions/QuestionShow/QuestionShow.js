@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import QuestionRelativeTime from "../QuestionRelativeTime/QuestionRelativeTime";
+import QuestionOwnerName from "../QuestionOwnerName/QuestionOwnerName";
 import { fetchQuestion } from "../../../actions";
 
 class QuestionShow extends React.Component {
@@ -15,8 +17,15 @@ class QuestionShow extends React.Component {
     }
 
     return (
-      <div>
-        <h1>{question.title}</h1>
+      <div className="component-question-show">
+        <div className="container-question-show">
+          <h1>{question.title}</h1>
+          <p>{question.body}</p>
+          <div>
+            <QuestionRelativeTime creationDate={question.creation_date} />
+            <QuestionOwnerName ownerUserId={question.owner_user_id} />
+          </div>
+        </div>
       </div>
     );
   }
