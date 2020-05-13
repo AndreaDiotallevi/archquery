@@ -2,12 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { createAnswer } from "../../../actions";
 import AnswerForm from "../AnswerForm/AnswerForm";
-import history from "../../../history";
 
 class AnswerCreate extends React.Component {
   onSubmit = (formValues) => {
-    console.log(this.props);
-    console.log(history);
     this.props.createAnswer({
       ...formValues,
       postTypeId: 2,

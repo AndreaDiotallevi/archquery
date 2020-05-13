@@ -4,7 +4,7 @@ CREATE EXTENSION pgcrypto;
 
 CREATE TABLE posts(
   id SERIAL PRIMARY KEY,
-  title VARCHAR(150),
+  title VARCHAR(150) DEFAULT NULL,
   body TEXT NOT NULL,
   creation_date TIMESTAMP NOT NULL DEFAULT NOW(),
   owner_user_id INTEGER REFERENCES users(id),

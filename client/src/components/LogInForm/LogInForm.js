@@ -8,13 +8,13 @@ class LogInForm extends React.Component {
     }
   }
 
-  renderInput = ({ input, label, meta }) => {
+  renderInput = ({ input, label, type, meta }) => {
     const className = `${meta.error && meta.touched ? "error" : ""}`;
 
     return (
       <div className={className}>
         <label>{label}</label>
-        <input {...input} autoComplete="off" />
+        <input {...input} autoComplete="off" type={type} />
         <p className="error-message">{this.renderError(meta)}</p>
       </div>
     );
@@ -27,8 +27,18 @@ class LogInForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field name="username" component={this.renderInput} label="Username" />
-        <Field name="password" component={this.renderInput} label="Password" />
+        <Field
+          name="username"
+          component={this.renderInput}
+          label="Username"
+          type="text"
+        />
+        <Field
+          name="password"
+          component={this.renderInput}
+          label="Password"
+          type="password"
+        />
         <button>Log In</button>
       </form>
     );
