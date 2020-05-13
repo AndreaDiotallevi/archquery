@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import QuestionRelativeTime from "../QuestionRelativeTime/QuestionRelativeTime";
 import QuestionOwnerName from "../QuestionOwnerName/QuestionOwnerName";
+import AnswerList from "../../Answers/AnswerList/AnswerList";
+import AnswerCreate from "../../Answers/AnswerCreate/AnswerCreate";
 import { fetchQuestion } from "../../../actions";
 
 class QuestionShow extends React.Component {
@@ -25,6 +27,8 @@ class QuestionShow extends React.Component {
             <QuestionRelativeTime creationDate={question.creation_date} />
             <QuestionOwnerName ownerUserId={question.owner_user_id} />
           </div>
+          <AnswerList questionId={question.id} />
+          <AnswerCreate questionId={question.id} />
         </div>
       </div>
     );

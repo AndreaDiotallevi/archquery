@@ -5,9 +5,9 @@ import QuestionForm from "../QuestionForm/QuestionForm";
 
 class QuestionCreate extends React.Component {
   onSubmit = (formValues) => {
-    console.log(formValues);
     this.props.createQuestion({
       ...formValues,
+      postTypeId: 1,
       ownerUserId: this.props.userId,
     });
   };
