@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className="component-header">
       <div className="container-header">
-        <Link to="/">ArchQuery</Link>
+        <Link to="/">ARCHquery</Link>
         <Navbar />
       </div>
     </div>
