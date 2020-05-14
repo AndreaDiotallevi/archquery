@@ -7,7 +7,10 @@ const AnswerShow = ({ post }) => {
     <div className="component-answer-show">
       <div>{post.body}</div>
       <div>
-        <PostRelativeTime creationDate={post.creation_date} />
+        <PostRelativeTime
+          creationDate={post.creation_date}
+          postTypeId={post.post_type_id}
+        />
         <PostOwnerName ownerUserId={post.owner_user_id} />
       </div>
     </div>

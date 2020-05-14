@@ -1,7 +1,7 @@
 import React from "react";
 import months from "../../../utils/months";
 
-const PostRelativeTime = ({ creationDate }) => {
+const PostRelativeTime = ({ creationDate, postTypeId }) => {
   const calculateRelativeTime = () => {
     const date = new Date(Date.parse(creationDate));
     const seconds = Math.round((new Date().getTime() - date.getTime()) / 1000);
@@ -26,7 +26,9 @@ const PostRelativeTime = ({ creationDate }) => {
 
   return (
     <div className="component-relative-time">
-      <p>{`asked ${calculateRelativeTime()}`}</p>
+      <p>{`${
+        postTypeId === 1 ? "asked" : "answered"
+      } ${calculateRelativeTime()}`}</p>
     </div>
   );
 };

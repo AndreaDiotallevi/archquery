@@ -12,7 +12,10 @@ const QuestionSummary = (props) => {
       <QuestionTitle title={post.title} id={post.id} />
       <QuestionExcerpt body={post.body} />
       <div>
-        <PostRelativeTime creationDate={post.creation_date} />
+        <PostRelativeTime
+          creationDate={post.creation_date}
+          postTypeId={post.post_type_id}
+        />
         <PostOwnerName ownerUserId={post.owner_user_id} />
       </div>
     </div>
