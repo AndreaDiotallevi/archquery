@@ -7,6 +7,25 @@ class Profile extends React.Component {
     this.props.fetchUser(this.props.match.params.id);
   }
 
+  calculateRelativeTime = () => {
+    const date = new Date(Date.parse(this.props.user.creation_date));
+    const seconds = Math.round((new Date().getTime() - date.getTime()) / 1000);
+
+    if (seconds < 2678400) {
+      const days = Math.floor(seconds / 86400);
+      return `${days} day${days > 1 ? "s" : ""}`;
+    } else if (seconds < 31536000) {
+      const months = Math.floor(seconds / 2678400);
+      return `${months} month${months > 1 ? "s" : ""}`;
+    } else {
+      const months = Math.round(seconds / 2678400) % 12;
+      const years = Math.floor(seconds / 31536000);
+      return `${years} year${years > 1 ? "s" : ""}${
+        months > 0 ? `${`, ${months} month${months > 1 ? "s" : ""}`}` : ""
+      }`;
+    }
+  };
+
   render() {
     const { user } = this.props;
 
@@ -16,7 +35,8 @@ class Profile extends React.Component {
 
     return (
       <div>
-        <div>{user.username}</div>
+        <h1>{user.username}</h1>
+        <p>Member for {this.calculateRelativeTime()}</p>
       </div>
     );
   }
