@@ -1,5 +1,5 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, reset } from "redux-form";
 
 class AnswerForm extends React.Component {
   renderError({ error, touched }) {
@@ -18,8 +18,9 @@ class AnswerForm extends React.Component {
     );
   };
 
-  onSubmit = (formValues) => {
+  onSubmit = (formValues, dispatch) => {
     this.props.onSubmit(formValues);
+    dispatch(reset("answerForm"));
   };
 
   render() {
