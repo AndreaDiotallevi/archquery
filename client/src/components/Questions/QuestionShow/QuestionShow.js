@@ -27,7 +27,9 @@ class QuestionShow extends React.Component {
           <div>
             <PostRelativeTime creationDate={question.creation_date} />
             <PostOwnerName ownerUserId={question.owner_user_id} />
-            <PostDelete postId={question.id} />
+            {this.props.userId === question.owner_user_id && (
+              <PostDelete postId={question.id} />
+            )}
           </div>
           <AnswerList questionId={question.id} />
           <AnswerCreate questionId={question.id} />
@@ -40,6 +42,7 @@ class QuestionShow extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     question: state.posts[ownProps.match.params.id],
+    userId: state.auth.userId,
   };
 };
 

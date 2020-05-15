@@ -8,7 +8,7 @@ const PostDelete = (props) => {
   };
 
   return (
-    <div>
+    <div className="component-post-delete">
       <button onClick={handleClick}>Delete Post</button>
     </div>
   );

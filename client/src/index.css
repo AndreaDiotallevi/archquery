@@ -276,3 +276,9 @@ textarea {
 .component-answer-show div {
   display: flex;
 }
+
+/* PostDelete */
+
+.component-post-delete button {
+  font-size: 12px;
+}
