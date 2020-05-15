@@ -6,6 +6,7 @@ import {
   USER_FETCHED,
   ANSWERS_FETCHED,
   ANSWER_CREATED,
+  POST_DELETED,
   SIGN_UP,
   LOG_IN,
   LOG_OUT,
@@ -111,4 +112,11 @@ export const fetchAnswersAndUsers = (parentId) => async (
     .uniq()
     .forEach((id) => dispatch(fetchUser(id)))
     .value();
+};
+
+export const deletePost = (postId) => async (dispatch) => {
+  await axios.delete(`/api/posts/${postId}`);
+
+  dispatch({ type: POST_DELETED, payload: postId });
+  history.push("/");
 };

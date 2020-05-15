@@ -4,6 +4,7 @@ export const QUESTION_CREATED = "QUESTION_CREATED";
 export const USER_FETCHED = "USER_FETCHED";
 export const ANSWER_CREATED = "ANSWER_CREATED";
 export const ANSWERS_FETCHED = "ANSWERS_FETCHED";
+export const POST_DELETED = "POST_DELETED";
 export const SIGN_UP = "SIGN_UP";
 export const LOG_IN = "LOG_IN";
 export const LOG_OUT = "LOG_OUT";
