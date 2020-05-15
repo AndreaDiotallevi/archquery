@@ -1,7 +1,5 @@
 -- CREATE DATABASE archquery;
 
-CREATE EXTENSION pgcrypto;
-
 CREATE TABLE posts(
   id SERIAL PRIMARY KEY,
   title VARCHAR(150) DEFAULT NULL,
@@ -9,7 +7,7 @@ CREATE TABLE posts(
   creation_date TIMESTAMP NOT NULL DEFAULT NOW(),
   owner_user_id INTEGER REFERENCES users(id),
   post_type_id INTEGER REFERENCES post_types(id)
-  parent_id INTEGER REFERENCES posts(id)
+  parent_id INTEGER REFERENCES posts(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE users(
@@ -34,3 +32,6 @@ CREATE TABLE posts_tags(
   post_id INTEGER REFERENCES posts(id) ON UPDATE CASCADE ON DELETE CASCADE,
   tag_id INTEGER REFERENCES tags(id) ON UPDATE CASCADE
 );
+
+-- ALTER TABLE posts DROP CONSTRAINT posts_parent_id_fkey;
+-- ALTER TABLE posts ADD CONSTRAINT posts_parent_id_fkey foreign key (parent_id) references posts(id) on update cascade on delete cascade;
