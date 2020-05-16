@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchQuestionsAndUsers } from "../../../actions";
-import QuestionSummary from "../QuestionSummary/QuestionSummary";
+import { fetchPostsAndUsers } from "../../../actions";
+import PostSummary from "../../Posts/PostSummary/PostSummary";
 import QuestionListHeader from "../QuestionListHeader/QuestionListHeader";
 
 class QuestionList extends React.Component {
   componentDidMount() {
-    this.props.fetchQuestionsAndUsers(1, null);
+    this.props.fetchPostsAndUsers(1, null);
   }
 
   render() {
@@ -15,7 +15,7 @@ class QuestionList extends React.Component {
         <div className="container-question-list">
           <QuestionListHeader />
           {this.props.questions.map((post) => (
-            <QuestionSummary post={post} key={post.id} />
+            <PostSummary post={post} key={post.id} />
           ))}
         </div>
       </div>
@@ -31,6 +31,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchQuestionsAndUsers })(
-  QuestionList
-);
+export default connect(mapStateToProps, { fetchPostsAndUsers })(QuestionList);

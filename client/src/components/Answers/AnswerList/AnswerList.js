@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchAnswersAndUsers } from "../../../actions";
-import AnswerShow from "../AnswerShow/AnswerShow";
+import { fetchPostsAndUsers } from "../../../actions";
+import PostLayout from "../../Posts/PostLayout/PostLayout";
 
 class AnswerList extends React.Component {
   componentDidMount() {
-    this.props.fetchAnswersAndUsers(2, this.props.questionId);
+    this.props.fetchPostsAndUsers(2, this.props.questionId);
   }
 
   render() {
@@ -13,7 +13,7 @@ class AnswerList extends React.Component {
       <div className="component-answer-list">
         <div className="container-answer-list">
           {this.props.answers.map((post) => (
-            <AnswerShow post={post} key={post.id} />
+            <PostLayout post={post} key={post.id} />
           ))}
         </div>
       </div>
@@ -29,4 +29,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchAnswersAndUsers })(AnswerList);
+export default connect(mapStateToProps, { fetchPostsAndUsers })(AnswerList);

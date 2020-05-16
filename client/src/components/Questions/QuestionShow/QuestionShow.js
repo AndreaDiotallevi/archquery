@@ -1,8 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import PostRelativeTime from "../../Posts/PostRelativeTime/PostRelativeTime";
-import PostOwnerName from "../../Posts/PostOwnerName/PostOwnerName";
-import PostDelete from "../../Posts/PostDelete/PostDelete";
+import PostLayout from "../../Posts/PostLayout/PostLayout";
 import AnswerList from "../../Answers/AnswerList/AnswerList";
 import AnswerCreate from "../../Answers/AnswerCreate/AnswerCreate";
 import { fetchPost } from "../../../actions";
@@ -23,14 +21,7 @@ class QuestionShow extends React.Component {
       <div className="component-question-show">
         <div className="container-question-show">
           <h1>{question.title}</h1>
-          <p>{question.body}</p>
-          <div>
-            <PostRelativeTime creationDate={question.creation_date} />
-            <PostOwnerName ownerUserId={question.owner_user_id} />
-            {this.props.userId === question.owner_user_id && (
-              <PostDelete postId={question.id} />
-            )}
-          </div>
+          <PostLayout post={question} />
           <AnswerList questionId={question.id} />
           <AnswerCreate questionId={question.id} />
         </div>

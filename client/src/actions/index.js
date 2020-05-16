@@ -21,8 +21,6 @@ export const fetchPosts = (postTypeId, parentId) => async (dispatch) => {
     }`
   );
 
-  console.log(response.data);
-
   dispatch({ type: POSTS_FETCHED, payload: response.data });
 };
 
@@ -47,7 +45,7 @@ export const fetchUser = (id) => async (dispatch) => {
   dispatch({ type: USER_FETCHED, payload: response.data });
 };
 
-export const fetchQuestionsAndUsers = (postTypeId, parentId) => async (
+export const fetchPostsAndUsers = (postTypeId, parentId) => async (
   dispatch,
   getState
 ) => {
@@ -57,6 +55,13 @@ export const fetchQuestionsAndUsers = (postTypeId, parentId) => async (
     .uniq()
     .forEach((id) => dispatch(fetchUser(id)))
     .value();
+};
+
+export const deletePost = (postId) => async (dispatch) => {
+  await axios.delete(`/api/posts/${postId}`);
+
+  dispatch({ type: POST_DELETED, payload: postId });
+  history.push("/");
 };
 
 export const signUp = (formValues) => async (dispatch) => {
@@ -95,23 +100,4 @@ export const isAlreadyLoggedIn = () => async (dispatch) => {
   if (response.data) {
     dispatch({ type: LOG_IN, payload: response.data });
   }
-};
-
-export const fetchAnswersAndUsers = (postTypeId, parentId) => async (
-  dispatch,
-  getState
-) => {
-  await dispatch(fetchPosts(postTypeId, parentId));
-  _.chain(getState().posts)
-    .map("owner_user_id")
-    .uniq()
-    .forEach((id) => dispatch(fetchUser(id)))
-    .value();
-};
-
-export const deletePost = (postId) => async (dispatch) => {
-  await axios.delete(`/api/posts/${postId}`);
-
-  dispatch({ type: POST_DELETED, payload: postId });
-  history.push("/");
 };

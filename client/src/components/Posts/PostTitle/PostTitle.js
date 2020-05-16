@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const QuestionTitle = ({ title, id }) => {
+const PostTitle = ({ title, id }) => {
   const sanitizeUrl = () => {
     return title
       .split(/[^0-9a-z]/gi)
@@ -20,4 +20,4 @@ const QuestionTitle = ({ title, id }) => {
   );
 };
 
-export default QuestionTitle;
+export default PostTitle;
