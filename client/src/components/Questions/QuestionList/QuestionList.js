@@ -6,7 +6,7 @@ import QuestionListHeader from "../QuestionListHeader/QuestionListHeader";
 
 class QuestionList extends React.Component {
   componentDidMount() {
-    this.props.fetchQuestionsAndUsers();
+    this.props.fetchQuestionsAndUsers(1, null);
   }
 
   render() {

@@ -1,7 +1,6 @@
 import _ from "lodash";
 import {
-  QUESTIONS_FETCHED,
-  ANSWERS_FETCHED,
+  POSTS_FETCHED,
   POST_FETCHED,
   POST_CREATED,
   POST_DELETED,
@@ -15,10 +14,16 @@ import {
 import axios from "axios";
 import history from "../history";
 
-export const fetchQuestions = () => async (dispatch) => {
-  const response = await axios.get("/api/posts/?postTypeId=1");
+export const fetchPosts = (postTypeId, parentId) => async (dispatch) => {
+  const response = await axios.get(
+    `/api/posts/?postTypeId=${postTypeId}${
+      parentId ? `&parentId=${parentId}` : ""
+    }`
+  );
 
-  dispatch({ type: QUESTIONS_FETCHED, payload: response.data });
+  console.log(response.data);
+
+  dispatch({ type: POSTS_FETCHED, payload: response.data });
 };
 
 export const fetchPost = (id) => async (dispatch) => {
@@ -42,8 +47,11 @@ export const fetchUser = (id) => async (dispatch) => {
   dispatch({ type: USER_FETCHED, payload: response.data });
 };
 
-export const fetchQuestionsAndUsers = () => async (dispatch, getState) => {
-  await dispatch(fetchQuestions());
+export const fetchQuestionsAndUsers = (postTypeId, parentId) => async (
+  dispatch,
+  getState
+) => {
+  await dispatch(fetchPosts(postTypeId, parentId));
   _.chain(getState().posts)
     .map("owner_user_id")
     .uniq()
@@ -89,19 +97,11 @@ export const isAlreadyLoggedIn = () => async (dispatch) => {
   }
 };
 
-export const fetchAnswers = (parentId) => async (dispatch) => {
-  const response = await axios.get(
-    `/api/posts/?postTypeId=2&parentId=${parentId}`
-  );
-
-  dispatch({ type: ANSWERS_FETCHED, payload: response.data });
-};
-
-export const fetchAnswersAndUsers = (parentId) => async (
+export const fetchAnswersAndUsers = (postTypeId, parentId) => async (
   dispatch,
   getState
 ) => {
-  await dispatch(fetchAnswers(parentId));
+  await dispatch(fetchPosts(postTypeId, parentId));
   _.chain(getState().posts)
     .map("owner_user_id")
     .uniq()

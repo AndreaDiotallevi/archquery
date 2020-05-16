@@ -1,7 +1,6 @@
-export const QUESTIONS_FETCHED = "QUESTIONS_FETCHED";
-export const ANSWERS_FETCHED = "ANSWERS_FETCHED";
-export const POST_FETCHED = "QUESTION_FETCHED";
-export const POST_CREATED = "QUESTION_CREATED";
+export const POSTS_FETCHED = "POSTS_FETCHED";
+export const POST_FETCHED = "POS_FETCHED";
+export const POST_CREATED = "POST_CREATED";
 export const POST_DELETED = "POST_DELETED";
 export const USER_FETCHED = "USER_FETCHED";
 export const SIGN_UP = "SIGN_UP";

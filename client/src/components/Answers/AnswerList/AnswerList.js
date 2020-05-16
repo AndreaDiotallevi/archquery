@@ -5,7 +5,7 @@ import AnswerShow from "../AnswerShow/AnswerShow";
 
 class AnswerList extends React.Component {
   componentDidMount() {
-    this.props.fetchAnswersAndUsers(this.props.questionId);
+    this.props.fetchAnswersAndUsers(2, this.props.questionId);
   }
 
   render() {
