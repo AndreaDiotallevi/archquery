@@ -1,23 +1,14 @@
 import React from "react";
 import PostTitle from "../PostTitle/PostTitle";
-import PostRelativeTime from "../PostRelativeTime/PostRelativeTime";
 import PostExcerpt from "../PostExcerpt/PostExcerpt";
-import PostOwnerName from "../PostOwnerName/PostOwnerName";
+import PostSignature from "../PostSignature/PostSignature";
 
-const PostSummary = (props) => {
-  const { post } = props;
-
+const PostSummary = ({ post }) => {
   return (
     <div className="component-question-summary">
-      <PostTitle title={post.title} id={post.id} />
-      <PostExcerpt body={post.body} />
-      <div>
-        <PostRelativeTime
-          creationDate={post.creation_date}
-          postTypeId={post.post_type_id}
-        />
-        <PostOwnerName ownerUserId={post.owner_user_id} />
-      </div>
+      <PostTitle post={post} />
+      <PostExcerpt post={post} />
+      <PostSignature post={post} />
     </div>
   );
 };

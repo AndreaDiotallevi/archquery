@@ -21,7 +21,7 @@ class QuestionShow extends React.Component {
     return (
       <div className="component-question-show">
         <div className="container-question-show">
-          <QuestionShowHeader title={question.title} />
+          <QuestionShowHeader post={question} />
           <PostLayout post={question} />
           <AnswerList questionId={question.id} />
           <AnswerCreate questionId={question.id} />
@@ -34,7 +34,6 @@ class QuestionShow extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     question: state.posts[ownProps.match.params.id],
-    userId: state.auth.userId,
   };
 };
 

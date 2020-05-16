@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const PostTitle = ({ title, id }) => {
+const PostTitle = ({ post }) => {
+  const { title, id } = post;
+
   const sanitizeUrl = () => {
     return title
       .split(/[^0-9a-z]/gi)

@@ -1,10 +1,11 @@
 import React from "react";
+import PostTitle from "../PostTitle/PostTitle";
 import QuestionAskButton from "../QuestionAskButton/QuestionAskButton";
 
-const QuestionShowHeader = ({ title }) => {
+const QuestionShowHeader = ({ post }) => {
   return (
     <div className="component-question-header">
-      <h1>{title}</h1>
+      <PostTitle post={post} />
       <QuestionAskButton />
     </div>
   );
