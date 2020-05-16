@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchPostsAndUsers } from "../../../actions";
-import PostLayout from "../../Posts/PostLayout/PostLayout";
+import PostLayout from "../PostLayout/PostLayout";
 
 class AnswerList extends React.Component {
   componentDidMount() {

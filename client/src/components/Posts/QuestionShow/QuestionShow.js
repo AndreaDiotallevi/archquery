@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import PostLayout from "../../Posts/PostLayout/PostLayout";
-import AnswerList from "../../Answers/AnswerList/AnswerList";
+import QuestionHeader from "../QuestionHeader/QuestionHeader";
+import PostLayout from "../PostLayout/PostLayout";
+import AnswerList from "../AnswerList/AnswerList";
 import AnswerCreate from "../../Answers/AnswerCreate/AnswerCreate";
 import { fetchPost } from "../../../actions";
 
@@ -20,7 +21,7 @@ class QuestionShow extends React.Component {
     return (
       <div className="component-question-show">
         <div className="container-question-show">
-          <h1>{question.title}</h1>
+          <QuestionHeader title={post.title} />
           <PostLayout post={question} />
           <AnswerList questionId={question.id} />
           <AnswerCreate questionId={question.id} />
