@@ -4,7 +4,7 @@ import PostDelete from "../PostDelete/PostDelete";
 
 const PostMenu = ({ post, userId }) => {
   const renderMenu = () => {
-    if (post.owner_id === userId) {
+    if (post.owner_user_id === userId) {
       return <PostDelete postId={post.id} />;
     }
     return null;
