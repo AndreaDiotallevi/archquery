@@ -18,7 +18,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(history);
     return (
       <div className="app">
         <Router history={history}>
