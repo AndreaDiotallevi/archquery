@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logIn } from "../../../actions";
 import LogInForm from "../LogInForm/LogInForm";
@@ -30,6 +31,9 @@ class LogIn extends React.Component {
       <div className="component-login">
         <LogInForm onSubmit={this.onSubmit} />
         <p className="error-message">{this.renderErrors()}</p>
+        <p>
+          Don't have an account? <Link to="/users/signup">Sign Up</Link>
+        </p>
       </div>
     );
   }
