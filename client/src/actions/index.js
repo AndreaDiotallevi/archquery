@@ -1,12 +1,11 @@
 import _ from "lodash";
 import {
   QUESTIONS_FETCHED,
-  QUESTION_FETCHED,
-  QUESTION_CREATED,
-  USER_FETCHED,
   ANSWERS_FETCHED,
-  ANSWER_CREATED,
+  POST_FETCHED,
+  POST_CREATED,
   POST_DELETED,
+  USER_FETCHED,
   SIGN_UP,
   LOG_IN,
   LOG_OUT,
@@ -22,17 +21,19 @@ export const fetchQuestions = () => async (dispatch) => {
   dispatch({ type: QUESTIONS_FETCHED, payload: response.data });
 };
 
-export const fetchQuestion = (id) => async (dispatch) => {
+export const fetchPost = (id) => async (dispatch) => {
   const response = await axios.get(`/api/posts/${id}`);
 
-  dispatch({ type: QUESTION_FETCHED, payload: response.data });
+  dispatch({ type: POST_FETCHED, payload: response.data });
 };
 
-export const createQuestion = (formValues) => async (dispatch) => {
+export const createPost = (formValues) => async (dispatch) => {
   const response = await axios.post("/api/posts", formValues);
 
-  dispatch({ type: QUESTION_CREATED, payload: response.data });
-  history.push("/");
+  dispatch({ type: POST_CREATED, payload: response.data });
+  if (formValues.postTypeId === 1) {
+    history.push("/");
+  }
 };
 
 export const fetchUser = (id) => async (dispatch) => {
@@ -86,12 +87,6 @@ export const isAlreadyLoggedIn = () => async (dispatch) => {
   if (response.data) {
     dispatch({ type: LOG_IN, payload: response.data });
   }
-};
-
-export const createAnswer = (formValues) => async (dispatch) => {
-  const response = await axios.post("/api/posts", formValues);
-
-  dispatch({ type: ANSWER_CREATED, payload: response.data });
 };
 
 export const fetchAnswers = (parentId) => async (dispatch) => {

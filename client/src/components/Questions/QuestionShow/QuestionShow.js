@@ -5,11 +5,11 @@ import PostOwnerName from "../../Posts/PostOwnerName/PostOwnerName";
 import PostDelete from "../../Posts/PostDelete/PostDelete";
 import AnswerList from "../../Answers/AnswerList/AnswerList";
 import AnswerCreate from "../../Answers/AnswerCreate/AnswerCreate";
-import { fetchQuestion } from "../../../actions";
+import { fetchPost } from "../../../actions";
 
 class QuestionShow extends React.Component {
   componentDidMount() {
-    this.props.fetchQuestion(this.props.match.params.id);
+    this.props.fetchPost(this.props.match.params.id);
   }
 
   render() {
@@ -46,4 +46,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchQuestion })(QuestionShow);
+export default connect(mapStateToProps, { fetchPost })(QuestionShow);
