@@ -62,7 +62,8 @@ export const editPost = (postId, formValues) => async (dispatch) => {
   const response = await axios.put(`/api/posts/${postId}`, formValues);
 
   dispatch({ type: POST_EDITED, payload: response.data });
-  history.push("/");
+  // history.push("/");
+  history.goBack();
 };
 
 export const deletePost = (postId) => async (dispatch) => {

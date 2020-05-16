@@ -6,9 +6,9 @@ import SignUp from "../Auth/SignUp/SignUp";
 import LogIn from "../Auth/LogIn/LogIn";
 import Profile from "../Profile/Profile";
 import QuestionList from "../Posts/QuestionList/QuestionList";
-import PostEdit from "../Posts/PostEdit/PostEdit";
 import QuestionShow from "../Posts/QuestionShow/QuestionShow";
 import QuestionCreate from "../Posts/QuestionCreate/QuestionCreate";
+import PostEdit from "../Posts/PostEdit/PostEdit";
 import history from "../../history";
 import { isAlreadyLoggedIn } from "../../actions";
 
@@ -18,6 +18,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(history);
     return (
       <div className="app">
         <Router history={history}>
