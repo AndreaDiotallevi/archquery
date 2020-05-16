@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createPost } from "../../../actions";
-import QuestionForm from "../QuestionForm/QuestionForm";
+import PostForm from "../PostForm/PostForm";
 
 class QuestionCreate extends React.Component {
   onSubmit = (formValues) => {
@@ -16,7 +16,7 @@ class QuestionCreate extends React.Component {
     return (
       <div className="component-question-create">
         <h1>Ask A Public Question</h1>
-        <QuestionForm onSubmit={this.onSubmit} />
+        <PostForm onSubmit={this.onSubmit} postTypeId={1} />
       </div>
     );
   }

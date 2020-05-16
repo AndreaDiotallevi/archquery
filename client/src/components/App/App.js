@@ -7,7 +7,7 @@ import LogIn from "../Auth/LogIn/LogIn";
 import Profile from "../Profile/Profile";
 import QuestionList from "../Posts/QuestionList/QuestionList";
 import QuestionShow from "../Posts/QuestionShow/QuestionShow";
-import QuestionCreate from "../Questions/QuestionCreate/QuestionCreate";
+import QuestionCreate from "../Posts/QuestionCreate/QuestionCreate";
 import history from "../../history";
 import { isAlreadyLoggedIn } from "../../actions";
 

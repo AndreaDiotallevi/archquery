@@ -1,7 +1,7 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, reset } from "redux-form";
 
-class QuestionForm extends React.Component {
+class PostForm extends React.Component {
   renderError({ error, touched }) {
     if (touched && error) {
       return error;
@@ -28,20 +28,46 @@ class QuestionForm extends React.Component {
     );
   };
 
-  onSubmit = (formValues) => {
+  onSubmit = (formValues, dispatch) => {
     this.props.onSubmit(formValues);
+    dispatch(reset("postForm"));
+  };
+
+  renderForm = () => {
+    if (this.props.postTypeId === 1) {
+      return (
+        <React.Fragment>
+          <Field
+            name="title"
+            component={this.renderInput}
+            label="Enter Title"
+          />
+          <Field
+            name="body"
+            component={this.renderTextArea}
+            label="Enter Question"
+          />
+          <button>Post Your Question</button>
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <React.Fragment>
+          <Field
+            name="body"
+            component={this.renderTextArea}
+            label="Your Answer"
+          />
+          <button>Post Your Answer</button>
+        </React.Fragment>
+      );
+    }
   };
 
   render() {
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field name="title" component={this.renderInput} label="Enter Title" />
-        <Field
-          name="body"
-          component={this.renderTextArea}
-          label="Enter Question"
-        />
-        <button>Post Your Question</button>
+        {this.renderForm()}
       </form>
     );
   }
@@ -62,6 +88,6 @@ const validate = (formValues) => {
 };
 
 export default reduxForm({
-  form: "questionForm",
+  form: "postForm",
   validate,
-})(QuestionForm);
+})(PostForm);

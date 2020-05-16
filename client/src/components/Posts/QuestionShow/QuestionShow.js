@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import QuestionShowHeader from "../QuestionShowHeader/QuestionShowHeader";
 import PostLayout from "../PostLayout/PostLayout";
 import AnswerList from "../AnswerList/AnswerList";
-import AnswerCreate from "../../Answers/AnswerCreate/AnswerCreate";
+import AnswerCreate from "../AnswerCreate/AnswerCreate";
 import { fetchPost } from "../../../actions";
 
 class QuestionShow extends React.Component {
