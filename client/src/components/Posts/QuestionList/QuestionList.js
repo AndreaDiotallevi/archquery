@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchPostsAndUsers } from "../../../actions";
 import PostSummary from "../PostSummary/PostSummary";
-import QuestionListHeader from "../../Questions/QuestionListHeader/QuestionListHeader";
+import QuestionListHeader from "../QuestionListHeader/QuestionListHeader";
 
 class QuestionList extends React.Component {
   componentDidMount() {

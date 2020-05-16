@@ -1,7 +1,7 @@
 import React from "react";
 import QuestionAskButton from "../QuestionAskButton/QuestionAskButton";
 
-const QuestionHeader = ({ title }) => {
+const QuestionShowHeader = ({ title }) => {
   return (
     <div className="component-question-header">
       <h1>{title}</h1>
@@ -10,4 +10,4 @@ const QuestionHeader = ({ title }) => {
   );
 };
 
-export default QuestionHeader;
+export default QuestionShowHeader;

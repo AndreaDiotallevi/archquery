@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { logIn } from "../../actions";
+import { logIn } from "../../../actions";
 import LogInForm from "../LogInForm/LogInForm";
 
 class LogIn extends React.Component {
