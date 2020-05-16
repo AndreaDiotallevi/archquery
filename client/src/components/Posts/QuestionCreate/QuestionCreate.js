@@ -2,8 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { createPost } from "../../../actions";
 import PostForm from "../PostForm/PostForm";
+import history from "../../../history";
 
 class QuestionCreate extends React.Component {
+  componentDidMount() {
+    if (!this.props.userId) {
+      history.push("/users/login");
+    }
+  }
+
   onSubmit = (formValues) => {
     this.props.createPost({
       ...formValues,
