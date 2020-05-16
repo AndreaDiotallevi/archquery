@@ -36,11 +36,11 @@ app.use(
       post: 6379,
       client: redisClient,
     }),
-    name: "_redisDemo",
+    name: "sessionID",
     secret: process.env.SECRET_KEY,
     resave: false,
     rolling: true,
-    cookie: { secure: false, maxAge: 60000 },
+    cookie: { secure: false, maxAge: 600000 }, // 10 minutes
     saveUninitialized: true,
   })
 );

@@ -23,7 +23,11 @@ class QuestionCreate extends React.Component {
     return (
       <div className="component-question-create">
         <h1>Ask A Public Question</h1>
-        <PostForm onSubmit={this.onSubmit} postTypeId={1} />
+        <PostForm
+          postTypeId={1}
+          initialValues={{ title: "", body: "" }}
+          onSubmit={this.onSubmit}
+        />
       </div>
     );
   }

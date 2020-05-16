@@ -68,7 +68,7 @@ router.put("/:id", async (req, res) => {
       "UPDATE posts SET title = $1, body = $2 WHERE id = $3 RETURNING *",
       [title, body, id]
     );
-    res.status(200).json(rows);
+    res.status(200).json(rows[0]);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

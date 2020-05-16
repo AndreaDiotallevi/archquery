@@ -3,6 +3,7 @@ import {
   POSTS_FETCHED,
   POST_FETCHED,
   POST_CREATED,
+  POST_EDITED,
   POST_DELETED,
 } from "../actions/types";
 
@@ -13,6 +14,8 @@ export default (state = {}, action) => {
     case POST_FETCHED:
       return { ...state, [action.payload.id]: action.payload };
     case POST_CREATED:
+      return { ...state, [action.payload.id]: action.payload };
+    case POST_EDITED:
       return { ...state, [action.payload.id]: action.payload };
     case POST_DELETED:
       return _.omit(state, action.payload);

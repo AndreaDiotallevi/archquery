@@ -89,5 +89,7 @@ const validate = (formValues) => {
 
 export default reduxForm({
   form: "postForm",
+  destroyOnUnmount: false,
+  enableReinitialize: true,
   validate,
 })(PostForm);

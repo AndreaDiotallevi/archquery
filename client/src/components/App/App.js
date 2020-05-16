@@ -6,6 +6,7 @@ import SignUp from "../Auth/SignUp/SignUp";
 import LogIn from "../Auth/LogIn/LogIn";
 import Profile from "../Profile/Profile";
 import QuestionList from "../Posts/QuestionList/QuestionList";
+import PostEdit from "../Posts/PostEdit/PostEdit";
 import QuestionShow from "../Posts/QuestionShow/QuestionShow";
 import QuestionCreate from "../Posts/QuestionCreate/QuestionCreate";
 import history from "../../history";
@@ -27,6 +28,7 @@ class App extends React.Component {
           <Route path="/users/:id/:username" exact component={Profile} />
           <Route path="/questions/ask" exact component={QuestionCreate} />
           <Route path="/questions/:id/:title" component={QuestionShow} />
+          <Route path="/posts/:id/edit" exact component={PostEdit} />
         </Router>
       </div>
     );

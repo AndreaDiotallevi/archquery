@@ -24,7 +24,11 @@ class AnswerCreate extends React.Component {
 
     return (
       <div className="component-answer-create">
-        <PostForm onSubmit={this.onSubmit} postTypeId={2} />
+        <PostForm
+          postTypeId={2}
+          initialValues={{ body: "" }}
+          onSubmit={this.onSubmit}
+        />
       </div>
     );
   }

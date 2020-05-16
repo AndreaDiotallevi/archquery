@@ -3,6 +3,7 @@ import {
   POSTS_FETCHED,
   POST_FETCHED,
   POST_CREATED,
+  POST_EDITED,
   POST_DELETED,
   USER_FETCHED,
   SIGN_UP,
@@ -55,6 +56,13 @@ export const fetchPostsAndUsers = (postTypeId, parentId) => async (
     .uniq()
     .forEach((id) => dispatch(fetchUser(id)))
     .value();
+};
+
+export const editPost = (postId, formValues) => async (dispatch) => {
+  const response = await axios.put(`/api/posts/${postId}`, formValues);
+
+  dispatch({ type: POST_EDITED, payload: response.data });
+  history.push("/");
 };
 
 export const deletePost = (postId) => async (dispatch) => {
