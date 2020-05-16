@@ -14,6 +14,14 @@ class AnswerCreate extends React.Component {
   };
 
   render() {
+    if (!this.props.userId) {
+      return (
+        <div className="component-answer-create-message">
+          <p>To answer a question, you must sign up for an account.</p>
+        </div>
+      );
+    }
+
     return (
       <div className="component-answer-create">
         <PostForm onSubmit={this.onSubmit} postTypeId={2} />
