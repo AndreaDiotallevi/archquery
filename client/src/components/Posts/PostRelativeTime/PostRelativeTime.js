@@ -12,7 +12,7 @@ const PostRelativeTime = ({ creationDate, postTypeId }) => {
       const minutes = Math.round(seconds / 60);
       return `${minutes} min${minutes > 1 ? "s" : ""} ago`;
     } else if (seconds > 3600 && seconds < 86400) {
-      const hours = Math.round(seconds / 60 / 60);
+      const hours = Math.floor(seconds / 60 / 60);
       return `${hours} hour${hours > 1 ? "s" : ""} ago`;
     } else if (seconds > 86400 && seconds < 172800) {
       const days = Math.round(seconds / 60 / 60 / 24);
