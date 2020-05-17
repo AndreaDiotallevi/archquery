@@ -1,5 +1,7 @@
 import React from "react";
 import { Field, reduxForm, reset } from "redux-form";
+import CKEditor from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 class PostForm extends React.Component {
   renderError({ error, touched }) {
@@ -18,13 +20,19 @@ class PostForm extends React.Component {
     );
   };
 
-  renderTextArea = ({ input, label, meta }) => {
+  renderEditor = ({ input, label, meta }) => {
     return (
-      <div>
+      <React.Fragment>
         <label>{label}</label>
-        <textarea {...input} autoComplete="off" />
+        <CKEditor
+          editor={ClassicEditor}
+          data={input.value}
+          onChange={(event, editor) => {
+            return input.onChange(editor.getData());
+          }}
+        />
         <p className="error-message">{this.renderError(meta)}</p>
-      </div>
+      </React.Fragment>
     );
   };
 
@@ -44,7 +52,7 @@ class PostForm extends React.Component {
           />
           <Field
             name="body"
-            component={this.renderTextArea}
+            component={this.renderEditor}
             label="Enter Question"
           />
           <button>Post Your Question</button>
@@ -55,7 +63,7 @@ class PostForm extends React.Component {
         <React.Fragment>
           <Field
             name="body"
-            component={this.renderTextArea}
+            component={this.renderEditor}
             label="Your Answer"
           />
           <button>Post Your Answer</button>
