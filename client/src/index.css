@@ -70,3 +70,7 @@ div {
 .component-question-summary {
   margin-bottom: 25px;
 }
+
+.component-question-excerpt div {
+  flex-direction: row;
+}
