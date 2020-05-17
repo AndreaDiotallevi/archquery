@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
     const {
       rows,
     } = await db.query(
-      "SELECT * FROM posts WHERE post_type_id = $1 AND (parent_id = $2 OR parent_id IS NULL) ORDER BY id ASC",
+      "SELECT * FROM posts WHERE ($1::INT IS NULL OR post_type_id = $1) AND ($2::INT IS NULL OR parent_id = $2) ORDER BY id DESC",
       [postTypeId, parentId]
     );
     if (!rows) throw Error("No posts found");
