@@ -10,13 +10,24 @@
     url("./fonts/Maison\ Neue\ Mono.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Helvetica";
+  src: url("./fonts/Helvetica\ 400.ttf") format("truetype");
+}
+
 * {
-  font-family: rz-regular, Arial, sans-serif;
+  /* font-family: rz-regular, Arial, sans-serif; */
+  /* font-family: maison-neue-mono; */
+  font-family: Helvetica;
   font-weight: 300;
-  font-size: 16px;
+  font-size: 13px;
   margin: 0;
   padding: 0;
   border: 0;
+}
+
+.app {
+  margin: 0 25px;
 }
 
 a,
@@ -25,290 +36,37 @@ h1,
 h2,
 h3,
 h4 {
-  /* text-decoration: none; */
-  color: rgb(36, 39, 41);
-  color: rgb(16, 16, 16);
+  color: rgb(51, 51, 51);
 }
 
-input,
-textarea {
-  border: 1px solid rgb(187, 192, 196);
-  border-radius: 3px;
-}
-
-/* App */
-
-.app {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-/* Header */
-
-.component-header {
-  display: flex;
-  /* box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px,
-    rgba(0, 0, 0, 0.05) 0px 1px 4px 0px, rgba(0, 0, 0, 0.05) 0px 2px 8px 0px; */
-}
-
-.container-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 50px;
-  padding: 0 100px;
-}
-
-.component-header a {
-  text-decoration: none;
-}
-
-/*10Navbar */
-
-.component-navbar {
-  display: flex;
-  align-items: center;
-}
-
-.component-navbar p {
-  font-family: maison-neue-mono;
-  font-size: 12px;
-  opacity: 0.5;
-  padding-top: 3px;
-}
-
-.component-navbar a,
-.component-navbar button {
-  padding: 10px;
-  padding-right: 0;
-  margin-left: 5px;
-  /* background-color: rgb(0, 149, 255); */
-  /* border-radius: 3px; */
-  /* font-size: 13px; */
-}
-
-/* LogIn & SignUp & QuestionCreate */
-
-.component-question-create h1 {
-  font-size: 27px;
-  margin-bottom: 30px;
-}
-
-.component-login,
-.component-signup,
-.component-question-create {
+div {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.component-login form,
-.component-signup form,
-.component-question-create {
-  display: flex;
-  flex-direction: column;
-}
-
-.component-login form div,
-.component-signup form div,
-.component-question-create form div {
-  display: flex;
-  flex-direction: column;
-  width: 220px;
-}
-
-.component-login form div label,
-.component-signup form div label,
-.component-question-create form div label {
-  font-size: 13px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.component-login form div input,
-.component-signup form div input,
-.component-question-create form div input,
-.component-question-create form div textarea {
-  padding: 8px 10px;
-  font-size: 13px;
-}
-
-.component-login form button,
-.component-signup form button,
-.component-question-create form button {
-  background-color: rgb(0, 149, 255);
-  color: white;
-  padding: 10px;
-  border-radius: 3px;
-  font-size: 13px;
-  margin-bottom: 10px;
-}
-
-.error-message {
-  font-size: 13px;
-  color: rgb(209, 56, 61);
-  margin-top: 5px;
-  margin-bottom: 20px;
-}
-
-/* QuestionList */
-
-.component-question-list {
-  display: flex;
-  width: 100%;
-}
-
-.container-question-list {
-  display: flex;
-  flex-direction: column;
-  padding: 0 100px;
-  width: 100%;
-}
-
-/* QuestionListHeader */
-
-.component-question-list-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 25px;
-  margin-bottom: 40px;
-}
-
-.component-question-list-header h1 {
-  font-size: 45px;
-}
-
-/* QuestionAskButton */
-
-.component-question-ask-button a {
-  /* background-color: rgb(0, 149, 255); */
-  /* color: white; */
-  padding: 10px;
-  padding-right: 0;
-  border-radius: 3px;
-  /* font-size: 13px; */
-}
-
-/* QuestionSummary */
-
-.component-question-summary {
-  border-bottom: 1px solid rgb(239, 240, 241);
-  margin-bottom: 12px;
-}
-
-.component-question-summary div {
-  display: flex;
-}
-
-/* QuestionTitle */
-
-.component-relative-time {
-  display: flex;
-  align-items: center;
-}
-
-.component-question-title a {
-  /* text-decoration: none; */
-  /* font-family: maison-neue-mono; */
-  /* font-size: 20px; */
-  margin-bottom: 25px;
-}
-
-/* QuestionRelativeTime */
-
-.component-relative-time p {
-  font-size: 12px;
-  font-weight: 400;
-  opacity: 0.5;
-  /* color: rgb(145, 153, 161); */
-  font-family: maison-neue-mono;
-  margin-right: 6px;
-  margin-bottom: 7.5px;
-}
-
-/* QuestionExcerpt */
-
-.component-question-excerpt p {
-  /* color: rgb(36, 39, 41); */
-  /* font-size: 12px; */
-  margin-bottom: 15px;
-}
-
-/* QuestionOwnerName */
-
-.component-question-owner-name a {
-  font-family: maison-neue-mono;
-  font-size: 12px;
-  /* color: rgb(0, 119, 204); */
-}
-
-.error input {
-  border-color: rgb(222, 83, 94);
-}
-
-/* QuestionShow */
-
-.component-question-show {
-  display: flex;
-}
-
-.container-question-show {
-  display: flex;
-  flex-direction: column;
-  padding: 0 100px;
-}
-
-.container-question-show h1 {
-  font-size: 27px;
-  margin: 25px 0;
-}
-
-.container-question-show p {
-  font-size: 15px;
-  margin-bottom: 7.5px;
-}
-
-.container-question-show div {
-  display: flex;
-}
-
-/* AnswerList */
-
-.component-answer-list {
-  display: flex;
-  width: 100%;
-}
-
-.container-answer-list {
-  display: flex;
-  flex-direction: column;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
-/* AnswerShow */
-
-.component-answer-show {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-}
-
-.component-answer-show div {
-  display: flex;
-}
-
-/* PostDelete */
-
-.component-post-delete button {
-  font-size: 12px;
 }
 
 .component-post-signature {
-  display: flex;
-  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.component-question-title a {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.component-question-list-header h1 {
+  font-size: 40px;
+}
+
+.component-post-signature,
+.component-question-list-header {
+  flex-direction: row;
+  align-items: center;
+}
+
+.component-question-list-header {
+  margin-bottom: 25px;
+}
+
+.component-question-summary {
+  margin-bottom: 25px;
 }
