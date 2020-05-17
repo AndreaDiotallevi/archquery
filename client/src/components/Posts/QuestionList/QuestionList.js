@@ -14,7 +14,7 @@ class QuestionList extends React.Component {
       <div className="component-question-list">
         <div className="container-question-list">
           <QuestionListHeader />
-          {this.props.questions.map((post) => (
+          {this.props.questions.reverse().map((post) => (
             <PostSummary post={post} key={post.id} />
           ))}
         </div>
