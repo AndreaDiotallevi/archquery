@@ -6,7 +6,9 @@ const PostRelativeTime = ({ creationDate, postTypeId }) => {
     const date = new Date(Date.parse(creationDate));
     const seconds = Math.round((new Date().getTime() - date.getTime()) / 1000);
 
-    if (seconds < 60) {
+    if (seconds < 30) {
+      return "just now";
+    } else if (seconds < 60) {
       return `${seconds} second${seconds > 1 ? "s" : ""} ago`;
     } else if (seconds >= 60 && seconds < 3600) {
       const minutes = Math.round(seconds / 60);
