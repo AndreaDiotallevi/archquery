@@ -7,7 +7,7 @@ const PostSummary = ({ post }) => {
   return (
     <div className="component-question-summary">
       <PostTitle post={post} />
-      <PostExcerpt post={post} />
+      {/* <PostExcerpt post={post} /> */}
       <PostSignature post={post} />
     </div>
   );
