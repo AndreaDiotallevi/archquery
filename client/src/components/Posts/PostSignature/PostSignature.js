@@ -4,7 +4,7 @@ import PostOwnerName from "../PostOwnerName/PostOwnerName";
 
 const PostSignature = ({ post }) => {
   return (
-    <div>
+    <div className="component-post-signature">
       <PostRelativeTime creationDate={post.creation_date} />
       <PostOwnerName ownerUserId={post.owner_user_id} />
     </div>
