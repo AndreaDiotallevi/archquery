@@ -5,7 +5,11 @@ const PostExcerpt = ({ post }) => {
 
   return (
     <div className="component-question-excerpt">
-      <p>{`${body.substring(0, 200)} ${body.length > 200 ? "..." : ""}`}</p>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `${body.substring(0, 200)} ${body.length > 200 ? "..." : ""}`,
+        }}
+      />
     </div>
   );
 };
