@@ -61,6 +61,10 @@ textarea {
   padding: 0 100px;
 }
 
+.component-header a {
+  text-decoration: none;
+}
+
 /*10Navbar */
 
 .component-navbar {
@@ -69,7 +73,10 @@ textarea {
 }
 
 .component-navbar p {
-  font-size: 16px;
+  font-family: maison-neue-mono;
+  font-size: 12px;
+  opacity: 0.5;
+  padding-top: 3px;
 }
 
 .component-navbar a,
@@ -167,7 +174,8 @@ textarea {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 25px 0;
+  margin-top: 25px;
+  margin-bottom: 40px;
 }
 
 .component-question-list-header h1 {
@@ -204,7 +212,7 @@ textarea {
 }
 
 .component-question-title a {
-  text-decoration: none;
+  /* text-decoration: none; */
   /* font-family: maison-neue-mono; */
   /* font-size: 20px; */
   margin-bottom: 25px;
@@ -226,6 +234,7 @@ textarea {
 
 .component-question-excerpt p {
   /* color: rgb(36, 39, 41); */
+  /* font-size: 12px; */
   margin-bottom: 15px;
 }
 
