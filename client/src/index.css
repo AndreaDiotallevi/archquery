@@ -44,6 +44,15 @@ div {
   flex-direction: column;
 }
 
+.container-header {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.component-navbar {
+  flex-direction: row;
+}
+
 .component-post-signature {
   flex-direction: row;
 }
@@ -68,9 +77,19 @@ div {
 }
 
 .component-question-summary {
-  margin-bottom: 25px;
+  margin-bottom: 40px;
+}
+
+.component-question-title {
+  margin-bottom: 10px;
 }
 
 .component-question-excerpt div {
   flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.component-relative-time p {
+  opacity: 0.5;
+  margin-right: 10px;
 }
