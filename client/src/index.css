@@ -20,14 +20,20 @@
   /* font-family: maison-neue-mono; */
   font-family: Helvetica;
   font-weight: 300;
-  font-size: 13px;
+  font-size: 14px;
   margin: 0;
   padding: 0;
   border: 0;
 }
 
+#root {
+  display: flex;
+  align-items: center;
+}
+
 .app {
   margin: 0 25px;
+  width: 650px;
 }
 
 a,
@@ -39,6 +45,10 @@ h4 {
   color: rgb(51, 51, 51);
 }
 
+a {
+  text-decoration: none;
+}
+
 div {
   display: flex;
   flex-direction: column;
@@ -47,10 +57,26 @@ div {
 .container-header {
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.container-header a {
+  font-size: 16px;
 }
 
 .component-navbar {
   flex-direction: row;
+}
+
+.component-navbar a,
+.component-navbar button {
+  font-size: 16px;
+  margin-left: 30px;
+}
+
+.component-navbar p {
+  margin-top: 2px;
 }
 
 .component-post-signature {
@@ -60,6 +86,14 @@ div {
 .component-question-title a {
   text-decoration: none;
   font-size: 20px;
+}
+
+.component-question-list-header {
+  justify-content: space-between;
+}
+
+.component-question-list-header div a {
+  font-size: 16px;
 }
 
 .component-question-list-header h1 {
@@ -73,14 +107,16 @@ div {
 }
 
 .component-question-list-header {
-  margin-bottom: 25px;
+  margin-top: 70px;
+  margin-bottom: 50px;
 }
 
 .component-question-summary {
   margin-bottom: 40px;
 }
 
-.component-question-title {
+.component-question-title a {
+  color: rgb(26, 13, 171);
   margin-bottom: 10px;
 }
 
@@ -92,4 +128,8 @@ div {
 .component-relative-time p {
   opacity: 0.5;
   margin-right: 10px;
+}
+
+.component-question-owner-name a {
+  color: rgb(26, 13, 171);
 }
