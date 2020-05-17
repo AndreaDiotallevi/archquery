@@ -14,7 +14,7 @@ class QuestionList extends React.Component {
       <div className="component-question-list">
         <div className="container-question-list">
           <QuestionListHeader />
-          {this.props.questions.reverse().map((post) => (
+          {this.props.questions.map((post) => (
             <PostSummary post={post} key={post.id} />
           ))}
         </div>
@@ -25,9 +25,9 @@ class QuestionList extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    questions: Object.values(state.posts).filter(
-      (post) => post.post_type_id === 1
-    ),
+    questions: Object.values(state.posts)
+      .filter((post) => post.post_type_id === 1)
+      .reverse(),
   };
 };
 
