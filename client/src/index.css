@@ -19,8 +19,9 @@
   /* font-family: rz-regular, Arial, sans-serif; */
   /* font-family: maison-neue-mono; */
   font-family: Helvetica;
+  font-family: "Gilda Display", serif;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 16px;
   margin: 0;
   padding: 0;
   border: 0;
@@ -132,4 +133,10 @@ div {
 
 .component-question-owner-name a {
   color: rgb(26, 13, 171);
+}
+
+@media (max-width: 700px) {
+  .app {
+    width: auto;
+  }
 }
