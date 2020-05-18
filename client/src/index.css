@@ -72,7 +72,9 @@ div {
 
 .component-navbar a,
 .component-navbar button {
+  color: rgb(26, 13, 171);
   font-size: 16px;
+  font-weight: bold;
   margin-left: 30px;
 }
 
@@ -87,6 +89,9 @@ div {
 .component-question-title a {
   text-decoration: none;
   font-size: 20px;
+  font-weight: bold;
+  color: rgb(26, 13, 171);
+  margin-bottom: 10px;
 }
 
 .component-question-list-header {
@@ -116,11 +121,6 @@ div {
   margin-bottom: 40px;
 }
 
-.component-question-title a {
-  color: rgb(26, 13, 171);
-  margin-bottom: 10px;
-}
-
 .component-question-excerpt div {
   flex-direction: row;
   margin-bottom: 10px;
@@ -133,6 +133,7 @@ div {
 
 .component-question-owner-name a {
   color: rgb(26, 13, 171);
+  font-weight: bold;
 }
 
 @media (max-width: 700px) {

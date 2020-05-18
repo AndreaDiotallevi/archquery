@@ -31,4 +31,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchPostsAndUsers })(QuestionList);
+export default connect(mapStateToProps, {
+  fetchPostsAndUsers,
+})(QuestionList);
