@@ -1,11 +1,13 @@
 import _ from "lodash";
 import {
   POSTS_FETCHED,
+  POSTS_CLEARED,
   POST_FETCHED,
   POST_CREATED,
   POST_EDITED,
   POST_DELETED,
   USER_FETCHED,
+  TAG_FETCHED,
   SIGN_UP,
   LOG_IN,
   LOG_OUT,
@@ -15,14 +17,22 @@ import {
 import axios from "axios";
 import history from "../history";
 
-export const fetchPosts = (postTypeId, parentId) => async (dispatch) => {
+export const fetchPosts = (postTypeId, parentId, tagName) => async (
+  dispatch
+) => {
   const response = await axios.get(
     `/api/posts/?postTypeId=${postTypeId}${
       parentId ? `&parentId=${parentId}` : ""
-    }`
+    }${tagName ? `&tagName=${tagName}` : ""}`
   );
 
   dispatch({ type: POSTS_FETCHED, payload: response.data });
+};
+
+export const clearPosts = () => {
+  return {
+    type: POSTS_CLEARED,
+  };
 };
 
 export const fetchPost = (id) => async (dispatch) => {
@@ -46,11 +56,17 @@ export const fetchUser = (id) => async (dispatch) => {
   dispatch({ type: USER_FETCHED, payload: response.data });
 };
 
-export const fetchPostsAndUsers = (postTypeId, parentId) => async (
+export const fetchTag = (tagName) => async (dispatch) => {
+  const response = await axios.get(`/api/tags/name=${tagName}`);
+  dispatch({ type: TAG_FETCHED, payload: response.data });
+};
+
+export const fetchPostsAndUsers = (postTypeId, parentId, tagName) => async (
   dispatch,
   getState
 ) => {
-  await dispatch(fetchPosts(postTypeId, parentId));
+  // if (tagName) dispatch(fetchTag(tagName));
+  await dispatch(fetchPosts(postTypeId, parentId, tagName));
   _.chain(getState().posts)
     .map("owner_user_id")
     .uniq()

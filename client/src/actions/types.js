@@ -1,8 +1,10 @@
 export const POSTS_FETCHED = "POSTS_FETCHED";
+export const POSTS_CLEARED = "POSTS_CLEARED";
 export const POST_FETCHED = "POST_FETCHED";
 export const POST_CREATED = "POST_CREATED";
 export const POST_EDITED = "POST_EDITED";
 export const POST_DELETED = "POST_DELETED";
+export const TAG_FETCHED = "TAG_FETCHED";
 export const USER_FETCHED = "USER_FETCHED";
 export const SIGN_UP = "SIGN_UP";
 export const LOG_IN = "LOG_IN";
