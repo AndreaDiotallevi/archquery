@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PostTags = ({ post }) => {
   if (!post.tags) {
@@ -6,9 +7,11 @@ const PostTags = ({ post }) => {
   }
 
   return (
-    <div>
+    <div className="component-post-tags">
       {post.tags.map((tag) => (
-        <p key={tag}>{tag}</p>
+        <Link to={`/questions/tagged/${tag}`} key={tag}>
+          {tag}
+        </Link>
       ))}
     </div>
   );
