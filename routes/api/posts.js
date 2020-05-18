@@ -92,18 +92,3 @@ router.delete("/:id", async (req, res) => {
     res.status(400).json({ message: err.message, success: false });
   }
 });
-
-// router.get("/", async (req, res) => {
-//   try {
-//     const { tagName } = req.query;
-//     const {
-//       rows,
-//     } = await db.query(
-//       "SELECT p.* FROM tags t INNER JOIN posts_tags pt ON (t.id = pt.tag_id) INNER JOIN posts p ON (p.id = pt.post_id) WHERE tag = $1",
-//       [tagName]
-//     );
-//     res.status(200).json({ success: true });
-//   } catch (err) {
-//     res.status(400).json({ message: err.message });
-//   }
-// });
