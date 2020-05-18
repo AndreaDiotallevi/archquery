@@ -1,6 +1,7 @@
 import React from "react";
 import PostTitle from "../PostTitle/PostTitle";
 import PostExcerpt from "../PostExcerpt/PostExcerpt";
+import PostTags from "../PostTags/PostTags";
 import PostSignature from "../PostSignature/PostSignature";
 
 const PostSummary = ({ post }) => {
@@ -8,6 +9,7 @@ const PostSummary = ({ post }) => {
     <div className="component-question-summary">
       <PostTitle post={post} />
       <PostExcerpt post={post} />
+      <PostTags post={post} />
       <PostSignature post={post} />
     </div>
   );
