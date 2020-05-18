@@ -82,10 +82,6 @@ div {
   margin-top: 2px;
 }
 
-.component-post-signature {
-  flex-direction: row;
-}
-
 .component-question-title a {
   text-decoration: none;
   font-size: 20px;
@@ -106,7 +102,6 @@ div {
   font-size: 40px;
 }
 
-.component-post-signature,
 .component-question-list-header {
   flex-direction: row;
   align-items: center;
@@ -124,6 +119,24 @@ div {
 .component-question-excerpt div {
   flex-direction: row;
   margin-bottom: 10px;
+}
+
+.component-post-tags {
+  flex-direction: row;
+}
+
+.component-post-tags a {
+  margin-right: 25px;
+  font-weight: bold;
+  color: rgb(26, 13, 171);
+}
+
+.component-post-signature {
+  flex-direction: row;
+}
+
+.component-post-signature {
+  justify-content: flex-end;
 }
 
 .component-relative-time p {
