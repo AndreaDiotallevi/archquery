@@ -45,16 +45,9 @@ class PostForm extends React.Component {
     if (this.props.postTypeId === 1) {
       return (
         <React.Fragment>
-          <Field
-            name="title"
-            component={this.renderInput}
-            label="Enter Title"
-          />
-          <Field
-            name="body"
-            component={this.renderEditor}
-            label="Enter Question"
-          />
+          <Field name="title" component={this.renderInput} label="Title" />
+          <Field name="body" component={this.renderEditor} label="Body" />
+          <Field name="tags" component={this.renderInput} label="Tags" />
           <button>Post Your Question</button>
         </React.Fragment>
       );
