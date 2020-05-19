@@ -6,11 +6,23 @@ const { findTagByName } = require("../../models/tag");
 module.exports = router;
 
 // @route   Get api/tags
-// @desc    Get A Tag
+// @desc    Get All Tags
 // @access  Public
 router.get("/", async (req, res) => {
   try {
-    const { name } = req.query;
+    const { rows } = await db.query("SELECT * FROM tags;");
+    res.status(200).json(rows);
+  } catch (err) {
+    res.status(400).json({ msg: err.message });
+  }
+});
+
+// @route   Get api/tags/:name
+// @desc    Get A Tag By Name
+// @access  Public
+router.get("/:name", async (req, res) => {
+  try {
+    const { name } = req.params;
     const tag = await findTagByName(name);
     res.status(200).json(tag);
   } catch (err) {
