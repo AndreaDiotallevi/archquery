@@ -1,19 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createPost } from "../../../actions";
+import { createPostAndTags, fetchTags } from "../../../actions";
 import PostForm from "../PostForm/PostForm";
 import history from "../../../history";
 
 class QuestionCreate extends React.Component {
-  componentDidMount() {
+  componentDidMount = () => {
     if (!this.props.userId) {
       history.push("/users/login");
     }
-  }
+    this.props.fetchTags();
+  };
 
   onSubmit = (formValues) => {
-    this.props.createPost({
+    this.props.createPostAndTags({
       ...formValues,
+      tags: formValues.tags ? formValues.tags.split(" ") : null,
       postTypeId: 1,
       ownerUserId: this.props.userId,
     });
@@ -34,7 +36,9 @@ class QuestionCreate extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { userId: state.auth.userId };
+  return { userId: state.auth.userId, tags: state.tags };
 };
 
-export default connect(mapStateToProps, { createPost })(QuestionCreate);
+export default connect(mapStateToProps, { createPostAndTags, fetchTags })(
+  QuestionCreate
+);
