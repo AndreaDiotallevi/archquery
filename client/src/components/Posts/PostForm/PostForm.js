@@ -85,6 +85,14 @@ const validate = (formValues) => {
     errors.body = "You must enter a body";
   }
 
+  if (
+    formValues.tags &&
+    formValues.tags.split(" ").length !==
+      [...new Set(formValues.tags.split(" "))].length
+  ) {
+    errors.tags = "You cannot enter the same tag more than once";
+  }
+
   return errors;
 };
 
