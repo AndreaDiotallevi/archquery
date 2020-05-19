@@ -8,10 +8,9 @@ module.exports = router;
 // // @desc    Get Posts
 // // @access  Public
 router.get("/", async (req, res) => {
-  const { postTypeId, parentId, tagName } = req.query;
-  let databaseResponse;
-
   try {
+    const { postTypeId, parentId, tagName } = req.query;
+    let databaseResponse;
     if (!tagName) {
       databaseResponse = await db.query(
         "SELECT * FROM posts WHERE ($1::INT IS NULL OR post_type_id = $1) AND ($2::INT IS NULL OR parent_id = $2) ORDER BY id DESC",
