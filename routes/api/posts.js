@@ -66,12 +66,12 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, body } = req.body;
+    const { title, body, tags } = req.body;
     const {
       rows,
     } = await db.query(
-      "UPDATE posts SET title = $1, body = $2 WHERE id = $3 RETURNING *",
-      [title, body, id]
+      "UPDATE posts SET title = $1, body = $2, tags = $3 WHERE id = $4 RETURNING *",
+      [title, body, tags, id]
     );
     res.status(200).json(rows[0]);
   } catch (err) {

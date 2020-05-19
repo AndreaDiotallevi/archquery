@@ -18,3 +18,13 @@ router.post("/", async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
+
+router.delete("/:postId", async (req, res) => {
+  try {
+    const { postId } = req.params;
+    await db.query("DELETE FROM posts_tags WHERE post_id = $1", [postId]);
+    res.status(200).json({ success: true });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});

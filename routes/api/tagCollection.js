@@ -6,12 +6,12 @@ module.exports = router;
 
 router.post("/", async (req, res) => {
   try {
-    const { names } = req.body;
+    const { tagNames } = req.body;
     const {
       rows,
     } = await db.query(
       "INSERT INTO tags (name) VALUES (UNNEST($1::TEXT[])) RETURNING *",
-      [names]
+      [tagNames]
     );
     res.status(200).json(rows);
   } catch (err) {
