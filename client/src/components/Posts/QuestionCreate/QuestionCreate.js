@@ -15,7 +15,7 @@ class QuestionCreate extends React.Component {
   onSubmit = (formValues) => {
     this.props.createPostAndTags({
       ...formValues,
-      tags: formValues.tags ? formValues.tags.split(" ") : null,
+      tags: formValues.tags ? formValues.tags.split(" ") : [],
       postTypeId: 1,
       ownerUserId: this.props.userId,
     });
@@ -27,7 +27,7 @@ class QuestionCreate extends React.Component {
         <h1>Ask A Public Question</h1>
         <PostForm
           postTypeId={1}
-          initialValues={{ title: "", body: "" }}
+          initialValues={{ title: "", body: "", tags: "" }}
           onSubmit={this.onSubmit}
         />
       </div>
