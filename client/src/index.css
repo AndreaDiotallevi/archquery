@@ -135,10 +135,11 @@ input {
 
 .component-post-tags {
   flex-direction: row;
+  margin-bottom: 10px;
 }
 
 .component-post-tags a {
-  margin-right: 25px;
+  margin-right: 15px;
   /* font-weight: bold; */
   color: rgb(26, 13, 171);
 }
@@ -148,7 +149,7 @@ input {
 }
 
 .component-post-signature {
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
 }
 
 .component-relative-time p {
