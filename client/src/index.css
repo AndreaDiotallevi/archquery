@@ -93,7 +93,7 @@ input {
   font-size: 24px;
   font-weight: bold;
   color: rgb(26, 13, 171);
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .component-question-list-header {
@@ -128,38 +128,87 @@ input {
   margin-bottom: 40px;
 }
 
+.component-question-summary div {
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .component-question-excerpt div {
   flex-direction: row;
-  margin-bottom: 10px;
+}
+
+.component-question-excerpt div p {
+  margin-bottom: 15px;
+}
+
+.component-post-text div {
+  margin-bottom: 15px;
+}
+
+.component-post-info div {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+div.component-post-menu {
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+div.component-post-menu a {
+  opacity: 0.5;
+  margin-right: 15px;
+}
+
+div.component-post-menu div button {
+  opacity: 0.5;
 }
 
 .component-post-tags {
   flex-direction: row;
-  margin-bottom: 10px;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 .component-post-tags a {
   margin-right: 15px;
-  /* font-weight: bold; */
+  padding: 5px;
+  background-color: rgb(225, 236, 244);
+  border-radius: 5px;
   color: rgb(26, 13, 171);
+  font-size: 14px;
+}
+
+.component-post-tags a:hover {
+  background-color: rgb(209, 229, 241);
 }
 
 .component-post-signature {
   flex-direction: row;
-}
-
-.component-post-signature {
-  /* justify-content: flex-end; */
+  margin-bottom: 15px;
 }
 
 .component-relative-time p {
   opacity: 0.5;
   margin-right: 10px;
+  font-size: 14px;
 }
 
 .component-question-owner-name a {
   color: rgb(26, 13, 171);
-  /* font-weight: bold; */
+  font-size: 14px;
+}
+
+.component-answer-create-message p {
+  color: #d1383d;
+}
+
+.ck {
+  height: 150px;
 }
 
 @media (max-width: 700px) {
