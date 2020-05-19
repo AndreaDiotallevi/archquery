@@ -16,7 +16,7 @@ const PostMenu = ({ post, userId }) => {
     return null;
   };
 
-  return <div>{renderMenu()}</div>;
+  return <div className="component-post-menu">{renderMenu()}</div>;
 };
 
 const mapStateToProps = (state) => {

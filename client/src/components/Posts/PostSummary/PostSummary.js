@@ -9,8 +9,10 @@ const PostSummary = ({ post }) => {
     <div className="component-question-summary">
       <PostTitle post={post} />
       <PostExcerpt post={post} />
-      <PostTags post={post} />
-      <PostSignature post={post} />
+      <div>
+        <PostTags post={post} />
+        <PostSignature post={post} />
+      </div>
     </div>
   );
 };
