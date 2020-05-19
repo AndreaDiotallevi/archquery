@@ -1,7 +1,6 @@
-import _ from "lodash";
 import React from "react";
 import { connect } from "react-redux";
-import { fetchPost, editPost } from "../../../actions";
+import { fetchPost, editPostAndTags } from "../../../actions";
 import PostForm from "../PostForm/PostForm";
 
 class PostEdit extends React.Component {
@@ -10,7 +9,10 @@ class PostEdit extends React.Component {
   }
 
   onSubmit = (formValues) => {
-    this.props.editPost(this.props.match.params.id, formValues);
+    this.props.editPostAndTags(this.props.match.params.id, {
+      ...formValues,
+      tags: formValues.tags ? formValues.tags.split(" ") : [],
+    });
   };
 
   render() {
@@ -24,7 +26,11 @@ class PostEdit extends React.Component {
         <h3>Edit the Post</h3>
         <PostForm
           postTypeId={post.post_type_id}
-          initialValues={_.pick(post, "title", "body")}
+          initialValues={{
+            title: post.title,
+            body: post.body,
+            tags: post.tags ? post.tags.join(" ") : "",
+          }}
           onSubmit={this.onSubmit}
         />
       </div>
@@ -36,4 +42,6 @@ const mapToStateToProps = (state, ownProps) => {
   return { post: state.posts[ownProps.match.params.id] };
 };
 
-export default connect(mapToStateToProps, { fetchPost, editPost })(PostEdit);
+export default connect(mapToStateToProps, { fetchPost, editPostAndTags })(
+  PostEdit
+);
