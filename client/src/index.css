@@ -137,9 +137,6 @@ input {
 
 .component-question-excerpt div {
   flex-direction: row;
-}
-
-.component-question-excerpt div p {
   margin-bottom: 15px;
 }
 
@@ -160,12 +157,12 @@ div.component-post-menu {
 }
 
 div.component-post-menu a {
-  opacity: 0.5;
   margin-right: 15px;
+  opacity: 0.5;
 }
 
 div.component-post-menu div button {
-  opacity: 0.5;
+  color: #d1383d;
 }
 
 .component-post-tags {
