@@ -7,7 +7,10 @@ import {
   POST_EDITED,
   POST_DELETED,
   USER_FETCHED,
+  TAGS_FETCHED,
   TAG_FETCHED,
+  TAG_CREATED,
+  TAGS_CREATED,
   SIGN_UP,
   LOG_IN,
   LOG_OUT,
@@ -42,12 +45,33 @@ export const fetchPost = (id) => async (dispatch) => {
 };
 
 export const createPost = (formValues) => async (dispatch) => {
-  const response = await axios.post("/api/posts", formValues);
+  try {
+    const response = await axios.post("/api/posts", formValues);
 
-  dispatch({ type: POST_CREATED, payload: response.data });
-  if (formValues.postTypeId === 1) {
-    history.push("/");
+    dispatch({ type: POST_CREATED, payload: response.data });
+
+    if (formValues.postTypeId === 1) {
+      history.push("/");
+    }
+  } catch (err) {
+    console.log(err);
   }
+};
+
+export const createPostAndTags = (formValues) => async (dispatch, getState) => {
+  await dispatch(createPost(formValues));
+  const posts = getState().posts;
+  const tagNames = formValues.tags;
+  await dispatch(createTags(tagNames));
+  const postId = Object.keys(posts)[Object.keys(posts).length - 1];
+  await dispatch(fetchTags());
+  const tags = getState().tags;
+  const tagIds = tagNames.map((tagName) => tags[tagName].id);
+  dispatch(createPostsTags(postId, tagIds));
+};
+
+export const createPostsTags = (postId, tagIds) => async (dispatch) => {
+  await axios.post("/api/postsTags", { postId, tagIds });
 };
 
 export const fetchUser = (id) => async (dispatch) => {
@@ -56,16 +80,46 @@ export const fetchUser = (id) => async (dispatch) => {
   dispatch({ type: USER_FETCHED, payload: response.data });
 };
 
+export const createTag = (name) => async (dispatch) => {
+  try {
+    const response = await axios.post("/api/tags", { name });
+
+    dispatch({ type: TAG_CREATED, payload: response.data });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const createTags = (names) => async (dispatch) => {
+  try {
+    const response = await axios.post("/api/tagCollection", { names });
+
+    dispatch({ type: TAGS_CREATED, payload: response.data });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const fetchTag = (tagName) => async (dispatch) => {
-  const response = await axios.get(`/api/tags/name=${tagName}`);
+  const response = await axios.get(`/api/tags/${tagName}`);
+
   dispatch({ type: TAG_FETCHED, payload: response.data });
+};
+
+export const fetchTags = () => async (dispatch) => {
+  try {
+    const response = await axios.get("/api/tags");
+
+    dispatch({ type: TAGS_FETCHED, payload: response.data });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const fetchPostsAndUsers = (postTypeId, parentId, tagName) => async (
   dispatch,
   getState
 ) => {
-  // if (tagName) dispatch(fetchTag(tagName));
   await dispatch(fetchPosts(postTypeId, parentId, tagName));
   _.chain(getState().posts)
     .map("owner_user_id")
