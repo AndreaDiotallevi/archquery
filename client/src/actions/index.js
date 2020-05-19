@@ -61,12 +61,12 @@ export const createPost = (formValues) => async (dispatch) => {
 export const createPostAndTags = (formValues) => async (dispatch, getState) => {
   await dispatch(createPost(formValues));
   const posts = getState().posts;
-  const tagNames = formValues.tags;
+  const tagNames = formValues.tags
+    ? formValues.tags.filter((tagName) => !(tagName in getState().tags))
+    : [];
   await dispatch(createTags(tagNames));
   const postId = Object.keys(posts)[Object.keys(posts).length - 1];
-  await dispatch(fetchTags());
-  const tags = getState().tags;
-  const tagIds = tagNames.map((tagName) => tags[tagName].id);
+  const tagIds = tagNames.map((tagName) => getState().tags[tagName].id);
   dispatch(createPostsTags(postId, tagIds));
 };
 
