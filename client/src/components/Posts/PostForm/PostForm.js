@@ -126,6 +126,10 @@ const validate = (formValues) => {
     errors.title = "You must enter a title";
   }
 
+  if (formValues.title && formValues.title.length > 200) {
+    errors.title = `The title is too long (${formValues.title.length}/200)`;
+  }
+
   if (!formValues.body) {
     errors.body = "You must enter a body";
   }
