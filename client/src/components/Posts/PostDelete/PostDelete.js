@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 const PostDelete = (props) => {
   const handleClick = () => {
-    props.deletePost(props.postId);
+    props.deletePost(props.postId, props.postTypeId);
   };
 
   return (

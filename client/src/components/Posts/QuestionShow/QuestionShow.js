@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import QuestionShowHeader from "../QuestionShowHeader/QuestionShowHeader";
+import PostTags from "../PostTags/PostTags";
 import PostLayout from "../PostLayout/PostLayout";
 import AnswerList from "../AnswerList/AnswerList";
 import AnswerCreate from "../AnswerCreate/AnswerCreate";
@@ -22,6 +23,7 @@ class QuestionShow extends React.Component {
       <div className="component-question-show">
         <div className="container-question-show">
           <QuestionShowHeader post={question} />
+          <PostTags post={question} />
           <PostLayout post={question} />
           <AnswerList questionId={question.id} />
           <AnswerCreate questionId={question.id} />

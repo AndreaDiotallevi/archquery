@@ -9,7 +9,7 @@ const PostMenu = ({ post, userId }) => {
       return (
         <React.Fragment>
           <Link to={`/posts/${post.id}/edit`}>Edit</Link>
-          <PostDelete postId={post.id} />
+          <PostDelete postId={post.id} postTypeId={post.post_type_id} />
         </React.Fragment>
       );
     }

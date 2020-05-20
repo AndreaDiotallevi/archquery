@@ -144,7 +144,12 @@ input {
   margin-bottom: 15px;
 }
 
-.component-post-info div {
+.component-post-layout {
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgb(225, 236, 244);
+}
+
+.component-post-info {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -152,6 +157,7 @@ input {
 }
 
 div.component-post-menu {
+  flex-direction: row;
   justify-content: flex-start;
   margin-bottom: 15px;
 }
@@ -159,10 +165,13 @@ div.component-post-menu {
 div.component-post-menu a {
   margin-right: 15px;
   opacity: 0.5;
+  text-transform: lowercase;
 }
 
 div.component-post-menu div button {
-  color: #d1383d;
+  /* color: #d1383d; */
+  text-transform: lowercase;
+  opacity: 0.5;
 }
 
 .component-post-tags {
