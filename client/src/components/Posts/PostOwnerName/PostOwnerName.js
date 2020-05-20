@@ -20,7 +20,7 @@ class PostOwnerName extends React.Component {
     }
 
     return (
-      <div className="component-question-owner-name">
+      <div className="component-post-owner-name">
         <Link to={`/users/${user.id}/${this.sanitizeUrl()}`}>
           {user.username}
         </Link>
