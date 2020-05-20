@@ -55,22 +55,21 @@ div {
   flex-direction: column;
 }
 
-input {
-  border: 1px solid rgb(196, 196, 196);
-  border-radius: 2px;
-  min-height: 40px;
-}
+/* Header */
 
 .container-header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 70px;
+  margin-bottom: 70px;
 }
 
 .container-header a {
   font-size: 16px;
 }
+
+/* Navbar */
 
 .component-navbar {
   flex-direction: row;
@@ -80,13 +79,14 @@ input {
 .component-navbar button {
   color: rgb(26, 13, 171);
   font-size: 16px;
-  /* font-weight: bold; */
   margin-left: 32px;
 }
 
 .component-navbar p {
   margin-top: 2px;
 }
+
+/* QuestionTitle */
 
 .component-question-title a {
   text-decoration: none;
@@ -95,6 +95,8 @@ input {
   color: rgb(26, 13, 171);
   margin-bottom: 15px;
 }
+
+/* QuestionListHeader */
 
 .component-question-list-header {
   justify-content: space-between;
@@ -105,8 +107,8 @@ input {
 }
 
 .component-question-list-header h1 {
-  font-size: 40px;
   font-size: 32px;
+  font-weight: bold;
 }
 
 .component-question-list-header {
@@ -115,14 +117,24 @@ input {
 }
 
 .component-question-list-header {
-  margin-top: 70px;
   margin-bottom: 50px;
 }
 
+/* ComponentQuestionAsk */
+
 .component-question-ask-button a {
   color: rgb(26, 13, 171);
-  /* font-weight: bold; */
+  padding: 5px;
+  background-color: rgb(225, 236, 244);
+  border-radius: 5px;
 }
+
+.component-question-ask-button:hover {
+  background-color: rgb(209, 229, 241);
+  cursor: pointer;
+}
+
+/* QuestionSummary */
 
 .component-question-summary {
   margin-bottom: 40px;
@@ -135,19 +147,27 @@ input {
   align-items: center;
 }
 
+/* Question Excerpt */
+
 .component-question-excerpt div {
   flex-direction: row;
   margin-bottom: 15px;
 }
 
+/* PostText */
+
 .component-post-text div {
   margin-bottom: 15px;
 }
+
+/* PostLayout */
 
 .component-post-layout {
   margin-bottom: 40px;
   border-bottom: 1px solid rgb(225, 236, 244);
 }
+
+/* PostInfo */
 
 .component-post-info {
   flex-direction: row;
@@ -155,6 +175,8 @@ input {
   align-items: center;
   flex-wrap: wrap;
 }
+
+/* PostMenu */
 
 div.component-post-menu {
   flex-direction: row;
@@ -169,10 +191,11 @@ div.component-post-menu a {
 }
 
 div.component-post-menu div button {
-  /* color: #d1383d; */
   text-transform: lowercase;
   opacity: 0.5;
 }
+
+/* PostTags */
 
 .component-post-tags {
   flex-direction: row;
@@ -193,10 +216,14 @@ div.component-post-menu div button {
   background-color: rgb(209, 229, 241);
 }
 
+/* Post Signature */
+
 .component-post-signature {
   flex-direction: row;
   margin-bottom: 15px;
 }
+
+/* PostRelativeTime */
 
 .component-relative-time p {
   opacity: 0.5;
@@ -204,17 +231,69 @@ div.component-post-menu div button {
   font-size: 14px;
 }
 
-.component-question-owner-name a {
+/* PostOwnerName */
+
+.component-post-owner-name a {
   color: rgb(26, 13, 171);
   font-size: 14px;
 }
 
-.component-answer-create-message p {
-  color: #d1383d;
+/* QuestionCreate */
+
+.component-question-create h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 50px;
 }
 
-.ck {
+form div label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+form div p {
+  font-size: 14px;
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
+
+input,
+textarea {
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 2px;
+  padding: 8px 10px;
+}
+
+textarea {
   height: 150px;
+}
+
+::placeholder {
+  opacity: 0.5;
+  font-size: 14px;
+}
+
+.error-message {
+  color: #d1383d;
+  opacity: 1;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.error {
+  border-color: #d1383d;
+}
+
+form button {
+  color: rgb(26, 13, 171);
+  padding: 5px;
+  background-color: rgb(225, 236, 244);
+  border-radius: 5px;
+}
+
+form button:hover {
+  background-color: rgb(209, 229, 241);
+  cursor: pointer;
 }
 
 @media (max-width: 700px) {
