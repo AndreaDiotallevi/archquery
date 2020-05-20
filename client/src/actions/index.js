@@ -23,13 +23,17 @@ import history from "../history";
 export const fetchPosts = (postTypeId, parentId, tagName) => async (
   dispatch
 ) => {
-  const response = await axios.get(
-    `/api/posts/?postTypeId=${postTypeId}${
-      parentId ? `&parentId=${parentId}` : ""
-    }${tagName ? `&tagName=${tagName}` : ""}`
-  );
+  try {
+    const response = await axios.get(
+      `/api/posts/?postTypeId=${postTypeId}${
+        parentId ? `&parentId=${parentId}` : ""
+      }${tagName ? `&tagName=${tagName}` : ""}`
+    );
 
-  dispatch({ type: POSTS_FETCHED, payload: response.data });
+    dispatch({ type: POSTS_FETCHED, payload: response.data });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const clearPosts = () => {
@@ -39,9 +43,13 @@ export const clearPosts = () => {
 };
 
 export const fetchPost = (id) => async (dispatch) => {
-  const response = await axios.get(`/api/posts/${id}`);
+  try {
+    const response = await axios.get(`/api/posts/${id}`);
 
-  dispatch({ type: POST_FETCHED, payload: response.data });
+    dispatch({ type: POST_FETCHED, payload: response.data });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const createPost = (formValues) => async (dispatch) => {
@@ -59,38 +67,58 @@ export const createPost = (formValues) => async (dispatch) => {
 };
 
 export const createPostAndTags = (formValues) => async (dispatch, getState) => {
-  await dispatch(createPost(formValues));
-  await dispatch(createTags(formValues.tags));
-  const posts = getState().posts;
-  const postId = Object.keys(posts)[Object.keys(posts).length - 1];
-  dispatch(createPostsTags(postId, formValues.tags));
+  try {
+    await dispatch(createPost(formValues));
+    await dispatch(createTags(formValues.tags));
+    const posts = getState().posts;
+    const postId = Object.keys(posts)[Object.keys(posts).length - 1];
+    dispatch(createPostsTags(postId, formValues.tags));
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const editPostAndTags = (postId, formValues) => async (dispatch) => {
-  await dispatch(editPost(postId, formValues));
-  await dispatch(createTags(formValues.tags));
-  await dispatch(deletePostsTags(postId));
-  dispatch(createPostsTags(postId, formValues.tags));
+  try {
+    await dispatch(editPost(postId, formValues));
+    await dispatch(createTags(formValues.tags));
+    await dispatch(deletePostsTags(postId));
+    dispatch(createPostsTags(postId, formValues.tags));
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const createPostsTags = (postId, tagNames) => async (
   dispatch,
   getState
 ) => {
-  await axios.post("/api/postsTags", {
-    postId,
-    tagIds: tagNames.map((tagName) => getState().tags[tagName].id),
-  });
+  try {
+    await axios.post("/api/postsTags", {
+      postId,
+      tagIds: tagNames.map((tagName) => getState().tags[tagName].id),
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const deletePostsTags = (postId) => async (dispatch) => {
-  await axios.delete(`/api/postsTags/${postId}`);
+  try {
+    await axios.delete(`/api/postsTags/${postId}`);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const fetchUser = (id) => async (dispatch) => {
-  const response = await axios.get(`/api/users/${id}`);
+  try {
+    const response = await axios.get(`/api/users/${id}`);
 
-  dispatch({ type: USER_FETCHED, payload: response.data });
+    dispatch({ type: USER_FETCHED, payload: response.data });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const createTag = (name) => async (dispatch) => {
@@ -116,9 +144,13 @@ export const createTags = (tagNames) => async (dispatch, getState) => {
 };
 
 export const fetchTag = (tagName) => async (dispatch) => {
-  const response = await axios.get(`/api/tags/${tagName}`);
+  try {
+    const response = await axios.get(`/api/tags/${tagName}`);
 
-  dispatch({ type: TAG_FETCHED, payload: response.data });
+    dispatch({ type: TAG_FETCHED, payload: response.data });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const fetchTags = () => async (dispatch) => {
@@ -135,26 +167,38 @@ export const fetchPostsAndUsers = (postTypeId, parentId, tagName) => async (
   dispatch,
   getState
 ) => {
-  await dispatch(fetchPosts(postTypeId, parentId, tagName));
-  _.chain(getState().posts)
-    .map("owner_user_id")
-    .uniq()
-    .forEach((id) => dispatch(fetchUser(id)))
-    .value();
+  try {
+    await dispatch(fetchPosts(postTypeId, parentId, tagName));
+    _.chain(getState().posts)
+      .map("owner_user_id")
+      .uniq()
+      .forEach((id) => dispatch(fetchUser(id)))
+      .value();
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const editPost = (postId, formValues) => async (dispatch) => {
-  const response = await axios.put(`/api/posts/${postId}`, formValues);
+  try {
+    const response = await axios.put(`/api/posts/${postId}`, formValues);
 
-  dispatch({ type: POST_EDITED, payload: response.data });
-  history.goBack();
+    dispatch({ type: POST_EDITED, payload: response.data });
+    history.goBack();
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const deletePost = (postId) => async (dispatch) => {
-  await axios.delete(`/api/posts/${postId}`);
+  try {
+    await axios.delete(`/api/posts/${postId}`);
 
-  dispatch({ type: POST_DELETED, payload: postId });
-  history.push("/");
+    dispatch({ type: POST_DELETED, payload: postId });
+    history.push("/");
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const signUp = (formValues) => async (dispatch) => {
@@ -181,16 +225,24 @@ export const logIn = (formValues) => async (dispatch) => {
 };
 
 export const logOut = (formValues) => async (dispatch) => {
-  await axios.post("/api/auth/logout", formValues);
+  try {
+    await axios.post("/api/auth/logout", formValues);
 
-  dispatch({ type: LOG_OUT });
-  history.push("/");
+    dispatch({ type: LOG_OUT });
+    history.push("/");
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const isAlreadyLoggedIn = () => async (dispatch) => {
-  const response = await axios.get("/api/auth/isAlreadyLoggedIn");
+  try {
+    const response = await axios.get("/api/auth/isAlreadyLoggedIn");
 
-  if (response.data) {
-    dispatch({ type: LOG_IN, payload: response.data });
+    if (response.data) {
+      dispatch({ type: LOG_IN, payload: response.data });
+    }
+  } catch (err) {
+    console.log(err);
   }
 };
