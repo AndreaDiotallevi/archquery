@@ -190,12 +190,14 @@ export const editPost = (postId, formValues) => async (dispatch) => {
   }
 };
 
-export const deletePost = (postId) => async (dispatch) => {
+export const deletePost = (postId, postTypeId) => async (dispatch) => {
   try {
     await axios.delete(`/api/posts/${postId}`);
 
     dispatch({ type: POST_DELETED, payload: postId });
-    history.push("/");
+    if (postTypeId === 1) {
+      history.push("/");
+    }
   } catch (err) {
     console.log(err);
   }
