@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, reduxForm, reset } from "redux-form";
-import CKEditor from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+// import CKEditor from "@ckeditor/ckeditor5-react";
+// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 class PostForm extends React.Component {
   renderError({ error, touched }) {
@@ -10,31 +10,51 @@ class PostForm extends React.Component {
     }
   }
 
-  renderInput = ({ input, label, meta }) => {
+  renderInput = ({ input, label, meta, placeholder }) => {
+    const className = `${meta.error && meta.touched ? "error" : ""}`;
     return (
       <div>
-        <label>{label}</label>
-        <input {...input} autoComplete="off" />
+        <label>{label[0]}</label>
+        <p>{label[1]}</p>
+        <input
+          {...input}
+          autoComplete="off"
+          placeholder={placeholder}
+          className={className}
+        />
         <p className="error-message">{this.renderError(meta)}</p>
       </div>
     );
   };
 
-  renderEditor = ({ input, label, meta }) => {
+  renderTextarea = ({ input, label, meta }) => {
+    const className = `${meta.error && meta.touched ? "error" : ""}`;
     return (
-      <React.Fragment>
-        <label>{label}</label>
-        <CKEditor
-          editor={ClassicEditor}
-          data={input.value}
-          onChange={(event, editor) => {
-            return input.onChange(editor.getData());
-          }}
-        />
+      <div>
+        <label>{label[0]}</label>
+        <p>{label[1]}</p>
+        <textarea {...input} autoComplete="off" className={className} />
         <p className="error-message">{this.renderError(meta)}</p>
-      </React.Fragment>
+      </div>
     );
   };
+
+  // renderEditor = ({ input, label, meta }) => {
+  //   return (
+  //     <React.Fragment>
+  //       <label>{label[0]}</label>
+  //       <p>{label[1]}</p>
+  //       <CKEditor
+  //         editor={ClassicEditor}
+  //         data={input.value}
+  //         onChange={(event, editor) => {
+  //           return input.onChange(editor.getData());
+  //         }}
+  //       />
+  //       <p className="error-message">{this.renderError(meta)}</p>
+  //     </React.Fragment>
+  //   );
+  // };
 
   onSubmit = (formValues, dispatch) => {
     this.props.onSubmit(formValues);
@@ -45,9 +65,33 @@ class PostForm extends React.Component {
     if (this.props.postTypeId === 1) {
       return (
         <React.Fragment>
-          <Field name="title" component={this.renderInput} label="Title" />
-          <Field name="body" component={this.renderEditor} label="Body" />
-          <Field name="tags" component={this.renderInput} label="Tags" />
+          <Field
+            name="title"
+            component={this.renderInput}
+            label={[
+              "Title",
+              "Be specific and imagine you’re asking a question to another person",
+            ]}
+            placeholder="e.g. How do you build a flemish bond brick wall?"
+          />
+          <Field
+            name="body"
+            // component={this.renderEditor}
+            component={this.renderTextarea}
+            label={[
+              "Body",
+              "Include all the information someone would need to answer your question",
+            ]}
+          />
+          <Field
+            name="tags"
+            component={this.renderInput}
+            label={[
+              "Tags",
+              "Add up to 5 tags to describe what your question is about",
+            ]}
+            placeholder="e.g. brick-patterns masonry"
+          />
           <button>Post Your Question</button>
         </React.Fragment>
       );
@@ -56,8 +100,9 @@ class PostForm extends React.Component {
         <React.Fragment>
           <Field
             name="body"
-            component={this.renderEditor}
-            label="Your Answer"
+            // component={this.renderEditor}
+            component={this.renderTextarea}
+            label={["Your Answer"]}
           />
           <button>Post Your Answer</button>
         </React.Fragment>
@@ -85,12 +130,15 @@ const validate = (formValues) => {
     errors.body = "You must enter a body";
   }
 
-  if (
-    formValues.tags &&
-    formValues.tags.split(" ").length !==
-      [...new Set(formValues.tags.split(" "))].length
-  ) {
-    errors.tags = "You cannot enter the same tag more than once";
+  const { tags } = formValues;
+
+  if (tags) {
+    if (tags.split(" ").length !== [...new Set(tags.split(" "))].length) {
+      errors.tags = "You cannot enter the same tag more than once";
+    }
+    if (tags.trim().split(" ").length > 5) {
+      errors.tags = "You cannot add more than 5 tags";
+    }
   }
 
   return errors;
