@@ -15,7 +15,7 @@ class QuestionCreate extends React.Component {
   onSubmit = (formValues) => {
     this.props.createPostAndTags({
       ...formValues,
-      tags: formValues.tags ? formValues.tags.split(" ") : [],
+      tags: formValues.tags ? formValues.tags.trim().split(" ") : [],
       postTypeId: 1,
       ownerUserId: this.props.userId,
     });
