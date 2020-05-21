@@ -137,15 +137,40 @@ div {
 /* QuestionSummary */
 
 .component-question-summary {
+  flex-direction: row;
   margin-bottom: 30px;
   border-bottom: 1px solid rgb(225, 236, 244);
 }
 
-.component-question-summary div {
+.summary-right {
+  width: 100%;
+}
+
+.summary-right div {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
+}
+
+/* PostStats */
+
+.component-post-stats {
+  margin-right: 30px;
+}
+
+/* PostAnswers */
+
+.component-post-answers {
+  align-items: center;
+}
+.component-post-answers :nth-child(1) {
+  font-size: 24px;
+}
+
+.component-post-answers :nth-child(2) {
+  font-size: 12px;
+  opacity: 0.5;
 }
 
 /* Question Excerpt */

@@ -12,6 +12,7 @@ class PostEdit extends React.Component {
     this.props.editPostAndTags(this.props.match.params.id, {
       ...formValues,
       tags: formValues.tags ? formValues.tags.split(" ") : [],
+      answerCount: this.props.post.answer_count,
     });
   };
 

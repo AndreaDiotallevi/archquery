@@ -66,13 +66,35 @@ export const createPost = (formValues) => async (dispatch) => {
   }
 };
 
+export const incrementAnswerCount = (parentId) => async (
+  dispatch,
+  getState
+) => {
+  const post = getState().posts[parentId];
+  dispatch(
+    editPost(parentId, {
+      ...post,
+      answerCount: post.answer_count + 1,
+    })
+  );
+};
+
+export const createPostAndAddAnswerCount = (formValues) => async (dispatch) => {
+  try {
+    await dispatch(createPost(formValues));
+    dispatch(incrementAnswerCount(formValues.parentId));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const createPostAndTags = (formValues) => async (dispatch, getState) => {
   try {
     await dispatch(createPost(formValues));
     await dispatch(createTags(formValues.tags));
     const posts = getState().posts;
     const postId = Object.keys(posts)[Object.keys(posts).length - 1];
-    dispatch(createPostsTags(postId, formValues.tags));
+    await dispatch(createPostsTags(postId, formValues.tags));
   } catch (err) {
     console.log(err);
   }
@@ -83,7 +105,8 @@ export const editPostAndTags = (postId, formValues) => async (dispatch) => {
     await dispatch(editPost(postId, formValues));
     await dispatch(createTags(formValues.tags));
     await dispatch(deletePostsTags(postId));
-    dispatch(createPostsTags(postId, formValues.tags));
+    await dispatch(createPostsTags(postId, formValues.tags));
+    history.goBack();
   } catch (err) {
     console.log(err);
   }
@@ -184,7 +207,6 @@ export const editPost = (postId, formValues) => async (dispatch) => {
     const response = await axios.put(`/api/posts/${postId}`, formValues);
 
     dispatch({ type: POST_EDITED, payload: response.data });
-    history.goBack();
   } catch (err) {
     console.log(err);
   }

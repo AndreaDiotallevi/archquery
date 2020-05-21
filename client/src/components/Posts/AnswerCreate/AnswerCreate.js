@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createPost } from "../../../actions";
+import { createPostAndAddAnswerCount } from "../../../actions";
 import PostForm from "../PostForm/PostForm";
 
 class AnswerCreate extends React.Component {
   onSubmit = (formValues) => {
-    this.props.createPost({
+    this.props.createPostAndAddAnswerCount({
       ...formValues,
       postTypeId: 2,
       ownerUserId: this.props.userId,
@@ -40,4 +40,6 @@ const mapStateToProps = (state) => {
   return { userId: state.auth.userId };
 };
 
-export default connect(mapStateToProps, { createPost })(AnswerCreate);
+export default connect(mapStateToProps, { createPostAndAddAnswerCount })(
+  AnswerCreate
+);

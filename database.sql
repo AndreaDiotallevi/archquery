@@ -9,6 +9,7 @@ CREATE TABLE posts(
   owner_user_id INTEGER REFERENCES users(id),
   post_type_id INTEGER REFERENCES post_types(id)
   parent_id INTEGER REFERENCES posts(id) ON UPDATE CASCADE ON DELETE CASCADE
+  answer_count INTEGER DEFAULT 0,
 );
 
 CREATE TABLE users(
