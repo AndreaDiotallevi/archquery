@@ -92,7 +92,7 @@ div {
   text-decoration: none;
   font-size: 24px;
   font-weight: bold;
-  color: rgb(26, 13, 171);
+  /* color: rgb(26, 13, 171); */
   margin-bottom: 15px;
 }
 
@@ -137,7 +137,8 @@ div {
 /* QuestionSummary */
 
 .component-question-summary {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgb(225, 236, 244);
 }
 
 .component-question-summary div {
@@ -163,7 +164,7 @@ div {
 /* PostLayout */
 
 .component-post-layout {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   border-bottom: 1px solid rgb(225, 236, 244);
 }
 
@@ -301,6 +302,12 @@ form button:hover {
 .component-answer-list h1 {
   font-size: 32px;
   margin-bottom: 20px;
+}
+
+/* AnswerCreate */
+
+.component-answer-create {
+  margin-bottom: 50px;
 }
 
 @media (max-width: 700px) {
