@@ -66,79 +66,44 @@ export const createPost = (formValues) => async (dispatch) => {
   }
 };
 
-export const incrementAnswerCount = (parentId) => async (
-  dispatch,
-  getState
-) => {
-  const post = getState().posts[parentId];
-  dispatch(
-    editPost(parentId, {
-      ...post,
-      answerCount: post.answer_count + 1,
-    })
-  );
-};
-
-export const createPostAndAddAnswerCount = (formValues) => async (dispatch) => {
+export const editPost = (postId, formValues) => async (dispatch) => {
   try {
-    await dispatch(createPost(formValues));
-    dispatch(incrementAnswerCount(formValues.parentId));
+    const response = await axios.put(`/api/posts/${postId}`, formValues);
+
+    dispatch({ type: POST_EDITED, payload: response.data });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const createPostAndTags = (formValues) => async (dispatch, getState) => {
+export const deletePost = (postId, postTypeId) => async (dispatch) => {
   try {
-    await dispatch(createPost(formValues));
-    await dispatch(createTags(formValues.tags));
-    const posts = getState().posts;
-    const postId = Object.keys(posts)[Object.keys(posts).length - 1];
-    await dispatch(createPostsTags(postId, formValues.tags));
+    await axios.delete(`/api/posts/${postId}`);
+
+    dispatch({ type: POST_DELETED, payload: postId });
+    if (postTypeId === 1) {
+      history.push("/");
+    }
   } catch (err) {
     console.log(err);
   }
 };
 
-export const editPostAndTags = (postId, formValues) => async (dispatch) => {
+export const fetchTags = () => async (dispatch) => {
   try {
-    await dispatch(editPost(postId, formValues));
-    await dispatch(createTags(formValues.tags));
-    await dispatch(deletePostsTags(postId));
-    await dispatch(createPostsTags(postId, formValues.tags));
-    history.goBack();
+    const response = await axios.get("/api/tags");
+
+    dispatch({ type: TAGS_FETCHED, payload: response.data });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const createPostsTags = (postId, tagNames) => async (
-  dispatch,
-  getState
-) => {
+export const fetchTag = (tagName) => async (dispatch) => {
   try {
-    await axios.post("/api/postsTags", {
-      postId,
-      tagIds: tagNames.map((tagName) => getState().tags[tagName].id),
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
+    const response = await axios.get(`/api/tags/${tagName}`);
 
-export const deletePostsTags = (postId) => async (dispatch) => {
-  try {
-    await axios.delete(`/api/postsTags/${postId}`);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-export const fetchUser = (id) => async (dispatch) => {
-  try {
-    const response = await axios.get(`/api/users/${id}`);
-
-    dispatch({ type: USER_FETCHED, payload: response.data });
+    dispatch({ type: TAG_FETCHED, payload: response.data });
   } catch (err) {
     console.log(err);
   }
@@ -166,21 +131,11 @@ export const createTags = (tagNames) => async (dispatch, getState) => {
   }
 };
 
-export const fetchTag = (tagName) => async (dispatch) => {
+export const fetchUser = (id) => async (dispatch) => {
   try {
-    const response = await axios.get(`/api/tags/${tagName}`);
+    const response = await axios.get(`/api/users/${id}`);
 
-    dispatch({ type: TAG_FETCHED, payload: response.data });
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-export const fetchTags = () => async (dispatch) => {
-  try {
-    const response = await axios.get("/api/tags");
-
-    dispatch({ type: TAGS_FETCHED, payload: response.data });
+    dispatch({ type: USER_FETCHED, payload: response.data });
   } catch (err) {
     console.log(err);
   }
@@ -202,27 +157,98 @@ export const fetchPostsAndUsers = (postTypeId, parentId, tagName) => async (
   }
 };
 
-export const editPost = (postId, formValues) => async (dispatch) => {
+export const createPostAndTags = (formValues) => async (dispatch, getState) => {
   try {
-    const response = await axios.put(`/api/posts/${postId}`, formValues);
-
-    dispatch({ type: POST_EDITED, payload: response.data });
+    await dispatch(createPost(formValues));
+    await dispatch(createTags(formValues.tags));
+    const posts = getState().posts;
+    const postId = Object.keys(posts)[Object.keys(posts).length - 1];
+    await dispatch(createPostsTags(postId, formValues.tags));
   } catch (err) {
     console.log(err);
   }
 };
 
-export const deletePost = (postId, postTypeId) => async (dispatch) => {
+export const createPostsTags = (postId, tagNames) => async (
+  dispatch,
+  getState
+) => {
   try {
-    await axios.delete(`/api/posts/${postId}`);
-
-    dispatch({ type: POST_DELETED, payload: postId });
-    if (postTypeId === 1) {
-      history.push("/");
-    }
+    await axios.post("/api/postsTags", {
+      postId,
+      tagIds: tagNames.map((tagName) => getState().tags[tagName].id),
+    });
   } catch (err) {
     console.log(err);
   }
+};
+
+export const editPostAndTags = (postId, formValues) => async (dispatch) => {
+  try {
+    await dispatch(editPost(postId, formValues));
+    await dispatch(createTags(formValues.tags));
+    await dispatch(deletePostsTags(postId));
+    await dispatch(createPostsTags(postId, formValues.tags));
+    history.goBack();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const deletePostsTags = (postId) => async (dispatch) => {
+  try {
+    await axios.delete(`/api/postsTags/${postId}`);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const createPostAndAddAnswerCount = (formValues) => async (dispatch) => {
+  try {
+    await dispatch(createPost(formValues));
+    dispatch(incrementAnswerCount(formValues.parentId));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const incrementAnswerCount = (parentId) => async (
+  dispatch,
+  getState
+) => {
+  const post = getState().posts[parentId];
+  dispatch(
+    editPost(parentId, {
+      ...post,
+      answerCount: post.answer_count + 1,
+    })
+  );
+};
+
+export const deletePostAndDecrementAnswerCount = (
+  postId,
+  postTypeId,
+  parentId
+) => async (dispatch) => {
+  try {
+    await dispatch(deletePost(postId, postTypeId));
+    dispatch(decrementAnswerCount(parentId));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const decrementAnswerCount = (parentId) => async (
+  dispatch,
+  getState
+) => {
+  const post = getState().posts[parentId];
+  dispatch(
+    editPost(parentId, {
+      ...post,
+      answerCount: post.answer_count - 1,
+    })
+  );
 };
 
 export const signUp = (formValues) => async (dispatch) => {

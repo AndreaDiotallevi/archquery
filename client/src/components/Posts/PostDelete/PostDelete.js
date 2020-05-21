@@ -1,10 +1,24 @@
 import React from "react";
-import { deletePost } from "../../../actions";
+import {
+  deletePost,
+  deletePostAndDecrementAnswerCount,
+} from "../../../actions";
 import { connect } from "react-redux";
 
 const PostDelete = (props) => {
+  const { post } = props;
+
   const handleClick = () => {
-    props.deletePost(props.postId, props.postTypeId);
+    if (!post.parent_id) {
+      props.deletePost(post.id, post.post_type_id);
+    } else {
+      props.deletePostAndDecrementAnswerCount(
+        post.id,
+        post.post_type_id,
+        post.parent_id
+      );
+    }
+    props.deletePost(post.id, post.parent_id);
   };
 
   return (
@@ -14,4 +28,6 @@ const PostDelete = (props) => {
   );
 };
 
-export default connect(null, { deletePost })(PostDelete);
+export default connect(null, { deletePost, deletePostAndDecrementAnswerCount })(
+  PostDelete
+);
