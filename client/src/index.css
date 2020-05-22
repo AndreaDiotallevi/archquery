@@ -226,6 +226,10 @@ div {
   border-bottom: 1px solid rgb(225, 236, 244);
 }
 
+.post-layout-right {
+  width: 100%;
+}
+
 /* PostVote */
 
 .component-post-vote {
@@ -263,6 +267,7 @@ div.component-post-menu {
   flex-direction: row;
   justify-content: flex-start;
   margin-bottom: 15px;
+  margin-right: 20px;
 }
 
 div.component-post-menu a {

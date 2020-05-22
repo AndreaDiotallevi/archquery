@@ -7,7 +7,7 @@ const PostLayout = ({ post }) => {
   return (
     <div className="component-post-layout">
       <PostVote post={post} />
-      <div>
+      <div className="post-layout-right">
         <PostText post={post} />
         <PostInfo post={post} />
       </div>
