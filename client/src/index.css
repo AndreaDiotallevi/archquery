@@ -19,7 +19,7 @@
   /* font-family: rz-regular, Arial, sans-serif; */
   /* font-family: maison-neue-mono; */
   font-family: Helvetica;
-  font-family: "Gilda Display", serif;
+  /* font-family: "Gilda Display", serif; */
   font-weight: 300;
   font-size: 16px;
   margin: 0;
@@ -42,7 +42,8 @@ p,
 h1,
 h2,
 h3,
-h4 {
+h4,
+button {
   color: rgb(51, 51, 51);
 }
 
@@ -90,7 +91,7 @@ div {
 
 .component-navbar a,
 .component-navbar button {
-  color: rgb(26, 13, 171);
+  color: rgb(57, 115, 180);
   font-size: 16px;
   margin-left: 32px;
   padding: 5px;
@@ -114,8 +115,9 @@ div {
 .component-question-title a {
   text-decoration: none;
   font-size: 20px;
-  font-weight: bold;
+  /* font-weight: bold; */
   margin-bottom: 15px;
+  color: rgb(57, 115, 180);
 }
 
 /* QuestionListHeader */
@@ -130,7 +132,7 @@ div {
 
 .component-question-list-header h1 {
   font-size: 28px;
-  font-weight: bold;
+  font-weight: 300;
 }
 
 .component-question-list-header {
@@ -145,7 +147,7 @@ div {
 /* ComponentQuestionAsk */
 
 .component-question-ask-button a {
-  color: rgb(26, 13, 171);
+  color: rgb(57, 115, 180);
   padding: 5px;
   background-color: rgb(225, 236, 244);
   border-radius: 5px;
@@ -265,7 +267,7 @@ div.component-post-menu div button {
   padding: 5px;
   background-color: rgb(225, 236, 244);
   border-radius: 5px;
-  color: rgb(26, 13, 171);
+  color: rgb(57, 115, 180);
   font-size: 13px;
 }
 
@@ -291,7 +293,7 @@ div.component-post-menu div button {
 /* UsernameLink */
 
 .component-username-link a {
-  color: rgb(26, 13, 171);
+  color: rgb(57, 115, 180);
   font-size: 13px;
 }
 
@@ -299,12 +301,12 @@ div.component-post-menu div button {
 
 .component-question-create h1 {
   font-size: 28px;
-  font-weight: bold;
+  font-weight: 300;
   margin-bottom: 50px;
 }
 
 form div label {
-  font-weight: bold;
+  font-weight: 300;
   margin-bottom: 5px;
 }
 
@@ -342,7 +344,7 @@ textarea {
 }
 
 form button {
-  color: rgb(26, 13, 171);
+  color: rgb(57, 115, 180);
   padding: 5px;
   background-color: rgb(225, 236, 244);
   border-radius: 5px;
