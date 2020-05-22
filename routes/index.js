@@ -4,6 +4,7 @@ const tags = require("./api/tags");
 const tagCollection = require("./api/tagCollection");
 const postsTags = require("./api/postsTags");
 const auth = require("./api/auth");
+const votes = require("./api/votes");
 
 module.exports = (app) => {
   app.use("/api/posts", posts);
@@ -12,4 +13,5 @@ module.exports = (app) => {
   app.use("/api/tagCollection", tagCollection);
   app.use("/api/postsTags", postsTags);
   app.use("/api/auth", auth);
+  app.use("/api/votes", votes);
 };
