@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../../db");
-const { findTagByName } = require("../../models/tag");
+const { createTag, findTagByName } = require("../../models/tag");
 
 module.exports = router;
 
@@ -36,12 +36,8 @@ router.get("/:name", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const { name } = req.body;
-    const {
-      rows,
-    } = await db.query("INSERT INTO tags (name) VALUES ($1) RETURNING *", [
-      name,
-    ]);
-    res.status(200).json(rows[0]);
+    const tag = await createTag(name);
+    res.status(200).json(tag);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
