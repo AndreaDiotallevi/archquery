@@ -36,8 +36,8 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { rows } = await db.query("SELECT * FROM posts WHERE id = $1", [id]);
-    res.status(200).json(rows[0]);
+    const post = await findPostById(id);
+    res.status(200).json(post);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
