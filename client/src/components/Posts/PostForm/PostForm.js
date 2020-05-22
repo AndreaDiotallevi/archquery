@@ -137,10 +137,11 @@ const validate = (formValues) => {
   const { tags } = formValues;
 
   if (tags) {
-    if (tags.split(" ").length !== [...new Set(tags.split(" "))].length) {
+    const tagList = tags.trim().split(" ");
+    if (tagList.length !== [...new Set(tagList)].length) {
       errors.tags = "You cannot enter the same tag more than once";
     }
-    if (tags.trim().split(" ").length > 5) {
+    if (tagList.length > 5) {
       errors.tags = "You cannot add more than 5 tags";
     }
   }
