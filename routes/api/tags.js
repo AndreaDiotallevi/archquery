@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../../db");
-const { createTag, findTagByName } = require("../../models/tag");
+const { getTags, createTag, findTagByName } = require("../../models/tag");
 
 module.exports = router;
 
@@ -10,8 +9,8 @@ module.exports = router;
 // @access  Public
 router.get("/", async (req, res) => {
   try {
-    const { rows } = await db.query("SELECT * FROM tags;");
-    res.status(200).json(rows);
+    const tags = await getTags();
+    res.status(200).json(tags);
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }

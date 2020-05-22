@@ -1,10 +1,8 @@
 const db = require("../db");
 
-const createTag = async (name) => {
-  const {
-    rows,
-  } = await db.query("INSERT INTO tags (name) VALUES ($1) RETURNING *", [name]);
-  return rows[0];
+const getTags = async () => {
+  const { rows } = await db.query("SELECT * FROM tags;");
+  return rows;
 };
 
 const findTagByName = async (name) => {
@@ -12,7 +10,15 @@ const findTagByName = async (name) => {
   return rows[0];
 };
 
+const createTag = async (name) => {
+  const {
+    rows,
+  } = await db.query("INSERT INTO tags (name) VALUES ($1) RETURNING *", [name]);
+  return rows[0];
+};
+
 module.exports = {
-  createTag,
+  getTags,
   findTagByName,
+  createTag,
 };
