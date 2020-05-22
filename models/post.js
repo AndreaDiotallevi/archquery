@@ -1,5 +1,25 @@
 const db = require("../db");
 
+const getPosts = async (postTypeId, parentId) => {
+  const {
+    rows,
+  } = await db.query(
+    "SELECT * FROM posts WHERE ($1::INT IS NULL OR post_type_id = $1) AND ($2::INT IS NULL OR parent_id = $2) ORDER BY id DESC",
+    [postTypeId, parentId]
+  );
+  return rows;
+};
+
+const filterPostsByTag = async (tagName) => {
+  const {
+    rows,
+  } = await db.query(
+    "SELECT p.* FROM tags t INNER JOIN posts_tags pt ON (t.id = pt.tag_id) INNER JOIN posts p ON (p.id = pt.post_id) WHERE name = $1",
+    [tagName]
+  );
+  return rows;
+};
+
 const findPostById = async (id) => {
   const { rows } = await db.query("SELECT * FROM posts WHERE id = $1", [id]);
   return rows[0];
@@ -41,4 +61,7 @@ module.exports = {
   createPost,
   editPost,
   deletePost,
+  getPosts,
+  filterPostsByTag,
 };
+``;

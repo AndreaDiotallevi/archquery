@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../../db");
 const {
   findPostById,
   createPost,
   editPost,
   deletePost,
+  getPosts,
+  filterPostsByTag,
 } = require("../../models/post");
 
 module.exports = router;
@@ -16,20 +17,11 @@ module.exports = router;
 router.get("/", async (req, res) => {
   try {
     const { postTypeId, parentId, tagName } = req.query;
-    let databaseResponse;
-    if (!tagName) {
-      databaseResponse = await db.query(
-        "SELECT * FROM posts WHERE ($1::INT IS NULL OR post_type_id = $1) AND ($2::INT IS NULL OR parent_id = $2) ORDER BY id DESC",
-        [postTypeId, parentId]
-      );
-    } else {
-      databaseResponse = await db.query(
-        "SELECT p.* FROM tags t INNER JOIN posts_tags pt ON (t.id = pt.tag_id) INNER JOIN posts p ON (p.id = pt.post_id) WHERE name = $1",
-        [tagName]
-      );
-    }
-    if (!databaseResponse.rows) throw Error("No posts found");
-    res.status(200).json(databaseResponse.rows);
+    const posts = tagName
+      ? await filterPostsByTag(tagName)
+      : await getPosts(postTypeId, parentId);
+    if (!posts) throw Error("No posts found");
+    res.status(200).json(posts);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
