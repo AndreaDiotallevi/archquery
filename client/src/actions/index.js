@@ -81,6 +81,7 @@ export const deletePost = (postId, postTypeId) => async (dispatch) => {
     await axios.delete(`/api/posts/${postId}`);
 
     dispatch({ type: POST_DELETED, payload: postId });
+
     if (postTypeId === 1) {
       history.push("/");
     }
