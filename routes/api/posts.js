@@ -67,13 +67,12 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    // const post = await findUserById(id);
-    const { title, body, tags, answerCount } = req.body;
+    const { title, body, tags, answerCount, score } = req.body;
     const {
       rows,
     } = await db.query(
-      "UPDATE posts SET title = $1, body = $2, tags = $3, answer_count = $4 WHERE id = $5 RETURNING *",
-      [title, body, tags, answerCount, id]
+      "UPDATE posts SET title = $1, body = $2, tags = $3, answer_count = $4, score = $5 WHERE id = $6 RETURNING *",
+      [title, body, tags, answerCount, score, id]
     );
     res.status(200).json(rows[0]);
   } catch (err) {

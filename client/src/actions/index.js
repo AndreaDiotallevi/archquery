@@ -296,3 +296,19 @@ export const isAlreadyLoggedIn = () => async (dispatch) => {
     console.log(err);
   }
 };
+
+export const upvotePost = (post) => async (dispatch) => {
+  try {
+    dispatch(editPost(post.id, { ...post, score: post.score + 1 }));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const downvotePost = (post) => async (dispatch) => {
+  try {
+    dispatch(editPost(post.id, { ...post, score: post.score - 1 }));
+  } catch (err) {
+    console.log(err);
+  }
+};
