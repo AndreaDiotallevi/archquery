@@ -32,8 +32,13 @@ const editPost = async (id, title, body, tags, answerCount, score) => {
   return rows[0];
 };
 
+const deletePost = async (id) => {
+  await db.query("DELETE FROM posts WHERE id = $1", [id]);
+};
+
 module.exports = {
   findPostById,
   createPost,
   editPost,
+  deletePost,
 };

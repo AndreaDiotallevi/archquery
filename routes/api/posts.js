@@ -1,7 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../../db");
-const { findPostById, createPost, editPost } = require("../../models/post");
+const {
+  findPostById,
+  createPost,
+  editPost,
+  deletePost,
+} = require("../../models/post");
 
 module.exports = router;
 
@@ -83,7 +88,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    await db.query("DELETE FROM posts WHERE id = $1", [id]);
+    await deletePost(id);
     res.status(200).json({ success: true });
   } catch (err) {
     res.status(400).json({ message: err.message, success: false });
