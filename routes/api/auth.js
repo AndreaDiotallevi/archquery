@@ -68,16 +68,3 @@ router.get("/isAlreadyLoggedIn", (req, res) => {
     res.status(200).json(false);
   }
 });
-
-// router.post("/isUsernameAvailable", async (req, res) => {
-//   try {
-//     const user = await findUserByUsername(req.body.username);
-//     if (!user) {
-//       res.status(200).json(true);
-//     } else {
-//       res.status(200).json(false);
-//     }
-//   } catch (err) {
-//     res.status(400).json({ message: err.message });
-//   }
-// });
