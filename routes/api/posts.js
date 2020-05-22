@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../../db");
-const { findPostById } = require("../../models/post");
+const { findPostById, createPost } = require("../../models/post");
 
 module.exports = router;
 
@@ -49,13 +49,15 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const { title, body, tags, ownerUserId, postTypeId, parentId } = req.body;
-    const {
-      rows,
-    } = await db.query(
-      "INSERT INTO posts (title, body, tags, owner_user_id, post_type_id, parent_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
-      [title, body, tags, ownerUserId, postTypeId, parentId]
+    const post = await createPost(
+      title,
+      body,
+      tags,
+      ownerUserId,
+      postTypeId,
+      parentId
     );
-    res.status(200).json(rows[0]);
+    res.status(200).json(post);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
