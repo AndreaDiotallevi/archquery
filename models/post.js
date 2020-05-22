@@ -22,7 +22,18 @@ const createPost = async (
   return rows[0];
 };
 
+const editPost = async (id, title, body, tags, answerCount, score) => {
+  const {
+    rows,
+  } = await db.query(
+    "UPDATE posts SET title = $1, body = $2, tags = $3, answer_count = $4, score = $5 WHERE id = $6 RETURNING *",
+    [title, body, tags, answerCount, score, id]
+  );
+  return rows[0];
+};
+
 module.exports = {
   findPostById,
   createPost,
+  editPost,
 };
