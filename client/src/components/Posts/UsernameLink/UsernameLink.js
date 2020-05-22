@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-class PostOwnerName extends React.Component {
+class UsernameLink extends React.Component {
   sanitizeUrl = () => {
     return this.props.user.username
       .split(/[^0-9a-z]/gi)
@@ -20,7 +20,7 @@ class PostOwnerName extends React.Component {
     }
 
     return (
-      <div className="component-post-owner-name">
+      <div className="component-username-link">
         <Link to={`/users/${user.id}/${this.sanitizeUrl()}`}>
           {user.username}
         </Link>
@@ -31,8 +31,8 @@ class PostOwnerName extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    user: state.users[ownProps.ownerUserId],
+    user: state.users[ownProps.userId],
   };
 };
 
-export default connect(mapStateToProps)(PostOwnerName);
+export default connect(mapStateToProps)(UsernameLink);

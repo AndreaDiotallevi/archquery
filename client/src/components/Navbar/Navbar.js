@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import LogOutButton from "../Auth/LogOutButton/LogOutButton";
+import UsernameLink from "../Posts/UsernameLink/UsernameLink";
 import { fetchUser } from "../../actions";
 
 class NavBar extends React.Component {
@@ -23,7 +24,10 @@ class NavBar extends React.Component {
     } else {
       return (
         <React.Fragment>
-          <p>Logged in as {this.props.user.username}</p>
+          <span>
+            <p>Logged in as</p>
+            <UsernameLink userId={this.props.userId} />
+          </span>
           <LogOutButton />
         </React.Fragment>
       );
@@ -50,7 +54,7 @@ class NavBar extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     isSignedIn: state.auth.isSignedIn,
     userId: state.auth.userId,

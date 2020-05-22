@@ -1,6 +1,6 @@
 import React from "react";
 import PostRelativeTime from "../PostRelativeTime/PostRelativeTime";
-import PostOwnerName from "../PostOwnerName/PostOwnerName";
+import UsernameLink from "../UsernameLink/UsernameLink";
 
 const PostSignature = ({ post }) => {
   return (
@@ -9,7 +9,7 @@ const PostSignature = ({ post }) => {
         creationDate={post.creation_date}
         postTypeId={post.post_type_id}
       />
-      <PostOwnerName ownerUserId={post.owner_user_id} />
+      <UsernameLink userId={post.owner_user_id} />
     </div>
   );
 };
