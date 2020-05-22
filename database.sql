@@ -11,6 +11,7 @@ CREATE TABLE posts(
   parent_id INTEGER REFERENCES posts(id) ON UPDATE CASCADE ON DELETE CASCADE
   answer_count INTEGER DEFAULT 0,
   score INTEGER DEFAULT 0
+  accepted_answer_id INTEGER REFERENCES posts(id)
 );
 
 CREATE TABLE users(
@@ -37,5 +38,19 @@ CREATE TABLE posts_tags(
   tag_id INTEGER REFERENCES tags(id) ON UPDATE CASCADE
 );
 
+CREATE TABLE votes(
+  id SERIAL PRIMARY KEY,
+  post_id INTEGER REFERENCES posts(id),
+  vote_type_id INTEGER REFERENCES vote_types(id),
+  user_id INTEGER REFERENCES users(id),
+  creation_date TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE vote_types(
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(30)
+);
+
 -- ALTER TABLE posts DROP CONSTRAINT posts_parent_id_fkey;
 -- ALTER TABLE posts ADD CONSTRAINT posts_parent_id_fkey foreign key (parent_id) references posts(id) on update cascade on delete cascade;
+-- alter table posts add column accepted_answer_id INTEGER REFERENCES posts(id);
