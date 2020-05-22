@@ -181,6 +181,7 @@ div {
 
 .component-post-stats {
   margin-right: 30px;
+  min-width: 50px;
 }
 
 .component-post-stats div {
@@ -218,6 +219,14 @@ div {
 
 .component-question-show div div div.component-question-title a {
   font-size: 28px;
+}
+
+/* AnswerList */
+
+.component-answer-list h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  margin-top: 15px;
 }
 
 /* PostLayout */
@@ -387,14 +396,6 @@ form button {
 form button:hover {
   background-color: rgb(209, 229, 241);
   cursor: pointer;
-}
-
-/* AnswerList */
-
-.component-answer-list h1 {
-  font-size: 28px;
-  margin-bottom: 30px;
-  margin-top: 15px;
 }
 
 /* AnswerCreate */
