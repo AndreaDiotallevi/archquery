@@ -300,7 +300,13 @@ export const isAlreadyLoggedIn = () => async (dispatch) => {
 
 export const upvotePost = (post) => async (dispatch) => {
   try {
-    dispatch(editPost(post.id, { ...post, score: post.score + 1 }));
+    dispatch(
+      editPost(post.id, {
+        ...post,
+        answerCount: post.answer_count,
+        score: post.score + 1,
+      })
+    );
   } catch (err) {
     console.log(err);
   }
