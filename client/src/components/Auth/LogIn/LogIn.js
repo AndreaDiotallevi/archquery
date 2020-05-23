@@ -3,15 +3,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logIn } from "../../../actions";
 import LogInForm from "../LogInForm/LogInForm";
-import history from "../../../history";
 
 class LogIn extends React.Component {
-  componentDidUpdate = (prevProps) => {
-    if (this.props.userId && prevProps.userId !== this.props.userId) {
-      history.goBack();
-    }
-  };
-
   renderInput = ({ input, label, meta }) => {
     return (
       <div>

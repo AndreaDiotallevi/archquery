@@ -7,10 +7,10 @@ CREATE TABLE posts(
   creation_date TIMESTAMP NOT NULL DEFAULT NOW(),
   tags VARCHAR(50) ARRAY,
   owner_user_id INTEGER REFERENCES users(id),
-  post_type_id INTEGER REFERENCES post_types(id)
-  parent_id INTEGER REFERENCES posts(id) ON UPDATE CASCADE ON DELETE CASCADE
+  post_type_id INTEGER REFERENCES post_types(id),
+  parent_id INTEGER REFERENCES posts(id) ON UPDATE CASCADE ON DELETE CASCADE,
   answer_count INTEGER DEFAULT 0,
-  score INTEGER DEFAULT 0
+  score INTEGER DEFAULT 0,
   accepted_answer_id INTEGER REFERENCES posts(id)
 );
 
