@@ -220,7 +220,6 @@ export const incrementAnswerCount = (parentId) => async (
   const post = getState().posts[parentId];
   dispatch(
     editPost(parentId, {
-      ...post,
       answerCount: post.answer_count + 1,
     })
   );
@@ -246,7 +245,6 @@ export const decrementAnswerCount = (parentId) => async (
   const post = getState().posts[parentId];
   dispatch(
     editPost(parentId, {
-      ...post,
       answerCount: post.answer_count - 1,
     })
   );
@@ -302,8 +300,6 @@ export const upvotePost = (post) => async (dispatch) => {
   try {
     dispatch(
       editPost(post.id, {
-        ...post,
-        answerCount: post.answer_count,
         score: post.score + 1,
       })
     );
@@ -314,7 +310,7 @@ export const upvotePost = (post) => async (dispatch) => {
 
 export const downvotePost = (post) => async (dispatch) => {
   try {
-    dispatch(editPost(post.id, { ...post, score: post.score - 1 }));
+    dispatch(editPost(post.id, { score: post.score - 1 }));
   } catch (err) {
     console.log(err);
   }

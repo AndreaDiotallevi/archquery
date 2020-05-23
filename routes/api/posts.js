@@ -66,9 +66,23 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, body, tags, answerCount, score } = req.body;
-    const post = await editPost(id, title, body, tags, answerCount, score);
-    res.status(200).json(post);
+    const post = await findPostById(id);
+
+    const title = req.body.title || post.title;
+    const body = req.body.body || post.body;
+    const tags = req.body.tags || post.tags;
+    const answerCount = req.body.answerCount || post.answer_count;
+    const score = req.body.score || post.score;
+
+    const editedPost = await editPost(
+      id,
+      title,
+      body,
+      tags,
+      answerCount,
+      score
+    );
+    res.status(200).json(editedPost);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
