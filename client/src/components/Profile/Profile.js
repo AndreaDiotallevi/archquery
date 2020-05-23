@@ -12,7 +12,7 @@ class Profile extends React.Component {
     const seconds = Math.round((new Date().getTime() - date.getTime()) / 1000);
 
     if (seconds < 2678400) {
-      const days = Math.floor(seconds / 86400);
+      const days = Math.ceil(seconds / 86400);
       return `${days} day${days > 1 ? "s" : ""}`;
     } else if (seconds < 31536000) {
       const months = Math.floor(seconds / 2678400);
