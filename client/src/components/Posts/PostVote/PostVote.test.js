@@ -22,7 +22,7 @@ describe("PostVote", () => {
     expect(wrapper.length).toEqual(1);
   });
 
-  test("renders the main div with two children", () => {
+  test("renders the main div", () => {
     const component = findByTestAttr(wrapper, "component-post-vote");
     expect(component.length).toBe(1);
   });
