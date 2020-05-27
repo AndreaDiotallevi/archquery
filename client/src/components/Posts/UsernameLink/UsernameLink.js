@@ -20,7 +20,10 @@ class UsernameLink extends React.Component {
     }
 
     return (
-      <div className="component-username-link">
+      <div
+        className="component-username-link"
+        data-test="component-username-link"
+      >
         <Link to={`/users/${user.id}/${this.sanitizeUrl()}`}>
           {user.username}
         </Link>
