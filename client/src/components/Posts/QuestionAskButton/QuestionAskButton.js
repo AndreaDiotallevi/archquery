@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 
 const QuestionAskButton = () => {
   return (
-    <div className="component-question-ask-button">
+    <div
+      className="component-question-ask-button"
+      data-test="component-question-ask-button"
+    >
       <Link to="/questions/ask">Ask Question</Link>
     </div>
   );
