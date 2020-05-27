@@ -23,7 +23,10 @@ class QuestionCreate extends React.Component {
 
   render() {
     return (
-      <div className="component-question-create">
+      <div
+        className="component-question-create"
+        data-test="component-question-create"
+      >
         <h1>Ask A Public Question</h1>
         <PostForm
           postTypeId={1}
