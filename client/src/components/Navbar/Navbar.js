@@ -45,7 +45,7 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <div className="component-navbar">
+      <div className="component-navbar" data-test="component-navbar">
         {this.props.isSignedIn
           ? this.renderLoggedInStatus()
           : this.renderLoggedOutStatus()}
