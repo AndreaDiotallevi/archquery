@@ -1,11 +1,13 @@
 import React from "react";
 import { shallow } from "enzyme";
 import LogIn from "./LogIn";
-import { storeFactory } from "../../../../test/testUtils";
+import { storeFactory, findByTestAttr } from "../../../../test/testUtils";
 
 const setup = (initialState = {}, initialProps = {}) => {
   const store = storeFactory(initialState);
-  const wrapper = shallow(<LogIn store={store} {...initialProps} />).dive();
+  const wrapper = shallow(<LogIn store={store} {...initialProps} />)
+    .dive()
+    .dive();
   return wrapper;
 };
 
@@ -19,5 +21,10 @@ describe("LogIn", () => {
 
   test("renders without errors", () => {
     expect(wrapper.length).toEqual(1);
+  });
+
+  test("renders the main div", () => {
+    const div = findByTestAttr(wrapper, "component-login");
+    expect(div.length).toEqual(1);
   });
 });
