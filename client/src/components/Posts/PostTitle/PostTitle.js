@@ -14,7 +14,7 @@ const PostTitle = ({ post }) => {
   };
 
   return (
-    <div className="component-question-title">
+    <div className="component-post-title" data-test="component-post-title">
       <Link to={`/questions/${id}/${sanitizeUrl()}`} key={id}>
         {title}
       </Link>

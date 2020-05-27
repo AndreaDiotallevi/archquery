@@ -111,9 +111,9 @@ div {
   opacity: 0.5;
 }
 
-/* QuestionTitle */
+/* PostTitle */
 
-.component-question-title a {
+.component-post-title a {
   text-decoration: none;
   font-size: 20px;
   margin-bottom: 15px;
@@ -217,7 +217,7 @@ div {
 
 /* ComponentQuestionShow */
 
-.component-question-show div div div.component-question-title a {
+.component-question-show div div div.component-post-title a {
   font-size: 28px;
 }
 
