@@ -22,7 +22,10 @@ class QuestionList extends React.Component {
 
   render() {
     return (
-      <div className="component-question-list">
+      <div
+        className="component-question-list"
+        data-test="component-question-list"
+      >
         <div className="container-question-list">
           <QuestionListHeader tag={this.props.match.params.tag} />
           {this.props.questions.map((post) => (
