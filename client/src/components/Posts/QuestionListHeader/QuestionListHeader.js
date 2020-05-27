@@ -8,7 +8,10 @@ const QuestionListHeader = ({ tag }) => {
   };
 
   return (
-    <div className="component-question-list-header">
+    <div
+      className="component-question-list-header"
+      data-test="component-question-list-header"
+    >
       <h1>{renderHeader()}</h1>
       <QuestionAskButton />
     </div>
