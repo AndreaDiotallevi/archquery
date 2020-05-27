@@ -1,0 +1,33 @@
+import React from "react";
+import { shallow } from "enzyme";
+
+import { findByTestAttr } from "../../../../test/testUtils";
+import PostAnswers from "./PostAnswers";
+
+const setup = (props = {}) => {
+  return shallow(<PostAnswers {...props} />);
+};
+
+describe("PostAnswers", () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = setup({ post: { answer_count: 1 } });
+  });
+
+  test("renders without error", () => {
+    const component = findByTestAttr(wrapper, "component-post-answers");
+    expect(component.length).toBe(1);
+  });
+
+  test("renders text for 1 answer", () => {
+    const p = findByTestAttr(wrapper, "post-answers-count-text");
+    expect(p.text()).toEqual("answer");
+  });
+
+  test("renders text for multiple answers", () => {
+    wrapper = setup({ post: { answer_count: 2 } });
+    const p = findByTestAttr(wrapper, "post-answers-count-text");
+    expect(p.text()).toEqual("answers");
+  });
+});
