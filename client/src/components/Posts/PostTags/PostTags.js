@@ -7,7 +7,7 @@ const PostTags = ({ post }) => {
   }
 
   return (
-    <div className="component-post-tags">
+    <div className="component-post-tags" data-test="component-post-tags">
       {post.tags.map((tag) => (
         <Link to={`/questions/tagged/${tag}`} key={tag}>
           {tag}

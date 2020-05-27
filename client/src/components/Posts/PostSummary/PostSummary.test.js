@@ -12,7 +12,7 @@ describe("PostSummary", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = setup({ post: { score: 1 } });
+    wrapper = setup({ post: {} });
   });
 
   test("renders without errors", () => {
