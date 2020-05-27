@@ -22,7 +22,7 @@ const PostDelete = (props) => {
   };
 
   return (
-    <div className="component-post-delete">
+    <div className="component-post-delete" data-test="component-post-delete">
       <button onClick={handleClick}>Delete</button>
     </div>
   );
