@@ -13,7 +13,7 @@ class AnswerList extends React.Component {
 
     if (numberOfAnswers > 0) {
       return (
-        <h1>
+        <h1 data-test="answer-list-header">
           {numberOfAnswers} Answer{numberOfAnswers > 1 ? "s" : ""}
         </h1>
       );
@@ -22,7 +22,7 @@ class AnswerList extends React.Component {
 
   render() {
     return (
-      <div className="component-answer-list">
+      <div className="component-answer-list" data-test="component-answer-list">
         {this.renderHeader()}
         <div className="container-answer-list">
           {this.props.answers.map((post) => (
