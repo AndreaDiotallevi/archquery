@@ -26,7 +26,10 @@ class LogInForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+      <form
+        onSubmit={this.props.handleSubmit(this.onSubmit)}
+        data-test="login-form"
+      >
         <Field
           name="username"
           component={this.renderInput}
