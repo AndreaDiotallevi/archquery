@@ -5,7 +5,7 @@ import PostInfo from "../PostInfo/PostInfo";
 
 const PostLayout = ({ post }) => {
   return (
-    <div className="component-post-layout">
+    <div className="component-post-layout" data-test="component-post-layout">
       <PostVote post={post} />
       <div className="post-layout-right">
         <PostText post={post} />
