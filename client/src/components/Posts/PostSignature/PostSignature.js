@@ -4,7 +4,10 @@ import UsernameLink from "../UsernameLink/UsernameLink";
 
 const PostSignature = ({ post }) => {
   return (
-    <div className="component-post-signature">
+    <div
+      className="component-post-signature"
+      data-test="component-post-signature"
+    >
       <PostRelativeTime
         creationDate={post.creation_date}
         postTypeId={post.post_type_id}
