@@ -21,13 +21,13 @@ describe("PostAnswers", () => {
   });
 
   test("renders text for 1 answer", () => {
-    const p = findByTestAttr(wrapper, "post-answers-count-text");
-    expect(p.text()).toEqual("answer");
+    const component = findByTestAttr(wrapper, "component-post-answers");
+    expect(component.children().last().text()).toEqual("answer");
   });
 
   test("renders text for multiple answers", () => {
     wrapper = setup({ post: { answer_count: 2 } });
-    const p = findByTestAttr(wrapper, "post-answers-count-text");
-    expect(p.text()).toEqual("answers");
+    const component = findByTestAttr(wrapper, "component-post-answers");
+    expect(component.children().last().text()).toEqual("answers");
   });
 });

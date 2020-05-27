@@ -6,9 +6,7 @@ const PostAnswers = ({ post }) => {
   return (
     <div className="component-post-answers" data-test="component-post-answers">
       <p>{numberOfAnswers}</p>
-      <p data-test="post-answers-count-text">
-        answer{numberOfAnswers !== 1 ? "s" : ""}
-      </p>
+      <p>answer{numberOfAnswers !== 1 ? "s" : ""}</p>
     </div>
   );
 };
