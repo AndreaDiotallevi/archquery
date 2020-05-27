@@ -9,7 +9,6 @@ const PostExcerpt = ({ post }) => {
       data-test="component-question-excerpt"
     >
       <div
-        data-test="question-excerpt-text"
         dangerouslySetInnerHTML={{
           __html: `${body.substring(0, 200)}${body.length > 200 ? "..." : ""}`,
         }}

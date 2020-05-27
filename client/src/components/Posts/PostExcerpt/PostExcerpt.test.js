@@ -21,8 +21,10 @@ describe("PostExcerpt", () => {
   });
 
   test("renders the full question excerpt if body is less or equal than 200 characters", () => {
-    const div = findByTestAttr(wrapper, "question-excerpt-text");
-    expect(div.props().dangerouslySetInnerHTML.__html).toEqual("body");
+    const component = findByTestAttr(wrapper, "component-question-excerpt");
+    expect(
+      component.children().first().props().dangerouslySetInnerHTML.__html
+    ).toEqual("body");
   });
 
   test("renders the first 200 characters of the question excerpt if body is more than 200 characters", () => {
@@ -32,8 +34,10 @@ describe("PostExcerpt", () => {
           "verylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongv",
       },
     });
-    const div = findByTestAttr(wrapper, "question-excerpt-text");
-    expect(div.props().dangerouslySetInnerHTML.__html).toEqual(
+    const component = findByTestAttr(wrapper, "component-question-excerpt");
+    expect(
+      component.children().first().props().dangerouslySetInnerHTML.__html
+    ).toEqual(
       "verylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylong..."
     );
   });
