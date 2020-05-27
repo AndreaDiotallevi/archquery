@@ -7,7 +7,10 @@ import PostSignature from "../PostSignature/PostSignature";
 
 const PostSummary = ({ post }) => {
   return (
-    <div className="component-question-summary">
+    <div
+      className="component-question-summary"
+      data-test="component-post-summary"
+    >
       <PostStats post={post} />
       <div className="summary-right">
         <PostTitle post={post} />
