@@ -5,15 +5,6 @@ import { signUp } from "../../../actions";
 import SignUpForm from "../SignUpForm/SignUpForm";
 
 class SignUp extends React.Component {
-  renderInput = ({ input, label, meta }) => {
-    return (
-      <div>
-        <label>{label}</label>
-        <input {...input} autoComplete="off" />
-      </div>
-    );
-  };
-
   onSubmit = (formValues) => {
     this.props.signUp(formValues);
   };
@@ -28,7 +19,7 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <div className="component-signup">
+      <div className="component-signup" data-test="component-signup">
         <SignUpForm onSubmit={this.onSubmit} />
         <p className="error-message">{this.renderErrors()}</p>
         <p>
