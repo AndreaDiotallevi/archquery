@@ -4,7 +4,7 @@ import PostSignature from "../PostSignature/PostSignature";
 
 const PostInfo = ({ post }) => {
   return (
-    <div className="component-post-info">
+    <div className="component-post-info" data-test="component-post-info">
       <PostMenu post={post} />
       <PostSignature post={post} />
     </div>
