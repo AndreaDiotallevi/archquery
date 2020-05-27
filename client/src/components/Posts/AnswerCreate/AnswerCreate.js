@@ -25,7 +25,10 @@ class AnswerCreate extends React.Component {
     }
 
     return (
-      <div className="component-answer-create">
+      <div
+        className="component-answer-create"
+        data-test="component-answer-create"
+      >
         <PostForm
           postTypeId={2}
           initialValues={{ body: "" }}
