@@ -21,7 +21,10 @@ class QuestionShow extends React.Component {
     }
 
     return (
-      <div className="component-question-show">
+      <div
+        className="component-question-show"
+        data-test="component-question-show"
+      >
         <div className="container-question-show">
           <QuestionShowHeader post={question} />
           <PostTags post={question} />
