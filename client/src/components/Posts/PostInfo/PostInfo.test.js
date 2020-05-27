@@ -19,9 +19,4 @@ describe("PostInfo", () => {
     const component = findByTestAttr(wrapper, "component-post-info");
     expect(component.length).toBe(1);
   });
-
-  // test("renders the full question excerpt if body is less or equal than 200 characters", () => {
-  //   const div = findByTestAttr(wrapper, "question-excerpt-text");
-  //   expect(div.props().dangerouslySetInnerHTML.__html).toEqual("body");
-  // });
 });
