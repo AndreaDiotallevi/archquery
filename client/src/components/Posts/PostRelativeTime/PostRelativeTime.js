@@ -27,7 +27,10 @@ const PostRelativeTime = ({ creationDate, postTypeId }) => {
   };
 
   return (
-    <div className="component-relative-time">
+    <div
+      className="component-relative-time"
+      data-test="component-relative-time"
+    >
       <p>{`${
         postTypeId === 1 ? "asked" : "answered"
       } ${calculateRelativeTime()}`}</p>
