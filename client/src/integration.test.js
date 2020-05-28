@@ -114,3 +114,25 @@ describe("createPost action creator", () => {
     expect(newState.posts[1]["body"]).toEqual("body");
   });
 });
+
+describe("eidtPost action creator", () => {
+  test("edit the post and updates the post data to state", async () => {
+    const store = storeFactory();
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: { id: 1, body: "body edited" },
+      });
+    });
+
+    await store.dispatch(createPost({}));
+    const newState = store.getState();
+    expect(newState.posts).toEqual({
+      1: { id: 1, body: "body edited" },
+    });
+    expect(newState.posts[1]["id"]).toEqual(1);
+    expect(newState.posts[1]["body"]).toEqual("body edited");
+  });
+});
