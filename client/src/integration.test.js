@@ -115,9 +115,9 @@ describe("createPost action creator", () => {
   });
 });
 
-describe("eidtPost action creator", () => {
+describe("editPost action creator", () => {
   test("edit the post and updates the post data to state", async () => {
-    const store = storeFactory();
+    const store = storeFactory({ posts: { 1: { id: 1, body: "body" } } });
 
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
@@ -127,12 +127,30 @@ describe("eidtPost action creator", () => {
       });
     });
 
-    await store.dispatch(createPost({}));
+    await store.dispatch(editPost({}));
     const newState = store.getState();
     expect(newState.posts).toEqual({
       1: { id: 1, body: "body edited" },
     });
     expect(newState.posts[1]["id"]).toEqual(1);
     expect(newState.posts[1]["body"]).toEqual("body edited");
+  });
+});
+
+describe("deletePost action creator", () => {
+  test("removes the post data from state", async () => {
+    const store = storeFactory({ posts: { 1: { id: 1, body: "body" } } });
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: 1,
+      });
+    });
+
+    await store.dispatch(deletePost(1));
+    const newState = store.getState();
+    expect(newState.posts).toEqual({});
   });
 });
