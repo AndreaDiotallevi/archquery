@@ -64,6 +64,15 @@ describe("fetchPosts action creator", () => {
   });
 });
 
+describe("clearPosts action creator", () => {
+  test("deletes all post data from state", () => {
+    const store = storeFactory({ posts: { 1: { id: 1, body: "body" } } });
+    store.dispatch(clearPosts());
+    const newState = store.getState();
+    expect(newState.posts).toEqual({});
+  });
+});
+
 describe("fetchPost action creator", () => {
   test("adds the post data to state", async () => {
     const store = storeFactory();
