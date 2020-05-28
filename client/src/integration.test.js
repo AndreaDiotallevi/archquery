@@ -182,7 +182,7 @@ describe("fetchTags action creator", () => {
   });
 });
 
-describe("fetchTags action creator", () => {
+describe("fetchTag action creator", () => {
   test("adds the tag data to state", async () => {
     const store = storeFactory();
 
@@ -195,6 +195,28 @@ describe("fetchTags action creator", () => {
     });
 
     await store.dispatch(fetchTag("tag1"));
+    const newState = store.getState();
+    expect(newState.tags).toEqual({
+      tag1: { id: 1, name: "tag1" },
+    });
+    expect(newState.tags["tag1"]["id"]).toEqual(1);
+    expect(newState.tags["tag1"]["name"]).toEqual("tag1");
+  });
+});
+
+describe("createTag action creator", () => {
+  test("created a tag and add data to state", async () => {
+    const store = storeFactory();
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: { id: 1, name: "tag1" },
+      });
+    });
+
+    await store.dispatch(createTag({ id: 1, name: "tag1" }));
     const newState = store.getState();
     expect(newState.tags).toEqual({
       tag1: { id: 1, name: "tag1" },
