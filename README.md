@@ -1,6 +1,6 @@
 # Archquery
 
-[Description](#description) | [Live Website](#live-website) | [Technologies Used](#technologies-used) | [Challenges and Goals](#challenges-and-goals) | [Getting Started](#getting-started) | [How to Run the App](#how-to-run-the-app) | [How to Setup the Local Database](#how-to-setup-the-local-database) | [How to Run the Tests](#how-to-run-the-tests) | [Continuous Integration](#continuous-integration) | [Design Approach](#design-approach)
+[Description](#description) | [Live Website](#live-website) | [Technologies Used](#technologies-used) | [Challenges and Goals](#challenges-and-goals) | [Getting Started](#getting-started) | [How to Run the App](#how-to-run-the-app) | [How to Setup the Local Database](#how-to-setup-the-local-database) | [How to Run the Tests](#how-to-run-the-tests) | [Continuous Integration and Delivery](#continuous-integration-and-delivery) | [Design Approach](#design-approach)
 
 ## Description
 
@@ -57,6 +57,15 @@ To be completed.
 * To run all the express API endpoints tests type ```npm test```
 * To run all the React components tests type ```npm run client-test```
 
-## Continuous Integration
+## Continuous Integration and Delivery
 
-[CircleCI](https://circleci.com/): tool for automating the development process quickly, safely, and at scale.
+- Tools:
+  * [CircleCI](https://circleci.com/): tool for automating the development process quickly, safely, and at scale.
+  
+- Used for:
+  * Continuous Integration: every time a branch is pushed to GitHub, all tests are run within a container, to ensure code quality
+  * Continuous Delivery: every time the master branch is pushed to GitHub, Heroku will deploy automatically upon continuous integration passing tests
+
+## Design Approach
+
+To be completed.
