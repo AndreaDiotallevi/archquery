@@ -36,6 +36,34 @@ afterEach(() => {
   moxios.uninstall();
 });
 
+describe("fetchPosts action creator", () => {
+  test("adds the posts data to state", async () => {
+    const store = storeFactory();
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: [
+          { id: 1, body: "body1" },
+          { id: 2, body: "body2" },
+        ],
+      });
+    });
+
+    await store.dispatch(fetchPosts());
+    const newState = store.getState();
+    expect(newState.posts).toEqual({
+      1: { id: 1, body: "body1" },
+      2: { id: 2, body: "body2" },
+    });
+    expect(newState.posts[1]["id"]).toEqual(1);
+    expect(newState.posts[1]["body"]).toEqual("body1");
+    expect(newState.posts[2]["id"]).toEqual(2);
+    expect(newState.posts[2]["body"]).toEqual("body2");
+  });
+});
+
 describe("fetchPost action creator", () => {
   test("adds the post data to state", async () => {
     const store = storeFactory();
@@ -48,7 +76,7 @@ describe("fetchPost action creator", () => {
       });
     });
 
-    await store.dispatch(fetchPost(""));
+    await store.dispatch(fetchPost(1));
     const newState = store.getState();
     expect(newState.posts).toEqual({ 1: { id: 1, body: "body" } });
     expect(newState.posts[1]["id"]).toEqual(1);
