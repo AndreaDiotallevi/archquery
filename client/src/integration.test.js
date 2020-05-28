@@ -104,7 +104,7 @@ describe("createPost action creator", () => {
       });
     });
 
-    await store.dispatch(createPost({}));
+    await store.dispatch(createPost({ body: "body" }));
     const newState = store.getState();
     expect(newState.posts).toEqual({
       1: { id: 1, body: "body" },
@@ -126,7 +126,7 @@ describe("editPost action creator", () => {
       });
     });
 
-    await store.dispatch(editPost({}));
+    await store.dispatch(editPost({ body: "body edited" }));
     const newState = store.getState();
     expect(newState.posts).toEqual({
       1: { id: 1, body: "body edited" },
@@ -216,13 +216,41 @@ describe("createTag action creator", () => {
       });
     });
 
-    await store.dispatch(createTag({ id: 1, name: "tag1" }));
+    await store.dispatch(createTag({ name: "tag1" }));
     const newState = store.getState();
     expect(newState.tags).toEqual({
       tag1: { id: 1, name: "tag1" },
     });
     expect(newState.tags["tag1"]["id"]).toEqual(1);
     expect(newState.tags["tag1"]["name"]).toEqual("tag1");
+  });
+});
+
+describe("createTags action creator", () => {
+  test("created the tags and add data to state", async () => {
+    const store = storeFactory();
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: [
+          { id: 1, name: "tag1" },
+          { id: 2, name: "tag2" },
+        ],
+      });
+    });
+
+    await store.dispatch(createTags(["tag1", "tag2"]));
+    const newState = store.getState();
+    expect(newState.tags).toEqual({
+      tag1: { id: 1, name: "tag1" },
+      tag2: { id: 2, name: "tag2" },
+    });
+    expect(newState.tags["tag1"]["id"]).toEqual(1);
+    expect(newState.tags["tag1"]["name"]).toEqual("tag1");
+    expect(newState.tags["tag2"]["id"]).toEqual(2);
+    expect(newState.tags["tag2"]["name"]).toEqual("tag2");
   });
 });
 
