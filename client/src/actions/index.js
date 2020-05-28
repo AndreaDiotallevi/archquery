@@ -30,6 +30,8 @@ export const fetchPosts = (postTypeId, parentId, tagName) => async (
       }${tagName ? `&tagName=${tagName}` : ""}`
     );
 
+    console.log(response.data);
+
     dispatch({ type: POSTS_FETCHED, payload: response.data });
   } catch (err) {
     console.log(err);
