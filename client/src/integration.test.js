@@ -76,7 +76,6 @@ describe("clearPosts action creator", () => {
 describe("fetchPost action creator", () => {
   test("adds the post data to state", async () => {
     const store = storeFactory();
-
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -152,5 +151,33 @@ describe("deletePost action creator", () => {
     await store.dispatch(deletePost(1));
     const newState = store.getState();
     expect(newState.posts).toEqual({});
+  });
+});
+
+describe("fetchTags action creator", () => {
+  test("adds the tagss data to state", async () => {
+    const store = storeFactory();
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: [
+          { id: 1, name: "tag1" },
+          { id: 2, name: "tag2" },
+        ],
+      });
+    });
+
+    await store.dispatch(fetchTags());
+    const newState = store.getState();
+    expect(newState.tags).toEqual({
+      tag1: { id: 1, name: "tag1" },
+      tag2: { id: 2, name: "tag2" },
+    });
+    expect(newState.tags["tag1"]["id"]).toEqual(1);
+    expect(newState.tags["tag1"]["name"]).toEqual("tag1");
+    expect(newState.tags["tag2"]["id"]).toEqual(2);
+    expect(newState.tags["tag2"]["name"]).toEqual("tag2");
   });
 });
