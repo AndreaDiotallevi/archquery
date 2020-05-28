@@ -92,3 +92,25 @@ describe("fetchPost action creator", () => {
     expect(newState.posts[1]["body"]).toEqual("body");
   });
 });
+
+describe("createPost action creator", () => {
+  test("create the post and add the post data to state", async () => {
+    const store = storeFactory();
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: { id: 1, body: "body" },
+      });
+    });
+
+    await store.dispatch(createPost({}));
+    const newState = store.getState();
+    expect(newState.posts).toEqual({
+      1: { id: 1, body: "body" },
+    });
+    expect(newState.posts[1]["id"]).toEqual(1);
+    expect(newState.posts[1]["body"]).toEqual("body");
+  });
+});
