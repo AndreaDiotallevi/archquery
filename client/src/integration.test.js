@@ -296,3 +296,21 @@ describe("logIn action creator", () => {
     });
   });
 });
+
+describe("logOut action creator", () => {
+  test("logs out the user", async () => {
+    const store = storeFactory({ auth: { isSignedIn: true, userId: 1 } });
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: null,
+      });
+    });
+
+    await store.dispatch(logOut());
+    const newState = store.getState();
+    expect(newState.auth).toEqual({ isSignedIn: false, userId: null });
+  });
+});
