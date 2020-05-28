@@ -155,7 +155,7 @@ describe("deletePost action creator", () => {
 });
 
 describe("fetchTags action creator", () => {
-  test("adds the tagss data to state", async () => {
+  test("adds the tags data to state", async () => {
     const store = storeFactory();
 
     moxios.wait(() => {
@@ -179,5 +179,27 @@ describe("fetchTags action creator", () => {
     expect(newState.tags["tag1"]["name"]).toEqual("tag1");
     expect(newState.tags["tag2"]["id"]).toEqual(2);
     expect(newState.tags["tag2"]["name"]).toEqual("tag2");
+  });
+});
+
+describe("fetchTags action creator", () => {
+  test("adds the tag data to state", async () => {
+    const store = storeFactory();
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: { id: 1, name: "tag1" },
+      });
+    });
+
+    await store.dispatch(fetchTag("tag1"));
+    const newState = store.getState();
+    expect(newState.tags).toEqual({
+      tag1: { id: 1, name: "tag1" },
+    });
+    expect(newState.tags["tag1"]["id"]).toEqual(1);
+    expect(newState.tags["tag1"]["name"]).toEqual("tag1");
   });
 });
