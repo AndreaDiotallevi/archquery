@@ -6,7 +6,7 @@
 
 ## Description
 
-This is a full-stack application built with Node, Express, PostgreSQL, React and Redux that lets architects ask, respond and vote questions like software engineers do in Stackoverflow.
+This is a full-stack application built with Node, Express, PostgreSQL, React and Redux that lets architects ask, respond and vote questions like software engineers do on [Stack Overflow](https://stackoverflow.com/).
 
 ## Live Website
 
