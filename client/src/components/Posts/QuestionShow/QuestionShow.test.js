@@ -23,10 +23,6 @@ describe("QuestionShow", () => {
       wrapper = setup(state, props);
     });
 
-    test("renders without errors", () => {
-      expect(wrapper.length).toEqual(1);
-    });
-
     test("renders the main div", () => {
       const component = findByTestAttr(wrapper, "component-question-show");
       expect(component.length).toBe(1);
@@ -38,10 +34,6 @@ describe("QuestionShow", () => {
       state = { posts: { 2: { id: 2 } } };
       props = { match: { params: { id: 1 } } };
       wrapper = setup(state, props);
-    });
-
-    test("renders without errors", () => {
-      expect(wrapper.length).toEqual(1);
     });
 
     test("does not render the main div", () => {

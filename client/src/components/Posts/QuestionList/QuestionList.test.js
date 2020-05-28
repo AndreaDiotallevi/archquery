@@ -20,10 +20,6 @@ describe("QuestionList", () => {
     wrapper = setup(state, props);
   });
 
-  test("renders without errors", () => {
-    expect(wrapper.length).toEqual(1);
-  });
-
   test("renders the main div", () => {
     const component = findByTestAttr(wrapper, "component-question-list");
     expect(component.length).toBe(1);

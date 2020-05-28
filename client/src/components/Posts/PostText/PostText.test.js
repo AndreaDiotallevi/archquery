@@ -15,10 +15,6 @@ describe("PostText", () => {
     wrapper = setup({ post: { body: "body" } });
   });
 
-  test("renders without errors", () => {
-    expect(wrapper.length).toEqual(1);
-  });
-
   test("renders the main div", () => {
     const component = findByTestAttr(wrapper, "component-post-text");
     expect(component.length).toBe(1);

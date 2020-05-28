@@ -21,10 +21,6 @@ describe("UsernameLink", () => {
       wrapper = setup(state, props);
     });
 
-    test("renders without errors", () => {
-      expect(wrapper.length).toEqual(1);
-    });
-
     test("renders the main div with two children", () => {
       const component = findByTestAttr(wrapper, "component-username-link");
       expect(component.length).toBe(1);
@@ -36,10 +32,6 @@ describe("UsernameLink", () => {
       state = { users: { 1: { id: 1, username: "username" } } };
       props = { userId: 2 };
       wrapper = setup(state, props);
-    });
-
-    test("renders without errors", () => {
-      expect(wrapper.length).toEqual(1);
     });
 
     test("does not render the main div", () => {

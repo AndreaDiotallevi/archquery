@@ -15,10 +15,6 @@ describe("PostTitle", () => {
     wrapper = setup({ post: { id: 1, title: "title" } });
   });
 
-  test("renders without errors", () => {
-    expect(wrapper.length).toEqual(1);
-  });
-
   test("renders the main div", () => {
     const component = findByTestAttr(wrapper, "component-post-title");
     expect(component.length).toBe(1);

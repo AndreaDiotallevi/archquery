@@ -15,10 +15,6 @@ describe("PostScore", () => {
     wrapper = setup({ post: { score: 1 } });
   });
 
-  test("renders without errors", () => {
-    expect(wrapper.length).toEqual(1);
-  });
-
   test("renders the main div", () => {
     const component = findByTestAttr(wrapper, "component-post-score");
     expect(component.length).toBe(1);

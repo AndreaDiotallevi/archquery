@@ -21,10 +21,6 @@ describe("PostMenu", () => {
       wrapper = setup(state, props);
     });
 
-    test("renders without errors", () => {
-      expect(wrapper.length).toEqual(1);
-    });
-
     test("renders the main div with two children", () => {
       const component = findByTestAttr(wrapper, "component-post-menu");
       expect(component.length).toBe(1);
@@ -37,10 +33,6 @@ describe("PostMenu", () => {
       state = { auth: { userId: null } };
       props = { post: { owner_user_id: 1 } };
       wrapper = setup(state, props);
-    });
-
-    test("renders without errors", () => {
-      expect(wrapper.length).toEqual(1);
     });
 
     test("renders the main div with no children", () => {

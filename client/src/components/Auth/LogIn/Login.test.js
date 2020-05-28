@@ -19,10 +19,6 @@ describe("LogIn", () => {
     wrapper = setup(state, props);
   });
 
-  test("renders without errors", () => {
-    expect(wrapper.length).toEqual(1);
-  });
-
   test("renders the main div", () => {
     const div = findByTestAttr(wrapper, "component-login");
     expect(div.length).toEqual(1);

@@ -11,10 +11,6 @@ describe("QuestionAskButton", () => {
     wrapper = shallow(<QuestionAskButton />);
   });
 
-  test("renders without errors", () => {
-    expect(wrapper.length).toEqual(1);
-  });
-
   test("renders the main div", () => {
     const component = findByTestAttr(wrapper, "component-question-ask-button");
     expect(component.length).toBe(1);

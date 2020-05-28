@@ -15,7 +15,7 @@ describe("PostAnswers", () => {
     wrapper = setup({ post: { answer_count: 1 } });
   });
 
-  test("renders without error", () => {
+  test("renders the main div", () => {
     const component = findByTestAttr(wrapper, "component-post-answers");
     expect(component.length).toBe(1);
   });

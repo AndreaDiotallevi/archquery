@@ -15,7 +15,7 @@ describe("PostExcerpt", () => {
     wrapper = setup({ post: { body: "body" } });
   });
 
-  test("renders without error", () => {
+  test("renders the main div", () => {
     const component = findByTestAttr(wrapper, "component-question-excerpt");
     expect(component.length).toBe(1);
   });

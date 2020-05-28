@@ -21,10 +21,6 @@ describe("Profile", () => {
       wrapper = setup(state, props);
     });
 
-    test("renders without errors", () => {
-      expect(wrapper.length).toEqual(1);
-    });
-
     test("renders the main div", () => {
       const component = findByTestAttr(wrapper, "component-profile");
       expect(component.length).toBe(1);
@@ -36,10 +32,6 @@ describe("Profile", () => {
       state = { users: { 1: { id: 1 } } };
       props = { match: { params: { id: 2 } } };
       wrapper = setup(state, props);
-    });
-
-    test("renders without errors", () => {
-      expect(wrapper.length).toEqual(1);
     });
 
     test("does not render the main div", () => {

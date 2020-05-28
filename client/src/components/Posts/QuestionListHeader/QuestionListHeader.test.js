@@ -16,10 +16,6 @@ describe("QuestionListHeader", () => {
       wrapper = setup({ tag: "tag" });
     });
 
-    test("renders without errors", () => {
-      expect(wrapper.length).toEqual(1);
-    });
-
     test("renders the main div", () => {
       const component = findByTestAttr(
         wrapper,
@@ -42,10 +38,6 @@ describe("QuestionListHeader", () => {
   describe("when there is no tag", () => {
     beforeEach(() => {
       wrapper = setup({ tag: null });
-    });
-
-    test("renders without errors", () => {
-      expect(wrapper.length).toEqual(1);
     });
 
     test("renders the main div", () => {
