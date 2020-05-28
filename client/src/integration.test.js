@@ -278,7 +278,7 @@ describe("fetchUser action creator", () => {
 
 describe("logIn action creator", () => {
   test("logs in the user if exists", async () => {
-    const store = storeFactory();
+    const store = storeFactory({ auth: { isSignedIn: null, userId: null } });
 
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
@@ -312,5 +312,26 @@ describe("logOut action creator", () => {
     await store.dispatch(logOut());
     const newState = store.getState();
     expect(newState.auth).toEqual({ isSignedIn: false, userId: null });
+  });
+});
+
+describe("isAlreadyLoggedIn action creator", () => {
+  test("retrieves the user if already logged in", async () => {
+    const store = storeFactory({ auth: { isSignedIn: null, userId: null } });
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: 1,
+      });
+    });
+
+    await store.dispatch(isAlreadyLoggedIn());
+    const newState = store.getState();
+    expect(newState.auth).toEqual({
+      isSignedIn: true,
+      userId: 1,
+    });
   });
 });
