@@ -26,7 +26,14 @@ The application is deployed to Heroku at [https://archquery.herokuapp.com](https
 
 ## Challenges and Goals
 
-[...]
+  * Build a full-stack application with Node, PostgreSQL, Express, React and Redux
+  * Use PostgreSQL without any ORM or query builders
+  * Implement authentication with passport.js
+  * Use Redis for session storage and persistent authentication
+  * Manage a complex tree of React Components with clean code and decoupled testing
+  * Research and study the Stack Exchange [database schema](https://meta.stackexchange.com/questions/2677/database-schema-documentation-for-the-public-data-dump-and-sede)
+  * Deploy to Heroku a full-stack application with PostgreSQL and Redis add-ons
+  * Use text editor instead of textarea to allow users to post formatted content
 
 ## Getting Started
 
@@ -43,7 +50,7 @@ The application is deployed to Heroku at [https://archquery.herokuapp.com](https
 
 ## How to Setup the Local Database
 
-[...]
+To be completed.
 
 ## How to Run the Tests
 
