@@ -275,3 +275,24 @@ describe("fetchUser action creator", () => {
     expect(newState.users[1]["username"]).toEqual("username1");
   });
 });
+
+describe("logIn action creator", () => {
+  test("logs in the user if exists", async () => {
+    const store = storeFactory();
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: 1,
+      });
+    });
+
+    await store.dispatch(logIn());
+    const newState = store.getState();
+    expect(newState.auth).toEqual({
+      isSignedIn: true,
+      userId: 1,
+    });
+  });
+});

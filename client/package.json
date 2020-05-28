@@ -52,7 +52,9 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/src/serviceWorker.js",
-      "/src/index.js"
+      "/src/index.js",
+      "/src/history.js",
+      "/src/utils/months.js"
     ]
   }
 }
