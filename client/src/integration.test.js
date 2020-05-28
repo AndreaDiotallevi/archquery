@@ -225,3 +225,25 @@ describe("createTag action creator", () => {
     expect(newState.tags["tag1"]["name"]).toEqual("tag1");
   });
 });
+
+describe("fetchUser action creator", () => {
+  test("adds the user data to state", async () => {
+    const store = storeFactory();
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: { id: 1, username: "username1" },
+      });
+    });
+
+    await store.dispatch(fetchUser(1));
+    const newState = store.getState();
+    expect(newState.users).toEqual({
+      1: { id: 1, username: "username1" },
+    });
+    expect(newState.users[1]["id"]).toEqual(1);
+    expect(newState.users[1]["username"]).toEqual("username1");
+  });
+});
