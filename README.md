@@ -2,7 +2,7 @@
 
 # ArchQuery
 
-[Description](#description) | [Live Website](#live-website) | [Technologies Used](#technologies-used) | [Challenges and Goals](#challenges-and-goals) | [Getting Started](#getting-started) | [How to Run the App](#how-to-run-the-app) | [How to Setup the Local Database](#how-to-setup-the-local-database) | [How to Run the Tests](#how-to-run-the-tests) | [Continuous Integration and Delivery](#continuous-integration-and-delivery) | [Design Approach](#design-approach)
+[Description](#description) | [Live Website](#live-website) | [Technologies Used](#technologies-used) | [Challenges and Goals](#challenges-and-goals) | [Getting Started](#getting-started) | [How to Run the App](#how-to-run-the-app) | [How to Setup the Local Database](#how-to-setup-the-local-database) | [How to Run the Tests](#how-to-run-the-tests) | [Continuous Integration and Delivery](#continuous-integration-and-delivery) | [Design Approach](#design-approach) | [Database Schema](#database-schema)
 
 ## Description
 
@@ -74,4 +74,12 @@ To be completed.
 
 <p align="center">
   <img src="./client/src/assets/react-components-diagram.svg" alt="react-components-diagram"></img>
+</p>
+
+## Database Schema
+
+<p align="center">
+  <a href="https://drawsql.app/andrea-diotallevi/diagrams/archquery">
+    <img src="./client/src/assets/database-schema.png" alt="database-schema"></img>
+  </a>
 </p>
