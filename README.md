@@ -10,7 +10,7 @@ This is a full-stack application built with Node, Express, PostgreSQL, React and
 
 ## Live Website
 
-The application is deployed to Heroku at [https://archquery.herokuapp.com](https://archquery.herokuapp.com/).
+The application is deployed with custom domain at [http://www.archquery.com](http://www.archquery.com/).
 
 ## Technologies Used
 
