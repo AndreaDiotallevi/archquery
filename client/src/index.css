@@ -30,10 +30,10 @@
 #root {
   display: flex;
   align-items: center;
+  padding: 0 25px;
 }
 
 .app {
-  margin: 0 25px;
   width: 650px;
 }
 
@@ -44,7 +44,8 @@ h2,
 h3,
 h4,
 button,
-svg {
+svg,
+li {
   color: rgb(51, 51, 51);
 }
 
@@ -209,10 +210,42 @@ div {
   margin-bottom: 15px;
 }
 
+.component-question-excerpt div ol,
+.component-question-excerpt div ul {
+  list-style: none;
+  display: flex;
+}
+
+.component-question-excerpt div ol li,
+.component-question-excerpt div ul li {
+  padding-left: 5px;
+}
+
+.component-question-excerpt div p {
+  font-weight: 300;
+}
+
+.component-question-excerpt div p i {
+  font-style: normal;
+}
+
 /* PostText */
 
 .component-post-text div {
   margin-bottom: 15px;
+}
+
+.component-post-text p {
+  margin-bottom: 5px;
+}
+
+.component-post-text div ol li,
+.component-post-text div ul li {
+  list-style-position: inside;
+}
+
+.component-post-text div p a {
+  color: rgb(57, 115, 180);
 }
 
 /* ComponentQuestionShow */
@@ -353,6 +386,12 @@ form div label {
   margin-bottom: 5px;
 }
 
+form label,
+#form-body-label {
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
 form div p {
   font-size: 13px;
   opacity: 0.5;
@@ -364,6 +403,7 @@ textarea {
   border: 1px solid rgb(196, 196, 196);
   border-radius: 2px;
   padding: 8px 10px;
+  width: auto;
 }
 
 textarea {
@@ -398,6 +438,46 @@ form button:hover {
   cursor: pointer;
 }
 
+/* CKEditor */
+
+.ck.ck-dropdown {
+  display: none;
+}
+
+.ck.ck-toolbar {
+  padding: 0;
+}
+
+.ck.ck-toolbar .ck.ck-toolbar__separator:nth-child(2) {
+  display: none;
+}
+
+.ck-content {
+  min-height: 150px;
+}
+
+.ck-content p {
+  font-size: 16px;
+  opacity: 1;
+  list-style-position: inside;
+}
+
+.ck-content p strong {
+  font-weight: bold;
+}
+
+.ck-content ol li,
+.ck-content ul li {
+  list-style-position: inside;
+}
+
+#editor-description {
+  font-size: 13px;
+  opacity: 0.5;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
 /* AnswerCreate */
 
 .component-answer-create {
@@ -412,6 +492,16 @@ form button:hover {
 
 @media (max-width: 700px) {
   .app {
-    width: auto;
+    width: 100%;
+  }
+
+  .component-navbar span {
+    display: none;
+  }
+}
+
+@media (max-width: 450px) {
+  .ck-editor__top {
+    display: none;
   }
 }

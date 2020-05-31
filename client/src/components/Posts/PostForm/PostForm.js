@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, reduxForm, reset } from "redux-form";
-// import CKEditor from "@ckeditor/ckeditor5-react";
-// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import CKEditor from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 class PostForm extends React.Component {
   renderError({ error, touched }) {
@@ -14,7 +14,7 @@ class PostForm extends React.Component {
     const className = `${meta.error && meta.touched ? "error" : ""}`;
     return (
       <div>
-        <label>{label[0]}</label>
+        <label id="form-body-label">{label[0]}</label>
         <p>{label[1]}</p>
         <input
           {...input}
@@ -27,34 +27,34 @@ class PostForm extends React.Component {
     );
   };
 
-  renderTextarea = ({ input, label, meta }) => {
-    const className = `${meta.error && meta.touched ? "error" : ""}`;
-    return (
-      <div>
-        <label>{label[0]}</label>
-        <p>{label[1]}</p>
-        <textarea {...input} autoComplete="off" className={className} />
-        <p className="error-message">{this.renderError(meta)}</p>
-      </div>
-    );
-  };
-
-  // renderEditor = ({ input, label, meta }) => {
+  // renderTextarea = ({ input, label, meta }) => {
+  //   const className = `${meta.error && meta.touched ? "error" : ""}`;
   //   return (
-  //     <React.Fragment>
+  //     <div>
   //       <label>{label[0]}</label>
   //       <p>{label[1]}</p>
-  //       <CKEditor
-  //         editor={ClassicEditor}
-  //         data={input.value}
-  //         onChange={(event, editor) => {
-  //           return input.onChange(editor.getData());
-  //         }}
-  //       />
+  //       <textarea {...input} autoComplete="off" className={className} />
   //       <p className="error-message">{this.renderError(meta)}</p>
-  //     </React.Fragment>
+  //     </div>
   //   );
   // };
+
+  renderEditor = ({ input, label, meta }) => {
+    return (
+      <React.Fragment>
+        <label>{label[0]}</label>
+        <p id="editor-description">{label[1]}</p>
+        <CKEditor
+          editor={ClassicEditor}
+          data={input.value}
+          onChange={(event, editor) => {
+            return input.onChange(editor.getData());
+          }}
+        />
+        <p className="error-message">{this.renderError(meta)}</p>
+      </React.Fragment>
+    );
+  };
 
   onSubmit = (formValues, dispatch) => {
     this.props.onSubmit(formValues);
@@ -76,8 +76,8 @@ class PostForm extends React.Component {
           />
           <Field
             name="body"
-            // component={this.renderEditor}
-            component={this.renderTextarea}
+            component={this.renderEditor}
+            // component={this.renderTextarea}
             label={[
               "Body",
               "Include all the information someone would need to answer your question",
@@ -100,8 +100,8 @@ class PostForm extends React.Component {
         <React.Fragment>
           <Field
             name="body"
-            // component={this.renderEditor}
-            component={this.renderTextarea}
+            component={this.renderEditor}
+            // component={this.renderTextarea}
             label={["Your Answer"]}
           />
           <button>Post Your Answer</button>
