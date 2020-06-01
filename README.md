@@ -41,19 +41,34 @@ The application is deployed with custom domain at [http://www.archquery.com](htt
 ## Getting Started
 
 - Clone this repository and change into it
-- Make sure you have [Node.js](https://nodejs.org/en/download/) installed
+- Install [Node.js](https://nodejs.org/en/download/)
+- Install [Redis](https://redis.io/topics/quickstart)
+- Install [PostgreSQL](https://www.postgresql.org/)
 - Install all the back-end dependencies with `npm install`
 - Install all the front-end dependencies with `npm run client-install`
 
 ## How to Run the App
 
+- To start the Redis server, on a separate terminal, type `redis-server`
 - To start the Express server type `npm run server`
 - To start the React server type `npm run client`
 - To start both servers concurrently type `npm run dev`
 
 ## How to Setup the Local Database
 
-To be completed.
+- Type `psql postgres` to start the PostgreSQL command line interface
+- Open the `database.sql` file located in the root directory and run all commands in the terminal
+- Quit the command line interface with `\q`
+- Create a `.env` file in the root directory with the following credentials (replace <...> with your unique values):
+
+  ```
+  PG_USER = <your_username>
+  PG_PASSWORD = <your_password>
+  PG_HOST = localhost
+  PG_PORT = 5432
+  PG_DATABASE = archquery
+  SECRET_KEY = <secret_key>
+  ```
 
 ## How to Run the Tests
 
