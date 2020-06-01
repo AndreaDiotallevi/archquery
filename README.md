@@ -20,6 +20,8 @@ The application is deployed with custom domain at [http://www.archquery.com](htt
   - [Express](https://expressjs.com/): a fast, unopinionated, minimalist web framework for Node.js I used to get, post and patch the albums information from / to the PostgreSQL database and the React single page app.
   - [PostgreSQL](https://www.postgresql.org/): the world's most advanced open source relational database.
   - [React](https://reactjs.org/): a JavaScript library I used to build the user interface and gather data from the Express and external APIs.
+  - [Redux](https://redux.js.org/): a predictable state container for JavaScript apps.
+  - [Redis](https://redis.io/): an open source (BSD licensed), in-memory data structure store, used as a session storage.
   - [CSS Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox): a flexible box layout module I used to design flexible responsive layout structure without using float or positioning.
 
 - Testing frameworks:
@@ -29,14 +31,14 @@ The application is deployed with custom domain at [http://www.archquery.com](htt
 
 ## Challenges and Goals
 
-- Build a full-stack application with Node, PostgreSQL, Express, React and Redux
-- Use PostgreSQL without any ORM or query builders
-- Implement authentication with passport.js
-- Use Redis for session storage and persistent authentication
-- Manage a complex tree of React Components with clean code and decoupled testing
-- Research and study the Stack Exchange [database schema](https://meta.stackexchange.com/questions/2677/database-schema-documentation-for-the-public-data-dump-and-sede)
-- Deploy to Heroku a full-stack application with PostgreSQL and Redis add-ons
-- Use text editor instead of textarea to allow users to post formatted content
+- Build a full-stack application with Node, PostgreSQL, Express, Redis, React and Redux.
+- Use PostgreSQL without the use of any ORM or query builders like Sequelize or Knex.
+- Implement authentication with [passport.js](http://www.passportjs.org/).
+- Use Redis for session storage and persistent authentication.
+- Manage a complex tree of React Components with clean code and decoupled testing.
+- Research and study the Stack Exchange [database schema](https://meta.stackexchange.com/questions/2677/database-schema-documentation-for-the-public-data-dump-and-sede).
+- Deploy to Heroku a full-stack application with PostgreSQL and Redis add-ons.
+- Implement the CKEditor (text editor) instead of a textarea to allow users to post rich, formatted content.
 
 ## Getting Started
 
@@ -77,13 +79,11 @@ The application is deployed with custom domain at [http://www.archquery.com](htt
 
 ## Continuous Integration and Delivery
 
-- Tools:
+[CircleCI](https://circleci.com/) is used for automating the development process quickly, safely, and at scale.
 
-  - [CircleCI](https://circleci.com/): tool for automating the development process quickly, safely, and at scale.
+- When a branch is pushed to GitHub, all tests are run within a container, to ensure code quality
 
-- Used for:
-  - Continuous Integration: every time a branch is pushed to GitHub, all tests are run within a container, to ensure code quality
-  - Continuous Delivery: every time the master branch is pushed to GitHub, Heroku will deploy automatically upon continuous integration passing tests
+- When the master branch is pushed to GitHub, Heroku deploys automatically is no automated test fails
 
 ## Design Approach
 
