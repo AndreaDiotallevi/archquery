@@ -34,7 +34,7 @@ class Profile extends React.Component {
     }
 
     return (
-      <div data-test="component-profile">
+      <div className="component-profile" data-test="component-profile">
         <h1>{user.username}</h1>
         <p>Member for {this.calculateRelativeTime()}</p>
       </div>

@@ -29,12 +29,24 @@
 
 #root {
   display: flex;
-  align-items: center;
-  padding: 0 25px;
 }
 
 .app {
+  align-items: center;
+  width: 100%;
+}
+
+.container-header,
+.container-question-list,
+.component-question-create,
+.component-question-show,
+.container-post-edit,
+.component-signup,
+.component-login,
+.component-profile {
   width: 650px;
+  margin: 0 20px;
+  margin-bottom: 100px;
 }
 
 a,
@@ -60,17 +72,24 @@ div {
 
 /* Header */
 
+.component-header {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .container-header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 70px;
+  padding: 0;
   margin-bottom: 70px;
 }
-
-.container-header a {
-  font-size: 16px;
-}
+/* 
+#website-name {
+  letter-spacing: 10px;
+} */
 
 /* Navbar */
 
@@ -89,6 +108,7 @@ div {
 .component-navbar span div a {
   margin-left: 0;
   background-color: white;
+  /* background-color: rgb(209, 229, 241); */
 }
 
 .component-navbar a,
@@ -98,6 +118,7 @@ div {
   margin-left: 32px;
   padding: 5px;
   background-color: rgb(225, 236, 244);
+  /* background-color: white; */
   border-radius: 5px;
 }
 
@@ -479,8 +500,26 @@ form button:hover {
 }
 
 @media (max-width: 700px) {
-  .app {
+  .container-question-list,
+  .component-question-create,
+  .component-question-show,
+  .container-post-edit,
+  .component-signup,
+  .component-login,
+  .component-profile {
+    width: auto;
+  }
+
+  .container-header {
     width: 100%;
+  }
+
+  #website-name {
+    margin-left: 20px;
+  }
+
+  .component-navbar {
+    margin-right: 20px;
   }
 
   .component-navbar span {

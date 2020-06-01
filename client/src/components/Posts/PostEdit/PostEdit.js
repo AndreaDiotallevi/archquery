@@ -23,7 +23,7 @@ class PostEdit extends React.Component {
 
     const { post } = this.props;
     return (
-      <div>
+      <div className="component-post-edit">
         <h3>Edit the Post</h3>
         <PostForm
           postTypeId={post.post_type_id}
