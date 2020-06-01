@@ -40,7 +40,7 @@
 .container-question-list,
 .component-question-create,
 .component-question-show,
-.container-post-edit,
+.component-post-edit,
 .component-signup,
 .component-login,
 .component-profile {
@@ -383,6 +383,14 @@ div.component-post-menu div button {
   font-size: 13px;
 }
 
+/* Component PostEdit */
+
+.component-post-edit h1 {
+  font-size: 28px;
+  font-weight: 300;
+  margin-bottom: 50px;
+}
+
 /* QuestionCreate */
 
 .component-question-create h1 {
@@ -503,7 +511,7 @@ form button:hover {
   .container-question-list,
   .component-question-create,
   .component-question-show,
-  .container-post-edit,
+  .component-post-edit,
   .component-signup,
   .component-login,
   .component-profile {

@@ -27,18 +27,6 @@ class PostForm extends React.Component {
     );
   };
 
-  // renderTextarea = ({ input, label, meta }) => {
-  //   const className = `${meta.error && meta.touched ? "error" : ""}`;
-  //   return (
-  //     <div>
-  //       <label>{label[0]}</label>
-  //       <p>{label[1]}</p>
-  //       <textarea {...input} autoComplete="off" className={className} />
-  //       <p className="error-message">{this.renderError(meta)}</p>
-  //     </div>
-  //   );
-  // };
-
   renderEditor = ({ input, label, meta }) => {
     return (
       <React.Fragment>
@@ -77,7 +65,6 @@ class PostForm extends React.Component {
           <Field
             name="body"
             component={this.renderEditor}
-            // component={this.renderTextarea}
             label={[
               "Body",
               "Include all the information someone would need to answer your question",
@@ -101,7 +88,6 @@ class PostForm extends React.Component {
           <Field
             name="body"
             component={this.renderEditor}
-            // component={this.renderTextarea}
             label={["Your Answer"]}
           />
           <button>Post Your Answer</button>
