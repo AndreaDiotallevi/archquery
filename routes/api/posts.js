@@ -71,7 +71,10 @@ router.put("/:id", async (req, res) => {
     const title = req.body.title || post.title;
     const body = req.body.body || post.body;
     const tags = req.body.tags || post.tags;
-    const answerCount = req.body.answerCount || post.answer_count;
+    const answerCount =
+      req.body.answerCount === undefined
+        ? post.answer_count
+        : req.body.answerCount;
     const score = req.body.score === undefined ? post.score : req.body.score;
 
     const editedPost = await editPost(
