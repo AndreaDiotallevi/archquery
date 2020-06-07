@@ -12,6 +12,10 @@ This is a full-stack application built with Node, Express, PostgreSQL, React and
 
 The application is deployed with custom domain at [http://www.archquery.com](http://www.archquery.com/).
 
+|              Home Page               |                  Question Page                  |
+| :----------------------------------: | :---------------------------------------------: |
+| ![](./client/src/archquery-home.png) | ![](./client/src/assets/archquery-question.png) |
+
 ## Technologies Used
 
 - Main technologies:
@@ -20,7 +24,7 @@ The application is deployed with custom domain at [http://www.archquery.com](htt
   - [Express](https://expressjs.com/): a fast, unopinionated, minimalist web framework for Node.js I used to get, post and patch the albums information from / to the PostgreSQL database and the React single page app.
   - [PostgreSQL](https://www.postgresql.org/): the world's most advanced open source relational database.
   - [Redis](https://redis.io/): an open source (BSD licensed), in-memory data structure store, used as a session storage.
-  - [Amazon S3](https://aws.amazon.com/s3/): object storage built to store and retrieve any amount of data from anywhere.
+  - [Amazon S3](https://aws.amazon.com/s3/): object storage built to store and retrieve users image uploads.
   - [React](https://reactjs.org/): a JavaScript library I used to build the user interface and gather data from the Express and external APIs.
   - [Redux](https://redux.js.org/): a predictable state container for JavaScript apps.
   - [CSS Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox): a flexible box layout module I used to design flexible responsive layout structure without using float or positioning.
