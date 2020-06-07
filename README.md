@@ -12,9 +12,9 @@ This is a full-stack application built with Node, Express, PostgreSQL, React and
 
 The application is deployed with custom domain at [http://www.archquery.com](http://www.archquery.com/).
 
-|              Home Page               |                  Question Page                  |
-| :----------------------------------: | :---------------------------------------------: |
-| ![](./client/src/archquery-home.png) | ![](./client/src/assets/archquery-question.png) |
+|                  Home Page                  |                  Question Page                  |
+| :-----------------------------------------: | :---------------------------------------------: |
+| ![](./client/src/assets/archquery-home.png) | ![](./client/src/assets/archquery-question.png) |
 
 ## Technologies Used
 
