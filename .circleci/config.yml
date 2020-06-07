@@ -4,12 +4,12 @@ jobs: # a collection of steps
     working_directory: ~/archquery # directory where steps will run
     docker: # run the steps with Docker
       - image: circleci/node:10.16.3 # ...with this image as the primary container; this is where all `steps` will run
-      - image: postgres:9.6.2 # and this image as the secondary service container
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: archquery
-      - image: redis:3.2 # and this image as the secondary service container
+      # - image: postgres:9.6.2 # and this image as the secondary service container
+      #   environment:
+      #     POSTGRES_USER: postgres
+      #     POSTGRES_PASSWORD: postgres
+      #     POSTGRES_DB: archquery
+      # - image: redis:3.2 # and this image as the secondary service container
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
       - run:
