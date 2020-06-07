@@ -242,13 +242,14 @@ div {
 
 .component-post-text div figure img {
   max-width: 100%;
+  margin-bottom: 10px;
 }
 
 .component-post-text div figure figcaption {
   font-size: 13px;
   text-align: center;
   opacity: 0.5;
-  margin: 10px 0;
+  margin-bottom: 10px;
 }
 
 .component-post-text p {
@@ -522,13 +523,14 @@ form button:hover {
 .ck-content .image > img {
   margin: 0;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .ck-content .image > figcaption {
   font-size: 13px;
   text-align: center;
   opacity: 0.5;
-  margin: 10px 0;
+  margin-bottom: 10px;
   background-color: white;
 }
 
