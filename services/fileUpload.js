@@ -14,9 +14,7 @@ const upload = multer({
   storage: multerS3({
     s3: s3,
     bucket:
-      process.env.NODE_ENV === "production"
-        ? "archquery-production"
-        : "archquery",
+      process.env.NODE_ENV === "production" ? "archquery" : "archquery-dev",
     acl: "public-read",
     metadata: function (req, file, cb) {
       cb(null, { fieldName: file.fieldname });
