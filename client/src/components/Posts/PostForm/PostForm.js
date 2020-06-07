@@ -2,6 +2,7 @@ import React from "react";
 import { Field, reduxForm, reset } from "redux-form";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import MyUploadAdapter from "../../MyUploadAdapter/MyUploadAdapter";
 
 class PostForm extends React.Component {
   renderError({ error, touched }) {
@@ -33,10 +34,18 @@ class PostForm extends React.Component {
         <label>{label[0]}</label>
         <p id="editor-description">{label[1]}</p>
         <CKEditor
+          id="editor"
           editor={ClassicEditor}
           data={input.value}
           onChange={(event, editor) => {
             return input.onChange(editor.getData());
+          }}
+          onInit={(editor) => {
+            editor.plugins.get(
+              "FileRepository"
+            ).createUploadAdapter = function (loader) {
+              return new MyUploadAdapter(loader);
+            };
           }}
         />
         <p className="error-message">{this.renderError(meta)}</p>
