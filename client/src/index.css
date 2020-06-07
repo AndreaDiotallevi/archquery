@@ -551,7 +551,7 @@ form button:hover {
   .component-signup,
   .component-login,
   .component-profile {
-    width: auto;
+    width: calc(100vw - 40px);
   }
 
   .container-header {
@@ -573,10 +573,6 @@ form button:hover {
   .image-style-side,
   .image-style-side img {
     width: 100%;
-  }
-
-  .component-question-show {
-    width: calc(100vw - 40px);
   }
 }
 
