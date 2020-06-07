@@ -13,10 +13,13 @@ const s3 = new aws.S3();
 const upload = multer({
   storage: multerS3({
     s3: s3,
-    bucket: "archquery",
+    bucket:
+      process.env.NODE_ENV === "production"
+        ? "archquery-production"
+        : "archquery",
     acl: "public-read",
     metadata: function (req, file, cb) {
-      cb(null, { fieldName: "TESTING_META_DATA" });
+      cb(null, { fieldName: file.fieldname });
     },
     key: function (req, file, cb) {
       cb(null, Date.now().toString());

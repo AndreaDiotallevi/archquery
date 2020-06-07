@@ -13,6 +13,6 @@ router.post("/", (req, res) => {
         errors: [{ title: "Image Upload Error", detail: err.message }],
       });
     }
-    return res.json({ imageUrl: req.file.location });
+    return res.json({ url: req.file.location });
   });
 });
