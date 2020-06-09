@@ -5,3 +5,4 @@ coverage
 *.orig
 .idea/
 .vscode/
+dump.rdb
