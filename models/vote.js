@@ -1,11 +1,11 @@
 const db = require("../db");
 
-const createVote = async (postId, voteTypeId, userId) => {
+const createVote = async (postId, userId) => {
   const {
     rows,
   } = await db.query(
-    "INSERT INTO votes (post_id, vote_type_id, user_id) VALUES ($1, $2, $3) RETURNING *",
-    [postId, voteTypeId, userId]
+    "INSERT INTO votes (post_id, user_id) VALUES ($1, $2) RETURNING *",
+    [postId, userId]
   );
   return rows[0];
 };
@@ -20,7 +20,12 @@ const getVotes = async (postId, userId) => {
   return rows;
 };
 
+const deleteVote = async (id) => {
+  await db.query("DELETE FROM votes WHERE id = $1", [id]);
+};
+
 module.exports = {
   createVote,
   getVotes,
+  deleteVote,
 };
