@@ -5,7 +5,9 @@ import { storeFactory, findByTestAttr } from "../../../../test/testUtils";
 
 const setup = (initialState = {}, initialProps = {}) => {
   const store = storeFactory(initialState);
-  const wrapper = shallow(<PostVote store={store} {...initialProps} />).dive();
+  const wrapper = shallow(<PostVote store={store} {...initialProps} />)
+    .dive()
+    .dive();
   return wrapper;
 };
 
