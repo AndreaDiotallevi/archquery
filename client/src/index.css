@@ -300,15 +300,26 @@ div {
 .component-post-vote {
   margin-right: 30px;
   align-items: center;
+  padding-top: 5px;
 }
 
 .component-post-vote p {
   font-size: 20px;
   opacity: 0.5;
+  width: 25px;
+  text-align: center;
 }
 
 .component-post-vote button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
+  width: 25px;
+}
+
+.component-post-vote button:focus {
+  outline: 0;
 }
 
 .component-post-vote button svg {
@@ -316,6 +327,17 @@ div {
   width: 36px;
   height: 36px;
   opacity: 0.2;
+}
+
+.fa-thumbs-up:hover {
+  opacity: 0.8;
+  color: rgb(57, 115, 180);
+  transition: 0.3s;
+}
+
+.voted {
+  opacity: 0.8;
+  color: rgb(57, 115, 180);
 }
 
 /* PostInfo */
@@ -577,4 +599,14 @@ form button:hover {
   .ck-editor__top {
     display: none;
   }
+}
+
+.fa-thumbs-up {
+  color: rgb(51, 51, 51);
+  opacity: 0.15;
+  transform: scale(1.5, 1.5);
+  transform-origin: left;
+  margin-bottom: 15px;
+  margin-right: 5px;
+  cursor: pointer;
 }

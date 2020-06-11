@@ -1,26 +1,45 @@
 import React from "react";
 import { connect } from "react-redux";
-import { votePost } from "../../../actions";
+import { votePost, fetchVote } from "../../../actions";
 
-const PostVote = (props) => {
-  const { post } = props;
+class PostVote extends React.Component {
+  componentDidMount = () => {
+    if (this.props.userId) {
+      this.props.fetchVote(this.props.post.id, this.props.userId);
+    }
+  };
 
-  return (
-    <div className="component-post-vote" data-test="component-post-vote">
-      <button onClick={() => props.votePost(post, props.userId)}>
-        <svg>
-          <path d="M2 26h32L18 10 2 26z"></path>
-        </svg>
-      </button>
-      <p>{post.score}</p>
-    </div>
-  );
-};
+  handleClick = () => {
+    const { post, userId } = this.props;
+    if (userId) {
+      this.props.votePost(post, userId);
+    }
+  };
 
-const mapStateToProps = (state) => {
+  render() {
+    const { post } = this.props;
+    const isVoted = this.props.votes.filter(
+      (vote) =>
+        vote.user_id === this.props.userId &&
+        vote.post_id === this.props.post.id
+    )[0];
+
+    return (
+      <div className="component-post-vote" data-test="component-post-vote">
+        <button onClick={this.handleClick}>
+          <i className={`fa fa-thumbs-up ${isVoted ? "voted" : ""}`}></i>
+        </button>
+        <p>{post.score}</p>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
   return {
     userId: state.auth.userId,
+    votes: state.votes,
   };
 };
 
-export default connect(mapStateToProps, { votePost })(PostVote);
+export default connect(mapStateToProps, { votePost, fetchVote })(PostVote);
