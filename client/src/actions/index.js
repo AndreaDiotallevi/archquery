@@ -16,6 +16,8 @@ import {
   LOG_OUT,
   GET_ERRORS,
   CLEAR_ERRORS,
+  VOTE_CREATED,
+  VOTE_DELETED,
 } from "./types";
 import axios from "axios";
 import history from "../history";
@@ -296,19 +298,55 @@ export const isAlreadyLoggedIn = () => async (dispatch) => {
   }
 };
 
-export const upvotePost = (post) => async (dispatch) => {
+export const votePost = (post, userId) => async (dispatch) => {
   try {
-    dispatch(
-      editPost(post.id, {
-        score: post.score + 1,
-      })
+    const response = await axios.get(
+      `/api/votes/?postId=${post.id}&userId=${userId}`
     );
+
+    const vote = response.data[0];
+
+    if (!vote) {
+      dispatch(createVote({ postId: post.id, userId }));
+      dispatch(incrementPostScore(post));
+    } else {
+      dispatch(deleteVote(vote.id));
+      dispatch(decrementPostScore(post));
+    }
   } catch (err) {
     console.log(err);
   }
 };
 
-export const downvotePost = (post) => async (dispatch) => {
+export const createVote = (values) => async (dispatch) => {
+  try {
+    const response = await axios.post("/api/votes", values);
+
+    dispatch({ type: VOTE_CREATED, payload: response.data });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const deleteVote = (id) => async (dispatch) => {
+  try {
+    await axios.delete(`/api/votes/${id}`);
+
+    dispatch({ type: VOTE_DELETED, payload: id });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const incrementPostScore = (post) => async (dispatch) => {
+  try {
+    dispatch(editPost(post.id, { score: post.score + 1 }));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const decrementPostScore = (post) => async (dispatch) => {
   try {
     dispatch(editPost(post.id, { score: post.score - 1 }));
   } catch (err) {
