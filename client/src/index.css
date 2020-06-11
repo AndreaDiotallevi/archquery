@@ -80,10 +80,6 @@ div {
   padding: 0;
   margin-bottom: 70px;
 }
-/* 
-#website-name {
-  letter-spacing: 10px;
-} */
 
 /* Navbar */
 
@@ -335,7 +331,7 @@ div {
   transition: 0.3s;
 }
 
-.voted {
+.fa.voted {
   opacity: 0.8;
   color: rgb(57, 115, 180);
 }
