@@ -18,6 +18,7 @@ import {
   CLEAR_ERRORS,
   VOTE_CREATED,
   VOTE_DELETED,
+  VOTE_FETCHED,
 } from "./types";
 import axios from "axios";
 import history from "../history";
@@ -349,6 +350,22 @@ export const incrementPostScore = (post) => async (dispatch) => {
 export const decrementPostScore = (post) => async (dispatch) => {
   try {
     dispatch(editPost(post.id, { score: post.score - 1 }));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const fetchVote = (postId, userId) => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `/api/votes/?postId=${postId}&userId=${userId}`
+    );
+
+    const vote = response.data[0];
+
+    if (vote) {
+      dispatch({ type: VOTE_FETCHED, payload: vote });
+    }
   } catch (err) {
     console.log(err);
   }

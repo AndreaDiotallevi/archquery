@@ -16,4 +16,4 @@ export const GET_ERRORS = "GET_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const VOTE_CREATED = "VOTE_CREATED";
 export const VOTE_DELETED = "VOTE_DELETED";
-export const VOTES_FETCHED = "VOTES_FETCHED";
+export const VOTE_FETCHED = "VOTE_FETCHED";
