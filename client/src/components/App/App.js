@@ -26,7 +26,7 @@ class App extends React.Component {
             <Route path="/" exact component={QuestionList} />
             <Route path="/questions/tagged/:tag" component={QuestionList} />
             <Route path="/questions/ask" exact component={QuestionCreate} />
-            <Route path="/questions/:id/:title" component={QuestionShow} />
+            <Route path="/questions/:id" component={QuestionShow} />
             <Route path="/posts/:id/edit" exact component={PostEdit} />
             <Route path="/users/signup" exact component={SignUp} />
             <Route path="/users/login" exact component={LogIn} />
