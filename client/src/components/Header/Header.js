@@ -7,7 +7,8 @@ const Header = () => {
     <div className="component-header" data-test="component-header">
       <div className="container-header">
         <Link id="website-name" to="/">
-          ARCHquery
+          ARCHQUERY
+          <p id="website-description">The Q&A Site For Architects</p>
         </Link>
         <Navbar />
       </div>
