@@ -37,6 +37,7 @@ class NavBar extends React.Component {
   renderLoggedOutStatus() {
     return (
       <React.Fragment>
+        <p>Login or signup to join the community!</p>
         <Link to="/users/signup">Sign Up</Link>
         <Link to="/users/login">Log In</Link>
       </React.Fragment>
