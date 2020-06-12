@@ -31,14 +31,14 @@ describe("PostExcerpt", () => {
     wrapper = setup({
       post: {
         body:
-          "verylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongveryl",
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       },
     });
     const component = findByTestAttr(wrapper, "component-question-excerpt");
     expect(
       component.children().first().props().dangerouslySetInnerHTML.__html
     ).toEqual(
-      "verylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongverylongvery..."
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa..."
     );
   });
 });

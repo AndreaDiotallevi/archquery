@@ -14,7 +14,7 @@ const PostExcerpt = ({ post }) => {
     >
       <div
         dangerouslySetInnerHTML={{
-          __html: `${text.substring(0, 100)}${text.length > 100 ? "..." : ""}`,
+          __html: `${text.substring(0, 150)}${text.length > 150 ? "..." : ""}`,
         }}
       />
     </div>
