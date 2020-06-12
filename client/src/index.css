@@ -315,7 +315,14 @@ div {
 }
 
 .component-post-text div p a {
-  /* color: black; */
+  color: rgb(57, 115, 157);
+  font-weight: bold;
+}
+
+.component-post-text div p a:hover {
+  text-decoration: underline;
+  text-decoration-color: rgb(57, 115, 157);
+  transition: 0.3s;
 }
 
 .image-style-side {
@@ -443,18 +450,13 @@ div.component-post-menu div button {
   font-size: 12px;
   color: white;
   color: rgb(57, 115, 157);
-  color: rgb(57, 115, 157);
-  /* background-color: rgb(106, 115, 124); */
   background-color: rgb(225, 236, 244);
-  /* background-color: #bbc0c4; */
   margin-bottom: 5px;
   font-weight: bold;
 }
 
 .component-post-tags a:hover {
-  background-color: rgb(209, 229, 241);
   background-color: #d1e5f1;
-  /* background-color: #242729; */
   transition: 0.3s;
 }
 
@@ -594,6 +596,18 @@ form button:hover {
 
 .ck-content p strong {
   font-weight: bold;
+}
+
+.ck-content p a {
+  color: rgb(57, 115, 157);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.ck-content p a:hover {
+  text-decoration: underline;
+  text-decoration-color: rgb(57, 115, 157);
+  transition: 0.3s;
 }
 
 .ck-content ol,
