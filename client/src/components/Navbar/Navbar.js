@@ -25,7 +25,7 @@ class NavBar extends React.Component {
       return (
         <React.Fragment>
           <span>
-            <p>Logged in as</p>
+            <p>Signed in as</p>
             <UsernameLink userId={this.props.userId} />
           </span>
           <LogOutButton />
