@@ -8,13 +8,18 @@ class SignUpForm extends React.Component {
     }
   }
 
-  renderInput = ({ input, label, type, meta }) => {
+  renderInput = ({ input, label, type, meta, placeholder }) => {
     const className = `${meta.error && meta.touched ? "error" : ""}`;
 
     return (
       <div className={className}>
         <label>{label}</label>
-        <input {...input} autoComplete="off" type={type} />
+        <input
+          {...input}
+          autoComplete="off"
+          placeholder={placeholder}
+          type={type}
+        />
         <p className="error-message">{this.renderError(meta)}</p>
       </div>
     );
@@ -32,18 +37,21 @@ class SignUpForm extends React.Component {
           component={this.renderInput}
           label="Username"
           type="text"
+          placeholder="e.g. Renzo Piano"
         />
         <Field
           name="email"
           component={this.renderInput}
           label="Email"
           type="email"
+          placeholder="e.g. renzo@gmail.com"
         />
         <Field
           name="password"
           component={this.renderInput}
           label="Password"
           type="password"
+          placeholder="(Minimum 8 characters)"
         />
         <button>Sign Up</button>
       </form>
