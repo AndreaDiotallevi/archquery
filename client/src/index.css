@@ -121,11 +121,8 @@ div {
 }
 
 .component-navbar span div a {
-  margin-left: 0;
   background-color: #242729;
-  color: rgb(106, 115, 124);
   color: #bbc0c4;
-  margin-bottom: 0;
   margin-left: 5px;
   margin-bottom: 5px;
 }
@@ -138,7 +135,6 @@ div {
 
 .component-navbar span p,
 .component-navbar p {
-  color: rgb(106, 115, 124);
   color: #bbc0c4;
 }
 
@@ -185,6 +181,7 @@ div {
 /* QuestionListHeader */
 
 .component-question-list-header {
+  flex-direction: row;
   justify-content: space-between;
 }
 
@@ -199,11 +196,6 @@ div {
 }
 
 .component-question-list-header {
-  flex-direction: row;
-  align-items: center;
-}
-
-.component-question-list-header {
   margin-bottom: 50px;
 }
 
@@ -211,17 +203,18 @@ div {
 
 .component-question-ask-button a {
   padding: 5px 8px;
-  background-color: rgb(225, 236, 244);
-  background-color: #242729;
   border-radius: 5px;
-  color: #bbc0c4;
+  color: rgb(57, 115, 157);
+  background-color: white;
   font-weight: bold;
   white-space: nowrap;
   margin-left: 30px;
+  border: 2px solid rgb(57, 115, 157);
+  cursor: pointer;
 }
 
 .component-question-ask-button a:hover {
-  cursor: pointer;
+  background-color: rgb(57, 115, 157);
   color: white;
   transition: 0.3s;
 }
@@ -545,16 +538,18 @@ textarea {
 }
 
 form button {
-  color: #bbc0c4;
   padding: 5px 8px;
-  background-color: #242729;
+  color: rgb(57, 115, 157);
+  background-color: white;
+  border: 2px solid rgb(57, 115, 157);
   border-radius: 5px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 form button:hover {
+  background-color: rgb(57, 115, 157);
   color: white;
-  cursor: pointer;
   transition: 0.3s;
 }
 
@@ -649,12 +644,13 @@ form button:hover {
 .component-login p a,
 .component-signup p a {
   font-weight: bold;
+  color: rgb(57, 115, 157);
 }
 
 .component-login p a:hover,
 .component-signup p a:hover {
   text-decoration: underline;
-  text-decoration-color: #242729;
+  text-decoration-color: rgb(57, 115, 157);
   transition: 0.3s;
 }
 
