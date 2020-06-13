@@ -104,8 +104,6 @@ div {
 /* Navbar */
 
 .component-navbar {
-  /* flex-direction: row; */
-  /* align-items: center; */
   justify-content: flex-start;
 }
 
@@ -218,6 +216,8 @@ div {
   border-radius: 5px;
   color: #bbc0c4;
   font-weight: bold;
+  white-space: nowrap;
+  margin-left: 30px;
 }
 
 .component-question-ask-button a:hover {
@@ -392,17 +392,6 @@ div {
   opacity: 0.2;
 }
 
-.fa-thumbs-up:hover {
-  opacity: 0.8;
-  color: #242729;
-  transition: 0.3s;
-}
-
-.fa.voted {
-  opacity: 0.8;
-  color: #242729;
-}
-
 /* PostInfo */
 
 .component-post-info {
@@ -448,7 +437,6 @@ div.component-post-menu div button {
   padding: 5px 8px;
   border-radius: 5px;
   font-size: 12px;
-  color: white;
   color: rgb(57, 115, 157);
   background-color: rgb(225, 236, 244);
   margin-bottom: 5px;
@@ -559,7 +547,7 @@ textarea {
 form button {
   color: #bbc0c4;
   padding: 5px 8px;
-  background-color: #242424;
+  background-color: #242729;
   border-radius: 5px;
   font-weight: bold;
 }
@@ -712,6 +700,15 @@ form button:hover {
   .component-post-stats {
     flex-direction: column;
   }
+
+  .component-navbar div {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .component-navbar div a {
+    margin-top: 5px;
+  }
 }
 
 @media (max-width: 450px) {
@@ -720,12 +717,19 @@ form button:hover {
   }
 }
 
-.fa-thumbs-up {
-  color: #242729;
-  opacity: 0.15;
-  transform: scale(1.5, 1.5);
-  transform-origin: left;
+.thumbs-up {
+  width: 20px;
+  height: auto;
   margin-bottom: 15px;
-  margin-right: 5px;
-  cursor: pointer;
+  opacity: 0.2;
+}
+
+.thumbs-up:hover {
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.thumbs-up.voted {
+  opacity: 0.8;
+  color: #242729;
 }
