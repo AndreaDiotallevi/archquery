@@ -310,6 +310,7 @@ div {
 .component-post-text div p a {
   color: rgb(57, 115, 157);
   font-weight: bold;
+  word-break: break-all;
 }
 
 .component-post-text div p a:hover {
@@ -408,6 +409,7 @@ div.component-post-menu a {
   opacity: 0.5;
   text-transform: lowercase;
   font-size: 12px;
+  margin-bottom: 5px;
 }
 
 div.component-post-menu div button {
@@ -415,6 +417,7 @@ div.component-post-menu div button {
   opacity: 0.5;
   font-size: 12px;
   background-color: white;
+  margin-bottom: 5px;
 }
 
 /* PostTags */
@@ -445,6 +448,7 @@ div.component-post-menu div button {
 
 .component-post-signature {
   flex-direction: row;
+  flex-wrap: wrap;
   margin-bottom: 15px;
 }
 
