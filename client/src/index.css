@@ -721,7 +721,8 @@ form button:hover {
   width: 20px;
   height: auto;
   margin-bottom: 15px;
-  opacity: 0.2;
+  opacity: 0.12;
+  cursor: pointer;
 }
 
 .thumbs-up:hover {
