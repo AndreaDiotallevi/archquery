@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createPostAndTags, fetchTags } from "../../../actions";
+import QuestionCreateMetadata from "../../Helmets/QuestionCreateMetadata";
 import PostForm from "../PostForm/PostForm";
 import history from "../../../history";
 
@@ -27,6 +28,7 @@ class QuestionCreate extends React.Component {
         className="component-question-create"
         data-test="component-question-create"
       >
+        <QuestionCreateMetadata />
         <h1>Ask A Public Question</h1>
         <PostForm
           postTypeId={1}

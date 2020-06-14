@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import QuestionShowMetadata from "../../Helmets/QuestionShowMetadata";
 import QuestionShowHeader from "../QuestionShowHeader/QuestionShowHeader";
 import PostTags from "../PostTags/PostTags";
 import PostLayout from "../PostLayout/PostLayout";
@@ -25,6 +26,7 @@ class QuestionShow extends React.Component {
         className="component-question-show"
         data-test="component-question-show"
       >
+        <QuestionShowMetadata question={question} />
         <div className="container-question-show">
           <QuestionShowHeader post={question} />
           <PostTags post={question} />

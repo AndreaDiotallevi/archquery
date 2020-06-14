@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logIn } from "../../../actions";
+import LogInMetadata from "../../Helmets/LogInMetadata";
 import LogInForm from "../LogInForm/LogInForm";
 
 class LogIn extends React.Component {
@@ -20,6 +21,7 @@ class LogIn extends React.Component {
   render() {
     return (
       <div className="component-login" data-test="component-login">
+        <LogInMetadata />
         <LogInForm onSubmit={this.onSubmit} />
         <p className="error-message">{this.renderErrors()}</p>
         <p>

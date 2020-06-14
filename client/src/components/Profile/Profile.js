@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../../actions";
+import ProfileMetadata from "../Helmets/ProfileMetadata";
 
 class Profile extends React.Component {
   componentDidMount() {
@@ -35,6 +36,7 @@ class Profile extends React.Component {
 
     return (
       <div className="component-profile" data-test="component-profile">
+        <ProfileMetadata user={user} />
         <h1>{user.username}</h1>
         <p>Member for {this.calculateRelativeTime()}</p>
       </div>
