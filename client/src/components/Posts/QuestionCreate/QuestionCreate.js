@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createPostAndTags, fetchTags } from "../../../actions";
+import { createPostAndTags } from "../../../actions";
 import QuestionCreateMetadata from "../../Helmets/QuestionCreateMetadata";
 import PostForm from "../PostForm/PostForm";
 import history from "../../../history";
@@ -10,7 +10,6 @@ class QuestionCreate extends React.Component {
     if (!this.props.userId) {
       history.push("/users/login");
     }
-    this.props.fetchTags();
   };
 
   onSubmit = (formValues) => {
@@ -44,6 +43,4 @@ const mapStateToProps = (state) => {
   return { userId: state.auth.userId, tags: state.tags };
 };
 
-export default connect(mapStateToProps, { createPostAndTags, fetchTags })(
-  QuestionCreate
-);
+export default connect(mapStateToProps, { createPostAndTags })(QuestionCreate);
