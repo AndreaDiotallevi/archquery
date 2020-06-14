@@ -2,9 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 
 const QuestionShowHelmet = ({ question }) => {
-  const title = `${question.tags.length !== 0 ? `${question.tags[0]} - ` : ""}${
-    question.title
-  } - Archquery`;
+  const title = `${question.title} - Archquery`;
   const description = question.body.replace(/<\/?[^>]+(>|$)/g, " ");
   const url = `http://www.archquery.com/questions/${
     question.id
