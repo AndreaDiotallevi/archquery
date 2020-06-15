@@ -9,9 +9,7 @@ const AppMetadata = () => {
 
   return (
     <Helmet>
-      <title>
-        Archquery - Where Architects Learn, Share, and Build Careers
-      </title>
+      <title>{title}</title>
       <meta name="title" content={title} />
       <meta name="description" content={description} />
       <link rel="canonical" content={url} />
