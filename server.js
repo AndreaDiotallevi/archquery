@@ -6,20 +6,17 @@ const session = require("express-session");
 const app = express();
 const path = require("path");
 const mountRoutes = require("./routes");
-
 const RedisStore = require("connect-redis")(session);
 
+// Setup Redis
 let redisClient;
-
 if (process.env.REDIS_URL) {
   const rtg = require("url").parse(process.env.REDIS_URL);
   redisClient = redis.createClient(rtg.port, rtg.hostname);
-
   redisClient.auth(rtg.auth.split(":")[1]);
 } else {
   redisClient = require("redis").createClient();
 }
-
 redisClient.on("error", (err) => {
   console.log("Redis error: ", err);
 });
@@ -46,8 +43,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
-// console.log(passport);
 
 // Routes
 mountRoutes(app);
