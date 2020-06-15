@@ -32,9 +32,14 @@ const findUserByEmail = async (email) => {
   return rows[0];
 };
 
+const deleteAllUsers = async () => {
+  await db.query("TRUNCATE TABLE users CASCADE;");
+};
+
 module.exports = {
   createUser,
   findUserById,
   findUserByUsername,
   findUserByEmail,
+  deleteAllUsers,
 };
