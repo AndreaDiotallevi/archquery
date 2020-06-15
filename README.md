@@ -2,7 +2,7 @@
 
 # ArchQuery
 
-[Description](#description) | [Live Website](#live-website) | [Technologies Used](#technologies-used) | [Challenges and Goals](#challenges-and-goals) | [Getting Started](#getting-started) | [How to Run the App](#how-to-run-the-app) | [How to Setup the Local Database](#how-to-setup-the-local-database) | [How to Run the Tests](#how-to-run-the-tests) | [Continuous Integration and Delivery](#continuous-integration-and-delivery) | [Design Approach](#design-approach) | [Database Schema](#database-schema)
+[Description](#description) | [Live Website](#live-website) | [Technologies Used](#technologies-used) | [Challenges and Goals](#challenges-and-goals) | [Getting Started](#getting-started) | [How to Run the App](#how-to-run-the-app) | [How to Setup the Local Database](#how-to-setup-the-local-database) | [How to Run the Tests](#how-to-run-the-tests) | [Continuous Integration and Delivery](#continuous-integration-and-delivery) | [Design Approach](#design-approach) | [Database Schema](#database-schema) | [Next Tasks](#next-tasks)
 
 ## Description
 
@@ -45,6 +45,7 @@ The application is deployed with custom domain at [http://www.archquery.com](htt
 - Research and study the Stack Exchange [database schema](https://meta.stackexchange.com/questions/2677/database-schema-documentation-for-the-public-data-dump-and-sede).
 - Deploy to Heroku a full-stack application with PostgreSQL and Redis add-ons.
 - Implement the CKEditor (text editor) instead of a textarea to allow users to post rich, formatted content.
+- Use React Helmet module to add metadata to each page for SEO and discoverability
 
 ## Getting Started
 
@@ -104,3 +105,13 @@ The application is deployed with custom domain at [http://www.archquery.com](htt
     <img src="./client/src/assets/database-schema.png" alt="database-schema"></img>
   </a>
 </p>
+
+## Next Tasks
+
+- Implement proper database creation and migration for collaboration and testing
+- Complete API endpoint testing
+- Build user profile page with options to upload image and personal details
+- Implement comments feature for questions and answers
+- Add service for dynamic implementation of user avatar image
+- Implement service for counting views for each question page
+- Move application to AWS Elastic Beanstalk
