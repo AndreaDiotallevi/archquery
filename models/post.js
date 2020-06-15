@@ -56,6 +56,10 @@ const deletePost = async (id) => {
   await db.query("DELETE FROM posts WHERE id = $1", [id]);
 };
 
+const deleteAllPosts = async () => {
+  await db.query("TRUNCATE TABLE posts CASCADE;");
+};
+
 module.exports = {
   findPostById,
   createPost,
@@ -63,5 +67,6 @@ module.exports = {
   deletePost,
   getPosts,
   filterPostsByTag,
+  deleteAllPosts,
 };
 ``;
