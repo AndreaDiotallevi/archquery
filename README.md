@@ -28,6 +28,7 @@ The application is deployed with custom domain at [http://www.archquery.com](htt
   - [React](https://reactjs.org/): a JavaScript library I used to build the user interface and gather data from the Express and external APIs.
   - [Redux](https://redux.js.org/): a predictable state container for JavaScript apps.
   - [CSS Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox): a flexible box layout module I used to design flexible responsive layout structure without using float or positioning.
+  - [Sass](https://sass-lang.com/): a CSS pre-processor I used for writing more maintainable CSS code, using variables, nested rules and inline imports.
 
 - Testing frameworks:
   - [Jest](https://jestjs.io/): a JavaScript Testing Framework with a focus on simplicity.
@@ -45,7 +46,8 @@ The application is deployed with custom domain at [http://www.archquery.com](htt
 - Research and study the Stack Exchange [database schema](https://meta.stackexchange.com/questions/2677/database-schema-documentation-for-the-public-data-dump-and-sede).
 - Deploy to Heroku a full-stack application with PostgreSQL and Redis add-ons.
 - Implement the CKEditor (text editor) instead of a textarea to allow users to post rich, formatted content.
-- Use React Helmet module to add metadata to each page for SEO and discoverability
+- Use React Helmet module to add metadata to each page for SEO and discoverability.
+- Learn and use Sass to write better and more maintainable CSS.
 
 ## Getting Started
 
