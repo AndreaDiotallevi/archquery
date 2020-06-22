@@ -111,7 +111,7 @@ The application is deployed with custom domain at [http://www.archquery.com](htt
 ## Next Tasks
 
 - Implement proper database creation and migration for collaboration and testing
-- Complete API endpoint testing
+- Complete API endpoint testing for all routes
 - Build user profile page with options to upload image and personal details
 - Implement comments feature for questions and answers
 - Add service for dynamic implementation of user avatar image
