@@ -4,7 +4,7 @@ import Navbar from "../Navbar/Navbar";
 
 const Header = () => {
   return (
-    <div className="component-header" data-test="component-header">
+    <header data-test="component-header">
       <div className="container-header">
         <Link id="website-name" to="/">
           ARCHQUERY
@@ -12,7 +12,7 @@ const Header = () => {
         </Link>
         <Navbar />
       </div>
-    </div>
+    </header>
   );
 };
 
